@@ -2,7 +2,7 @@
 # 提交当前git
 git add .
 
-git commit -m 'update'
+git commit -m $1
 
 git push -f git@github.com:961099916/961099916.github.io.git master:docs
 
