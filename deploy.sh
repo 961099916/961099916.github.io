@@ -1,12 +1,6 @@
 #! /bin/bash
 # 生成静态文件
-# 先推送当前的git到docs分支
-git init
-git add .
-git commit -m 'update'
-git push -f https://github.com/961099916/961099916.github.io.git master:docs
 
-rm -rf .git
 npm run docs:build
 
 # 进入生成的文件夹
