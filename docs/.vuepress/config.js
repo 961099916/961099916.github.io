@@ -21,7 +21,8 @@ module.exports = {
             items:[
                 {text:'基本技术',link:'/常用技术/基本技术/00-MQ学习.md'},
                 {text:'SpringBoot',link:'/常用技术/SpringBoot/00-SpringBoot多数据源.md'},
-                {text:'SpringCloud',link:'/常用技术/SpringCloud/00-注册中心.md'},
+                {text:'SpringCloud',link:'/常用技术/SpringCloud/00-eureka.md'},
+                {text:'微服务',link:'/微服务/00-注册中心'}
             ]
               },
             { text: '算法', link: '/算法/00-判定字符是否唯一' },
@@ -35,6 +36,7 @@ module.exports = {
                     {text:'服务智能',link:'/实践学习/服务智能/00-服务智能.md'},
                     {text:'人人快速开发',link:'/实践学习/人人/00-renren-fast.md'},
                     {text:'Pig',link:'/实践学习/Pig/00-pig.md'},
+
                 ]
             },
             { text: '待整理', link: '/待整理/00-README.md' },
