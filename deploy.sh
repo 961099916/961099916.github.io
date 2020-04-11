@@ -1,4 +1,11 @@
 #! /bin/bash
+# 提交当前git
+git add .
+
+git commit -m 'update'
+
+git push -f https://github.com/961099916/961099916.github.io.git master:docs
+
 # 生成静态文件
 
 npm run docs:build

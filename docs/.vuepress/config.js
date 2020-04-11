@@ -22,7 +22,7 @@ module.exports = {
                 {text:'基本技术',link:'/常用技术/基本技术/00-MQ学习.md'},
                 {text:'SpringBoot',link:'/常用技术/SpringBoot/00-SpringBoot多数据源.md'},
                 {text:'SpringCloud',link:'/常用技术/SpringCloud/00-eureka.md'},
-                {text:'微服务',link:'/微服务/00-注册中心'}
+                {text:'微服务',link:'/常用技术/微服务/00-注册中心'}
             ]
               },
             { text: '算法', link: '/算法/00-判定字符是否唯一' },
