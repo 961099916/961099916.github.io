@@ -292,3 +292,6 @@ public class RedisUtils {
     }
 }
 ```
+## 总结
+- 可通过配置进行开关Redis，感觉应该把相应的组件都应该支持此功能
+- 可结合Caffeine进行进一步的缓存
