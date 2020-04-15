@@ -10,6 +10,7 @@ module.exports = {
     "vuepress-plugin-auto-sidebar": {},
      '@vuepress/last-updated':{},
      '@vuepress/back-to-top': true,
+
 },
     themeConfig: { //主题配置
          lastUpdated: '上次更新时间',
