@@ -7,7 +7,7 @@ git commit -m $1
 git push -f git@github.com:961099916/961099916.github.io.git master:docs
 
 # 生成静态文件
-
+npm install
 npm run docs:build
 
 # 进入生成的文件夹
