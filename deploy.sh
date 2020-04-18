@@ -4,7 +4,8 @@ git add .
 
 git commit -m $1
 
-git push  docs:docs
+git push origin docs:docs
+
 
 # 生成静态文件
 npm run docs:build
