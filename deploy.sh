@@ -4,7 +4,7 @@ git add .
 
 git commit -m $1
 
-git push -f https://github.com/961099916/961099916.github.io.git master:docs
+git push  docs:docs
 
 # 生成静态文件
 npm run docs:build

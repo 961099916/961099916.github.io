@@ -42,6 +42,7 @@ module.exports = {
                     {text:'服务智能',link:'/实践学习/服务智能/00-服务智能.md'},
                     {text:'人人快速开发',link:'/实践学习/人人/00-renren-fast.md'},
                     {text:'Pig',link:'/实践学习/Pig/00-pig.md'},
+                    {text:'项目思考',link:'/实践学习/项目思考/00-该栏用途'},
 
                 ]
             },
