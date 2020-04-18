@@ -17,7 +17,13 @@ module.exports = {
         // 添加导航栏
         nav: [
             { text: '主页', link: '/' }, // 导航条
-            { text: 'Java',link:'/Java/00-String源码'},
+            { text: '源码阅读',
+            items:[
+                {text:'Java源码',link:'/源码阅读/Java/00-String源码'},
+                {text:'Spring源码',link:'/源码阅读/Spring/00-SpringIOC'},
+                {text:'Mybatis源码',link:'/源码阅读/mybatis/00-整体流程'}
+            ]
+        },
             { text: '常用技术',
             items:[
                 {text:'基本技术',link:'/常用技术/基本技术/00-MQ学习.md'},
