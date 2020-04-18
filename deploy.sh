@@ -4,7 +4,7 @@ git add .
 
 git commit -m $1
 
-git push -f git@github.com:961099916/961099916.github.io.git master:docs
+git push -f https://github.com/961099916/961099916.github.io.git master:docs
 
 # 生成静态文件
 npm run docs:build
@@ -17,7 +17,7 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:961099916/961099916.github.io.git master:master
+git push -f https://github.com/961099916/961099916.github.io.git master:master
 
 
 cd ..
