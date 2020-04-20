@@ -5,4 +5,4 @@ git add .
 
 git commit -m 'update'
 
-git push -f https://github.com/961099916/961099916.github.io.git master:docs
+git push -f git@github.com:961099916/961099916.github.io.git master:docs
