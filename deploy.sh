@@ -1,10 +1,4 @@
 #! /bin/bash
-# 提交当前git
-git add .
-
-git commit -m $1
-
-git push origin docs:docs
 
 
 # 生成静态文件
