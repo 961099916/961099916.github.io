@@ -14,6 +14,6 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:961099916/961099916.github.io.git master:master
 
-
+pause()
 cd ..
 rm -rf ./dist
