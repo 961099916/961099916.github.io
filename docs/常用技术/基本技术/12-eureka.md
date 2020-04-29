@@ -5,17 +5,16 @@
 
  1. 需要添加的依赖包
 
-
-
-```xml
+``` xml
  <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
  </dependency>
 ```
+
 2. 需要添加到application.xml中的配置，[Spring Cloud Eureka 常用配置及说明（转载）](https://www.cnblogs.com/li3807/p/7282492.html)。
 
-```xml
+``` xml
 server.port=8100
 eureka.instance.hostname=140.143.15.242
 spring.application.name=lattice-eureka
@@ -25,7 +24,9 @@ eureka.client.register-with-eureka=true
 eureka.client.fetch-registry=true
 #实例以ip地址展示
 eureka.instance.prefer-ip-address=true
+
 ## 注册eureka  互相注册实现集群
+
 eureka.client.service-url.defaultZone=http://140.143.15.242:8200/eureka/,http://140.143.15.242:8300/eureka/
 # 设置关闭自我保护机制
 eureka.server.enable-self-preservation=false
@@ -39,17 +40,17 @@ eureka.server.eviction-interval-timer-in-ms=10000
 
  1. 需要添加的依赖包：
 
-```xml
+``` xml
 <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
             <version>2.0.0.RELEASE</version>
 </dependency>
 ```
+
  2. 需要在application.xml中添加的配置，相关的配置说明可以参照上面的Spring Cloud Eureka 常用配置及说明。
 
-
-```xml
+``` xml
 eureka.client.service-url.defaultZone=http://140.143.15.242:8100/eureka/,http://140.143.15.242:8200/eureka/,http://140.143.15.242:8300/eureka/
 eureka.client.register-with-eureka=true
 eureka.client.fetch-registry=true
@@ -59,8 +60,8 @@ eureka.instance.lease-expiration-duration-in-seconds=6
 
  3. 需要再启动类中添加的注解@EnableEurekaClient，直接启动即可，当注册中心和客户端启动该之后可以通过[http://localhost:8100/](http://localhost:8100/)进行查看。
 
-
 # 运行图
 
 ![eureka运行图](https://img-blog.csdnimg.cn/20181209182847221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODMzNTk5,size_16,color_FFFFFF,t_70)
+
  如有错误之处，敬请之处，如果无法运行尽请留言，谢谢观看。

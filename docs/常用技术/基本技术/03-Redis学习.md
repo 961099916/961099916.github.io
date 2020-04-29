@@ -1,22 +1,27 @@
 # SpringBoot整合Redis
 本人借鉴了人人快速开发的脚手架进行整合
-> 1.添加配置
-> 2.编写AOP进行缓存拦截
-> 3.编写工具类，设置拦截类
+
+> 1. 添加配置
+> 2. 编写AOP进行缓存拦截
+> 3. 编写工具类，设置拦截类
 >
 >
 >
 
-## 1.配置
+## 1. 配置
+
 > pom依赖
-```xml
+
+``` xml
         <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-data-redis</artifactId>
        </dependency>
 ```
+
 > yaml配置文件
-```yaml
+
+``` yaml
 spring:
   redis:
     open: true  # 是否开启redis缓存  true开启   false关闭
@@ -32,8 +37,10 @@ spring:
         max-idle: 10      # 连接池中的最大空闲连接
         min-idle: 5       # 连接池中的最小空闲连接
 ```
+
 > 配置类
-```java
+
+``` java
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -89,8 +96,10 @@ public class RedisConfig {
     }
 }
 ```
-## 2.编写APO进行拦截
-```java
+
+## 2. 编写APO进行拦截
+
+``` java
 import io.renren.common.exception.RRException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -128,8 +137,10 @@ public class RedisAspect {
     }
 }
 ```
-## 3.Reddis工具类
-```java
+
+## 3. Reddis工具类
+
+``` java
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -223,7 +234,6 @@ public class RedisUtils {
         return false;
     }
 
-
     public void set(String key, Object value, long expire) {
         valueOperations.set(key, toJson(value));
         if (expire != NOT_EXPIRE) {
@@ -235,7 +245,6 @@ public class RedisUtils {
     public boolean hasKey(String key) {
         return redisTemplate.hasKey(key);
     }
-
 
     public void set(String key, Object value) {
         set(key, value, DEFAULT_EXPIRE);
@@ -292,6 +301,8 @@ public class RedisUtils {
     }
 }
 ```
+
 ## 总结
-- 可通过配置进行开关Redis，感觉应该把相应的组件都应该支持此功能
-- 可结合Caffeine进行进一步的缓存
+
+* 可通过配置进行开关Redis，感觉应该把相应的组件都应该支持此功能
+* 可结合Caffeine进行进一步的缓存

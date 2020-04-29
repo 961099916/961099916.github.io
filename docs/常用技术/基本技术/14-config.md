@@ -1,9 +1,8 @@
 # Config
 
-
 ## 1. POM文件中的内容：
 
-```xml
+``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -67,15 +66,13 @@
         </plugins>
     </build>
 
-
-
 </project>
 
 ```
 
 ## 2. application.properties文件中的内容：
 
-```properties
+``` properties
 server.port=8110
 spring.application.name=lattice-config
 spring.cloud.config.label=master
@@ -94,9 +91,8 @@ management.endpoints.web.exposure.include=*
 
 ## 3. application.java文件中的内容：
 
-```java
+``` java
 package com.lattice.configone;
-
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -116,8 +112,6 @@ public class ConfigOneApplication {
 }
 
 ```
-
-
 
 ## 启动页面
 
