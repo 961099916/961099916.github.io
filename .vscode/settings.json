@@ -4,5 +4,14 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "qiniu.access_key": "VE3UI_2oVOB35ubKJtHlrHD054v3FFjGFxVbaKse",
+    "qiniu.bucket": "gitbook-markdown",
+    "qiniu.domain": "http://notebook.zhangjiahao.site",
+    "qiniu.secret_key": "OihKEDtAy73FZIMVOPMknX5h9Rv40DlGyLI9v9Qm",
+    "picgo.picBed.current": "qiniu",
+    "picgo.picBed.qiniu.accessKey": "VE3UI_2oVOB35ubKJtHlrHD054v3FFjGFxVbaKse",
+    "picgo.picBed.qiniu.secretKey": "OihKEDtAy73FZIMVOPMknX5h9Rv40DlGyLI9v9Qm",
+    "picgo.picBed.qiniu.bucket": "gitbook-markdown",
+    "picgo.picBed.qiniu.url": "http://notebook.zhangjiahao.site"
 }
