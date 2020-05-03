@@ -1,20 +1,20 @@
 # Spring Data JPA
 
-* SpringBoot 整合JPA
-* JPA基本增删改查
-* JPA多表操作
-* JPA加载
+- SpringBoot 整合 JPA
+- JPA 基本增删改查
+- JPA 多表操作
+- JPA 加载
 
-## SpringBoot整合Spring Data JPA
+## SpringBoot 整合 Spring Data JPA
 
-* 添加POM依赖
-* 添加配置
+- 添加 POM 依赖
+- 添加配置
 
 ### 添加依赖
 
-> 添加Spring Data JPA和Mysql的依赖
+> 添加 Spring Data JPA 和 Mysql 的依赖
 
-``` xml
+```xml
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -27,10 +27,10 @@
 
 ### 添加配置
 
-* 设置数据源
-* 设置JPA数据库类型和打印SQL
+- 设置数据源
+- 设置 JPA 数据库类型和打印 SQL
 
-``` yaml
+```yaml
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -42,6 +42,6 @@ spring:
     database: mysql
 ```
 
-## JPA基本操作
+## JPA 基本操作
 
-### 集成JpaRepositry
+### 集成 JpaRepositry

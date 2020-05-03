@@ -1,5 +1,7 @@
 # LinkedList
-是通过实现链表从而进行存储的，其有私有内部类Node，通过泛型，从而实现储存各种类型对象。
+
+是通过实现链表从而进行存储的，其有私有内部类 Node，通过泛型，从而实现储存各种类型对象。
+
 ```java
 private static class Node<E> {
     // 该节点的数据
@@ -16,14 +18,20 @@ private static class Node<E> {
      }
  }
 ```
+
 ## 构造器
+
 ### 无参数构造方法
+
 ```java
 public LinkedList() {
    }
 ```
+
 ### 带参数的构造方法
+
 构造方法通过调用该方法进行创建的
+
 ```java
 public boolean addAll(int index, Collection<? extends E> c) {
     // 检测索引
@@ -65,9 +73,13 @@ public boolean addAll(int index, Collection<? extends E> c) {
      return true;
  }
 ```
+
 ## 常用方法
-###  linkFirst(E e)
+
+### linkFirst(E e)
+
 添加的基本方法
+
 ```java
 /**
  * Links e as first element.
@@ -85,7 +97,9 @@ private void linkFirst(E e) {
     modCount++;
 }
 ```
+
 ### node(int index) 查找
+
 ```java
 /**
  * Returns the (non-null) Node at the specified element index.
@@ -106,4 +120,5 @@ Node<E> node(int index) {
     }
 }
 ```
+
 ## 常见问题

@@ -1,6 +1,9 @@
 # ArrayList
-常用的有序集合，采用的是线性结构，和ArrayList形成对比的是LinkedList，线性表的优点在于遍历查询，链表优点在于修改。
+
+常用的有序集合，采用的是线性结构，和 ArrayList 形成对比的是 LinkedList，线性表的优点在于遍历查询，链表优点在于修改。
+
 ## 属性
+
 ```java
 private static final long serialVersionUID = 8683452581122892189L;
 
@@ -32,8 +35,11 @@ transient Object[] elementData; // non-private to simplify nested class access
 private int size;
 
 ```
+
 ## 构造器
-### ArrayList(int initialCapacity)  指定容量的构造方法（默认是10）
+
+### ArrayList(int initialCapacity) 指定容量的构造方法（默认是 10）
+
 ```java
 /**
  * 可初始化默认容量大小，若小于零则抛异常，指定0为默认容量 10
@@ -53,7 +59,9 @@ public ArrayList(int initialCapacity) {
     }
 }
 ```
+
 ### 无参构造
+
 ```java
 /**
    * 数据设置为默认为容量时的数据
@@ -62,7 +70,9 @@ public ArrayList(int initialCapacity) {
       this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
   }
 ```
+
 ### ArrayList(Collection<? extends E> c)
+
 ```java
 /**
      * 以集合创建集合，把数据放入的elementData，然后判断长度进行设置size，并进行复制数据
@@ -82,8 +92,11 @@ public ArrayList(int initialCapacity) {
         }
     }
 ```
+
 ## 常用方法
+
 ### grow(int minCapacity) 扩容
+
 ```java
 /**
  * 集合的扩容
@@ -104,7 +117,9 @@ private void grow(int minCapacity) {
     elementData = Arrays.copyOf(elementData, newCapacity);
 }
 ```
+
 ### indexOf(Object o) 查找元素位置的
+
 ```java
 /**
  *  遍历查询，判断是否相等，则需要对象重写equals，返回的时第一次出现的位置
@@ -122,6 +137,7 @@ public int indexOf(Object o) {
     return -1;
 }
 ```
+
 ```java
 /**
  * 遍历查询，判断是否相等，则需要对象重写equals，返回的时最后一次出现的位置
@@ -139,7 +155,9 @@ public int lastIndexOf(Object o) {
     return -1;
 }
 ```
+
 ### add(int index, E element) 添加
+
 ```java
 /**
  * @param index index at which the specified element is to be inserted
@@ -160,4 +178,5 @@ public void add(int index, E element) {
     size++;
 }
 ```
+
 ## 常见问题

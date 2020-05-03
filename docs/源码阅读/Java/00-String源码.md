@@ -1,6 +1,7 @@
-# String源码阅读
+# String 源码阅读
 
 ## 1. 属性
+
 ```java
 /** The value is used for character storage. */
 private final char value[];
@@ -11,10 +12,14 @@ private int hash; // Default to 0
 /** use serialVersionUID from JDK 1.0.2 for interoperability */
 private static final long serialVersionUID = -6849794470754667710L;
 ```
-- 使用final修饰的value。只能初始化一次，如果大量拼接，不可使用该类型
+
+- 使用 final 修饰的 value。只能初始化一次，如果大量拼接，不可使用该类型
 - 使用字符组进行缓存数据
+
 ## 2. 构造方法
+
 ### public String()
+
 ```java
 /**
    * Initializes a newly created {@code String} object so that it represents
@@ -25,9 +30,12 @@ private static final long serialVersionUID = -6849794470754667710L;
       this.value = "".value;
   }
 ```
+
 - 通过设置"".value，实现创建对象.
-- hash值默认为0。
-###  public String(String original)
+- hash 值默认为 0。
+
+### public String(String original)
+
 ```java
 /**
  * Initializes a newly created {@code String} object so that it represents
@@ -44,8 +52,11 @@ public String(String original) {
     this.hash = original.hash;
 }
 ```
-- 通过传入的字符串，设置对象，并且设置对应的hash
-###  public String(char value[])
+
+- 通过传入的字符串，设置对象，并且设置对应的 hash
+
+### public String(char value[])
+
 ```java
 /**
  * Allocates a new {@code String} so that it represents the sequence of
@@ -60,8 +71,11 @@ public String(char value[]) {
     this.value = Arrays.copyOf(value, value.length);
 }
 ```
+
 - 通过传入的字符组进行复制，从而创建对象。
+
 ### public String(byte bytes[])
+
 ```java
     /**
     * Constructs a new {@code String} by decoding the specified array of bytes
@@ -83,8 +97,11 @@ public String(char value[]) {
        this(bytes, 0, bytes.length);
    }
 ```
+
 - 通过字节组进行创建对象，调用该对象的其他方法，传入字节组，开始和结束的位置进行创建
+
 ### public String(StringBuffer buffer)
+
 ```java
 /**
  * Allocates a new string that contains the sequence of characters
@@ -101,9 +118,12 @@ public String(StringBuffer buffer) {
     }
 }
 ```
-- 通过StringBuffer进行构建对象，通过StringBufer.getValue()返回字符组，配合字符组长度创建对象
-- StringBuffer通过synchronized进行出现线程数据共享，由此可见StringBuffer是线程安全的
+
+- 通过 StringBuffer 进行构建对象，通过 StringBufer.getValue()返回字符组，配合字符组长度创建对象
+- StringBuffer 通过 synchronized 进行出现线程数据共享，由此可见 StringBuffer 是线程安全的
+
 ### public String(StringBuilder builder)
+
 ```java
 /**
   * Allocates a new string that contains the sequence of characters
@@ -124,9 +144,13 @@ public String(StringBuffer buffer) {
      this.value = Arrays.copyOf(builder.getValue(), builder.length());
  }
 ```
-- 和上个方法对比，可看出StringBuilder线程不安全。
+
+- 和上个方法对比，可看出 StringBuilder 线程不安全。
+
 ## 3. 常用方法
+
 ### 字符串的长度 length()
+
 ```java
     /**
     * Returns the length of this string.
@@ -140,8 +164,11 @@ public String(StringBuffer buffer) {
        return value.length;
    }
 ```
+
 - 通过字符组的长度从而获得字符串的长度
+
 ### 是否为空 isEmpty()
+
 ```java
     /**
   * Returns {@code true} if, and only if, {@link #length()} is {@code 0}.
@@ -155,8 +182,11 @@ public String(StringBuffer buffer) {
      return value.length == 0;
  }
 ```
-- 检测是否为空时未检测对象是否为null，所以使用该方法时需要考虑是否为null
+
+- 检测是否为空时未检测对象是否为 null，所以使用该方法时需要考虑是否为 null
+
 ### 获得字符串的第几个字符 charAt(int index)
+
 ```java
 /**
  * Returns the {@code char} value at the
@@ -183,8 +213,11 @@ public char charAt(int index) {
     return value[index];
 }
 ```
+
 - 通过传入的字符串的位置进行获取，如果不在返回内会抛出`StringIndexOutOfBoundsException`异常。
+
 ### 比较内容是否相等 equals(Object object)
+
 ```java
 /**
  * Compares this string to the specified object.  The result is {@code
@@ -223,9 +256,12 @@ public boolean equals(Object anObject) {
     return false;
 }
 ```
-- 基本的数据类型相等的判断只需要`==`就可以判断，但是封装类型，需要通过equals进行判断。
+
+- 基本的数据类型相等的判断只需要`==`就可以判断，但是封装类型，需要通过 equals 进行判断。
 - 如果需要对自定义对象进行判断是否相等，需要重写对象的`equals`方法，从而实现自定义比较方法。如果不重写，则默认比较内存地址。
+
 ### 忽略大小写比较是否相等 equalsIgnoreCase(String anotherString)
+
 ```java
 /**
  * Compares this {@code String} to another {@code String}, ignoring case
@@ -262,9 +298,12 @@ public boolean equalsIgnoreCase(String anotherString) {
             && regionMatches(true, 0, anotherString, 0, value.length);
 }
 ```
-1. 进行判断对象的内存地址是否相同--->地址相同，说明同一个对象，自己比较自己肯定true
+
+1. 进行判断对象的内存地址是否相同--->地址相同，说明同一个对象，自己比较自己肯定 true
 2. 然后判断是否为空，长度是否相同，然后再循环比较每个字符忽略大小写比较
+
 ### 比较字符串的大小 compareTo(String anotherString)
+
 ```java
 
     /**
@@ -327,10 +366,13 @@ public boolean equalsIgnoreCase(String anotherString) {
         return len1 - len2;
     }
 ```
+
 1. 找出长度最短的字符串长度
 2. 循环比较，如果有不相等的则返回插值
 3. 一直想等则返回长度差值
-### 判断字符串是否从某个字符串开始的  startsWith(String prefix, int toffset)
+
+### 判断字符串是否从某个字符串开始的 startsWith(String prefix, int toffset)
+
 ```java
 /**
     * Tests if the substring of this string beginning at the
@@ -367,7 +409,9 @@ public boolean equalsIgnoreCase(String anotherString) {
        return true;
    }
 ```
+
 1. 获取对象的字符组、开始位置、传入的字符组，计算得出结束位置
 2. 判断开始位置和结束位置是否超出
 3. 循环比较是否相等
+
 ## 4. 常见问题
