@@ -1,46 +1,44 @@
-# SpringBoot整合Redis
+# SpringBoot 整合 Redis
+
 本人借鉴了人人快速开发的脚手架进行整合
 
 > 1. 添加配置
-> 2. 编写AOP进行缓存拦截
+> 2. 编写 AOP 进行缓存拦截
 > 3. 编写工具类，设置拦截类
->
->
->
 
 ## 1. 配置
 
-> pom依赖
+> pom 依赖
 
-``` xml
+```xml
         <dependency>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-starter-data-redis</artifactId>
        </dependency>
 ```
 
-> yaml配置文件
+> yaml 配置文件
 
-``` yaml
+```yaml
 spring:
   redis:
-    open: true  # 是否开启redis缓存  true开启   false关闭
+    open: true # 是否开启redis缓存  true开启   false关闭
     database: 1
     host: localhost
     port: 6379
-    password:    # 密码（默认为空）
-    timeout: 6000ms  # 连接超时时长（毫秒）
+    password: # 密码（默认为空）
+    timeout: 6000ms # 连接超时时长（毫秒）
     jedis:
       pool:
-        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
-        max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
-        max-idle: 10      # 连接池中的最大空闲连接
-        min-idle: 5       # 连接池中的最小空闲连接
+        max-active: 1000 # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10 # 连接池中的最大空闲连接
+        min-idle: 5 # 连接池中的最小空闲连接
 ```
 
 > 配置类
 
-``` java
+```java
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -97,9 +95,9 @@ public class RedisConfig {
 }
 ```
 
-## 2. 编写APO进行拦截
+## 2. 编写 APO 进行拦截
 
-``` java
+```java
 import io.renren.common.exception.RRException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -138,9 +136,9 @@ public class RedisAspect {
 }
 ```
 
-## 3. Reddis工具类
+## 3. Reddis 工具类
 
-``` java
+```java
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -304,5 +302,5 @@ public class RedisUtils {
 
 ## 总结
 
-* 可通过配置进行开关Redis，感觉应该把相应的组件都应该支持此功能
-* 可结合Caffeine进行进一步的缓存
+- 可通过配置进行开关 Redis，感觉应该把相应的组件都应该支持此功能
+- 可结合 Caffeine 进行进一步的缓存

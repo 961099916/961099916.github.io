@@ -1,16 +1,17 @@
 # Shiro
-Shiro是常用的权限管理工具，也可以实现分布式权限管理, 从网上收集了主要的流程.
+
+Shiro 是常用的权限管理工具，也可以实现分布式权限管理, 从网上收集了主要的流程.
 
 ![Shiro权限流程](http://notebook.zhangjiahao.site/markdown-img-paste-20200401141825639.png)
 
 ## Realm
 
-Shiro实现权限管理, 需要先自定义Realm, 才可实现动态的权限管理, 实现Realm需要继承 `AuthorizingRealm` , 重写 `doGetAuthorizationInfo` 和 `doGetAuthenticationInfo` 进而实现用户登录验证和权限管理.
+Shiro 实现权限管理, 需要先自定义 Realm, 才可实现动态的权限管理, 实现 Realm 需要继承 `AuthorizingRealm` , 重写 `doGetAuthorizationInfo` 和 `doGetAuthenticationInfo` 进而实现用户登录验证和权限管理.
 
-* `doGetAuthenticationInfo` 实现登录管理, 可通过参数获取登录的信息, 然后进行查询数据库从而检验用户信息
-* `doGetAuthorizationInfo` 实现权限管理, 可通过参数获取登录的用户信息, 然后可通过信息去查询权限表, 从而实现权限的管理
+- `doGetAuthenticationInfo` 实现登录管理, 可通过参数获取登录的信息, 然后进行查询数据库从而检验用户信息
+- `doGetAuthorizationInfo` 实现权限管理, 可通过参数获取登录的用户信息, 然后可通过信息去查询权限表, 从而实现权限的管理
 
-``` java
+```java
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -102,9 +103,9 @@ public class CustomRealm extends AuthorizingRealm {
 
 ## 加密
 
-Shiro可以通过配置进行自定义加密器, 从而实现自定义加密算法, 也可实现不同登录方式不同的加密方式, 例如: 账号密码登录是可以用用户的账号加密, 但是只有一个手机号的时候, 可以用默认加密器, 从而实现管理简单化, 通过继承 `SimpleCredentialsMatcher` 类实现自定义加密.
+Shiro 可以通过配置进行自定义加密器, 从而实现自定义加密算法, 也可实现不同登录方式不同的加密方式, 例如: 账号密码登录是可以用用户的账号加密, 但是只有一个手机号的时候, 可以用默认加密器, 从而实现管理简单化, 通过继承 `SimpleCredentialsMatcher` 类实现自定义加密.
 
-``` java
+```java
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
@@ -161,11 +162,11 @@ public class MyMatcher extends SimpleCredentialsMatcher {
 }
 ```
 
-## SpringBoot整合
+## SpringBoot 整合
 
 ### 依赖
 
-``` xml
+```xml
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
@@ -175,9 +176,9 @@ public class MyMatcher extends SimpleCredentialsMatcher {
 
 ### 配置
 
-可以通过配置类进行配置多个Realm认证, 多个权限管理, 配置过滤, 配置加密器, 缓存方式等等的
+可以通过配置类进行配置多个 Realm 认证, 多个权限管理, 配置过滤, 配置加密器, 缓存方式等等的
 
-``` java
+```java
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
@@ -394,9 +395,9 @@ public class ShiroConfig {
 }
 ```
 
-通过自定义的 `modularRealmAuthenticator` 实现多Reaml的选择
+通过自定义的 `modularRealmAuthenticator` 实现多 Reaml 的选择
 
-``` java
+```java
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -441,11 +442,11 @@ public class UserModularRealmAuthenticator extends ModularRealmAuthenticator {
 
 ### Realm
 
-实现了多个Reaml, 并且根据登录方式选择对应的认证方式, 在此使用了多Realm
+实现了多个 Reaml, 并且根据登录方式选择对应的认证方式, 在此使用了多 Realm
 
 #### CustomRealm
 
-``` java
+```java
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -548,7 +549,7 @@ public class CustomRealm extends AuthorizingRealm {
 
 #### MobileRealm
 
-``` java
+```java
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -605,7 +606,7 @@ public class MobileRealm extends AuthorizingRealm {
 
 也采用的自定义的加密器, 代码如下
 
-``` java
+```java
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
@@ -667,13 +668,13 @@ public class MyMatcher extends SimpleCredentialsMatcher {
 }
 ```
 
-## 整合JWT
+## 整合 JWT
 
-整合JWT只不过是返回的是JWT token, 然后保存到数据库中, 也要可使的分布式也可使用该权限管理.
+整合 JWT 只不过是返回的是 JWT token, 然后保存到数据库中, 也要可使的分布式也可使用该权限管理.
 
-### 通过Login生成Token
+### 通过 Login 生成 Token
 
-``` java
+```java
 
     @ApiOperation(value = "账号密码登录", notes = "通过账号密码进行登录")
     @ApiImplicitParams({
@@ -705,9 +706,9 @@ public class MyMatcher extends SimpleCredentialsMatcher {
 
 ### JwtFilter
 
-在请求的时候应每次都应检验一下啊token是否包含和过期.
+在请求的时候应每次都应检验一下啊 token 是否包含和过期.
 
-``` java
+```java
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.extern.slf4j.Slf4j;
@@ -820,16 +821,16 @@ public class JwtFilter extends BasicHttpAuthenticationFilter implements Filter {
 
 ## 总结
 
-在实现以上功能时, 整个shiro的流程为以下步骤:
+在实现以上功能时, 整个 shiro 的流程为以下步骤:
 
-1. 访问接口时检测是否时Shiro过滤的接口,不是则进行访问,是则进行判断是否包含token.
-2. 不包含token或token过期则进行跳转登录页面.
-3. token不过期且符合检测, 则会执行认证方法, 首先会经过自定义的 `ModularRealmAuthenticator` 即 `UserModularRealmAuthenticator` 去进行选择执行的Realm, 然后会进入Realm进行认证. 注意Realm要支持该token, 重写supports方法.
-4. 进入Realm进行token检测,检测是否存在,不存在则是违规登录. 若存在,则查询数据库进行检测账户状态(可跳过直接信任token).
-5. 然后会进入密码器 `SimpleCredentialsMatcher` 即 `MyMatcher` 
+1. 访问接口时检测是否时 Shiro 过滤的接口,不是则进行访问,是则进行判断是否包含 token.
+2. 不包含 token 或 token 过期则进行跳转登录页面.
+3. token 不过期且符合检测, 则会执行认证方法, 首先会经过自定义的 `ModularRealmAuthenticator` 即 `UserModularRealmAuthenticator` 去进行选择执行的 Realm, 然后会进入 Realm 进行认证. 注意 Realm 要支持该 token, 重写 supports 方法.
+4. 进入 Realm 进行 token 检测,检测是否存在,不存在则是违规登录. 若存在,则查询数据库进行检测账户状态(可跳过直接信任 token).
+5. 然后会进入密码器 `SimpleCredentialsMatcher` 即 `MyMatcher`
 
-加密核对, 如果正确则返回true, 否则返回false.
+加密核对, 如果正确则返回 true, 否则返回 false.
 
-6. 检测正确时, 会进行授权, 执行Realm的授权方法. 注意 `PrincipalCollection` 就是认证保存的信息.
+6. 检测正确时, 会进行授权, 执行 Realm 的授权方法. 注意 `PrincipalCollection` 就是认证保存的信息.
 
-如果未登录, 执行登陆时会从第3步开始执行.
+如果未登录, 执行登陆时会从第 3 步开始执行.
