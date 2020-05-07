@@ -191,3 +191,19 @@ empty_subj = "/C=US/ST=California/L=Palo Alto/O=VMware, Inc./OU=Harbor/CN=notary
 ```
 
 ## Docker 安装 Kafka
+
+## Docker 部署单机 Nacos
+
+已经打包发布到了 DockerHub，需要直接拉去运行即可。
+需要有nacos的数据库和帐号密码都为root的用才可使用
+
+```shell
+sudo docker run -d -p 8848:8848 --add-host=september-nacos:172.17.0.1 --name=common-nacos zhangjiahao0401/september-nacos
+```
+
+- -p 8848:8848 主机端口号：容器端口号
+- --add-host=september-nacos:172.17.0.1 添加 hosts 记录，ip 为 172.17.0.1,域名为 september
+  - 域名必须是 september，内部设置了请求的数据库的域名
+  - ip，可查询主机的 docker0 的 ip
+- --name=common-nacos设置容器名
+- zhangjiahao0401/september-nacos:是dockerHub的镜像，国内可替换为`registry.cn-hangzhou.aliyuncs.com/cloud-base/nacos`
