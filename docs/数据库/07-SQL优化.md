@@ -27,9 +27,27 @@
 
 ### 3.通过 EXPLAIN 分析低效 SQL 的执行计划
 
+可以通过 EXPLAIN 或者 DESC 命令获取 MySQL 如何执行 SELECT 语句的信息，包括在 SELECT 语句执行过程中表如何连接和连接的顺序。
+
+- 比如想计算 2006 年所有公司的销售额，需要关联 sales 表和 company 表，并且对 moneys 字段做求和（sum）操作
+- `explain select sum(moneys) from sales a,company b where a.company_id = b.id and a.year= 2006\G;`
+- ![20200508225957.png](http://notebook.zhangjiahao.site/20200508225957.png)
+- select_type：表示 SELECT 的类型，常见的取值有 SIMPLE（简单表，即不使用表连接或者子查询）、PRIMARY（主查询，即外层的查询）、UNION（UNION 中的第二个或者后面的查询语句）、SUBQUERY（子查询中的第一个 SELECT）等。
+- table：输出结果集的表。
+- type：表示表的连接类型，性能由好到差的连接类型为 system（表中仅有一行，即常量表）、const（单表中最多有一个匹配行，例如 primary key 或者 unique index）、eq_ref（对于前面的每一行，在此表中只查询一条记录，简单来说，就是多表连接中使用 primary key 或者 unique index）、 ref （与 eq_ref 类似， 区别在于不是使用 primarykey 或者 unique index，而是使用普通的索引）、ref_or_null（与 ref 类似，区别在于条件中包含对 NULL 的查询） 、index_merge(索引合并优化)、unique_subquery（in 的后面是一个查询主键字段的子查询）、 index_subquery （与 unique_subquery 类似，区别在于 in 的后面是查询非唯一索引字段的子查询）、 range （单表中的范围查询）、index（对于前面的每一行，都通过查询索引来得到数据）、all（对于前面的每一行,都通过全表扫描来得到数据）
+- possible_keys：表示查询时，可能使用的索引
+- key：表示实际使用的索引
+- key_len：索引字段的长度
+- rows：扫描行的数量
+- Extra：执行情况的说明和描述
+
 ### 4.确定问题并采取相应的优化措施
 
+以上基本就可以确认问题出现的原因。此时用户可以根据情况采取相应的措施，进行优化提高执行的效率
+
 ## 索引问题
+
+索引是数据库优化中最常用也是最重要的手段之一， 通过索引通常可以帮助用户解决大多数的 SQL 性能问题
 
 ### 1.索引的存储分类
 
