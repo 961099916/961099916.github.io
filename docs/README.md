@@ -2,7 +2,7 @@
 home: true
 heroImage: /favicon.jpg
 actionText: 开始浏览→
-actionLink: /Java/00-String源码
+actionLink: /源码阅读/Java/00-String源码
 features:
 - title: 编程
   details: 记录个人不断进步学习的历程。
