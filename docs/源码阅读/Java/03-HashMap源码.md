@@ -58,5 +58,3 @@ public HashMap(int initialCapacity, float loadFactor) {
      return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
  }
 ```
-
-##
