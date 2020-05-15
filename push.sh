@@ -5,4 +5,4 @@ git add .
 
 git commit -m 'update'
 
-git push origin docs:docs
+git push origin origin/docs
