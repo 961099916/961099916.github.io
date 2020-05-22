@@ -1,8 +1,10 @@
 # Config
 
-## 1. POM文件中的内容：
+当服务的变多，导致配置文件的繁多，配置文件的管理也会格外的费力，而且如果需要修改服务的配置就需要重新启动，才能使配置生效，但通过配置中心可以解决这些问题，能够时时刷新或者通过访问接口刷新，当和消息总线结合时，就可实现更新配置文件时更新配置。
 
-``` xml
+## 1. POM 文件中的内容：
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -70,9 +72,9 @@
 
 ```
 
-## 2. application.properties文件中的内容：
+## 2. application.properties 文件中的内容：
 
-``` properties
+```properties
 server.port=8110
 spring.application.name=lattice-config
 spring.cloud.config.label=master
@@ -89,9 +91,9 @@ spring.boot.admin.client.url=http://127.0.0.1:8100/sba,http://127.0.0.1:8200/sba
 management.endpoints.web.exposure.include=*
 ```
 
-## 3. application.java文件中的内容：
+## 3. application.java 文件中的内容：
 
-``` java
+```java
 package com.lattice.configone;
 
 import org.springframework.boot.SpringApplication;

@@ -25,8 +25,25 @@ module.exports = {
         },
             { text: '常用技术',
             items:[
-                {text:'基本技术',link:'/常用技术/基本技术/00-MQ学习.md'},
-                {text:'微服务',link:'/常用技术/微服务/00-注册中心'}
+                { text: 'Shiro',link:'/常用技术/shiro/00-shiro学习.md'},
+                { text: 'security', link: '/常用技术/security/00-security.md' },
+                { text: 'redis', link: '/常用技术/redis/00-Redis学习.md' },
+                { text: 'MQ', link: '/常用技术/MQ/00-shiro学习.md' },
+                { text: 'git', link: '/常用技术/git/00-git.md' },
+                { text: 'activiti', link: '/常用技术/activiti/00-activiti.md' },
+                { text: 'caffeine', link: '/常用技术/caffeine/00-caffeine学习.md' },
+                { text: 'elasticsearch', link: '/常用技术/elasticsearch/00-SpringBoot整合Elasticsearh.md' },
+                { text: 'oauth2', link: '/常用技术/oauth2/00-oauth2.md' },
+                { text: 'ORM', link: '/常用技术/ORM/00-SpringDataJPA.md' },
+                { text: 'rpc', link: '/常用技术/rpc/00-rpc.md' },
+                { text: '注册中心', link: '/常用技术/注册中心/00-注册中心.md' },
+                { text: '配置中心', link: '/常用技术/配置中心/00-config.md' },
+                { text: '服务治理', link: '/常用技术/服务治理/00-sentinel.md' },
+                { text: '服务监控', link: '/常用技术/服务监控/00-服务监控.md' },
+                { text: '链路追踪', link: '/常用技术/链路追踪/00-链路追踪.md' },
+                { text: '分布式事务', link: '/常用技术/分布式事务/00-分布式事务.md' },
+                { text: '单点登录', link: '/常用技术/单点登录/00-SSO单点登录.md' },
+                { text: '虚拟机', link: '/常用技术/虚拟机/00-jvm.md' }
             ]
               },
             { text: '算法', link: '/算法/00-判定字符是否唯一' },
