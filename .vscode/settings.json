@@ -1,0 +1,38 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "qiniu.access_key": "VE3UI_2oVOB35ubKJtHlrHD054v3FFjGFxVbaKse",
+    "qiniu.bucket": "gitbook-markdown",
+    "qiniu.domain": "http://notebook.zhangjiahao.site",
+    "qiniu.secret_key": "OihKEDtAy73FZIMVOPMknX5h9Rv40DlGyLI9v9Qm",
+    "picgo.picBed.current": "qiniu",
+    "picgo.picBed.qiniu.accessKey": "VE3UI_2oVOB35ubKJtHlrHD054v3FFjGFxVbaKse",
+    "picgo.picBed.qiniu.secretKey": "OihKEDtAy73FZIMVOPMknX5h9Rv40DlGyLI9v9Qm",
+    "picgo.picBed.qiniu.bucket": "gitbook-markdown",
+    "picgo.picBed.qiniu.url": "http://notebook.zhangjiahao.site",
+    "backgroundCover.autoStatus": true,
+    "backgroundCover.imagePath": "/Users/jiuxialb/Pictures/4K静态壁纸//Users/jiuxialb/Pictures/4K静态壁纸/",
+    "backgroundCover.randomImageFolder": "/Users/jiuxialb/Pictures/4K静态壁纸/",
+    "MicroPython.executeButton": [
+        {
+            "text": "▶",
+            "tooltip": "运行",
+            "alignment": "left",
+            "command": "extension.executeFile",
+            "priority": 3.5
+        }
+    ],
+    "MicroPython.syncButton": [
+        {
+            "text": "$(sync)",
+            "tooltip": "同步",
+            "alignment": "left",
+            "command": "extension.execute",
+            "priority": 4
+        }
+    ]
+}
