@@ -19,7 +19,6 @@
     "vue": "^2.6.11",
     "vuepress": "^1.5.4",
     "vuepress-plugin-auto-sidebar": "^2.2.3",
-    "vuepress-plugin-autobar": "boboidream/vuepress-bar",
     "vuepress-plugin-git-log": "^1.0.1",
     "vuepress-plugin-permalink-pinyin": "^1.0.0"
   },
