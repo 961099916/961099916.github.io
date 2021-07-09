@@ -10,5 +10,5 @@ features:
   details: 通过学习别人进行思考优化自己。
 - title: 扩展
   details: 提升个人兴趣爱好。
-footer: MIT Licensed | Copyright © 2020-present blog.zhangjiahao.site
+footer: MIT Licensed | Copyright © 2021-present blog.zhangjiahao.site
 ---
