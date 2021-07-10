@@ -55,7 +55,7 @@ module.exports = {
       { text: "主页", link: "/" }, // 导航条
       { text: "软件",
         items: [
-          {text: "源码",link: "/software/yuan-ma/000-string-yuan-ma"},
+          {text: "源码",link: "/software/yuan-ma/"},
           {text: "常用技术",link: "/software/chang-yong-ji-shu/"},
           {text: "容器化",link: "/software/rong-qi-hua/"},
           {text: "数据库",link: "/software/shu-ju-ku/"},
