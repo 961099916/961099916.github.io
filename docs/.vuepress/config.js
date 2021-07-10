@@ -16,6 +16,14 @@ module.exports = {
     "@vuepress/nprogress": false,
     'last-reading': {},
     'reading-progress': {},
+    'vuepress-plugin-reading-time': {},
+    'vuepress-plugin-right-anchor': {
+      showDepth: 5,
+      expand: {
+        trigger: 'click',
+        clickModeDefaultOpen: true
+      },
+    },
     '@xiaopanda/vuepress-plugin-code-copy': {
       buttonStaticIcon: Boolean,
       buttonIconTitle: String,
@@ -48,7 +56,7 @@ module.exports = {
       { text: "软件",
         items: [
           {text: "源码",link: "/software/yuan-ma/000-string-yuan-ma"},
-          {text: "常用技术",link: "/software/chang-yong-ji-shu/100-mybatis"},
+          {text: "常用技术",link: "/software/chang-yong-ji-shu/README"},
           {text: "容器化",link: "/software/rong-qi-hua/201-docker-an-zhuang"},
           {text: "数据库",link: "/software/shu-ju-ku/400-mysql"},
           {text: "设计模式",link: "/software/she-ji-mo-shi/300--gong-han-mo-shi"},

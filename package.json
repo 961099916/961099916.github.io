@@ -20,7 +20,9 @@
     "vuepress": "^1.5.4",
     "vuepress-plugin-auto-sidebar": "^2.2.3",
     "vuepress-plugin-git-log": "^1.0.1",
-    "vuepress-plugin-permalink-pinyin": "^1.0.0"
+    "vuepress-plugin-permalink-pinyin": "^1.0.0",
+    "vuepress-plugin-reading-time": "^0.1.1",
+    "vuepress-plugin-right-anchor": "^0.5.2"
   },
   "dependencies": {
     "install": "^0.13.0",
