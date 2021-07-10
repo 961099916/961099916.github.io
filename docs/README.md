@@ -8,7 +8,7 @@ features:
   details: 记录个人不断进步学习的历程。
 - title: 思考
   details: 通过学习别人进行思考优化自己。
-- title: 扩展
+- title: 提升
   details: 提升个人兴趣爱好。
 footer: MIT Licensed | Copyright © 2021-present blog.zhangjiahao.site
 ---
