@@ -471,11 +471,92 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 #### Semaphore
 
+Semaphore 往往用于资源有限的场景中，去限制线程的数量。
+
+```java
+public class SemaphoreDemo {
+
+    static class SemaphoreDemoThread implements Runnable {
+        private Semaphore semaphore;
+        private int value;
+
+        public SemaphoreDemoThread(Semaphore semaphore, int value) {
+            this.semaphore = semaphore;
+            this.value = value;
+        }
+
+        @Override
+        public void run() {
+            try {
+                semaphore.acquire();
+                System.out.println(String.format("当前线程是%d, 还剩%d个资源，还有%d个线程在等待", value, semaphore.availablePermits(),
+                    semaphore.getQueueLength()));
+                // 睡眠随机时间，打乱释放顺序
+                Random random = new Random();
+                Thread.sleep(random.nextInt(1000));
+                System.out.println(String.format("线程%d释放了资源", value));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                semaphore.release();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Semaphore semaphore = new Semaphore(3);
+        for (int i = 0; i < 10; i++) {
+            new Thread(new SemaphoreDemoThread(semaphore, i)).start();
+        }
+    }
+
+}
+```
+
+执行结果如下：
+
+![SemaphoreDemo](https://tva1.sinaimg.cn/large/008i3skNly1gscwh4oc2hj30hi0mg41v.jpg)
+
 #### Exchanger
+
+Exchanger 类用于两个线程交换数据。它支持泛型，也就是说你可以在两个线程之间传送任何数据。
+
+```java
+public class ExchangerDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Exchanger<String> exchanger = new Exchanger<>();
+
+        new Thread(() -> {
+            try {
+                System.out.println("这是线程A，得到了另一个线程的数据："
+                        + exchanger.exchange("这是来自线程A的数据"));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        System.out.println("这个时候线程A是阻塞的，在等待线程B的数据");
+        Thread.sleep(1000);
+
+        new Thread(() -> {
+            try {
+                System.out.println("这是线程B，得到了另一个线程的数据："
+                        + exchanger.exchange("这是来自线程B的数据"));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+}
+```
 
 #### CountDownLatch
 
+先来解读一下 CountDownLatch 这个类名字的意义。CountDown 代表计数递减，Latch 是“门闩”的意思。也有人把它称为“屏障”。而 CountDownLatch 这个类的作用也很贴合这个名字的意义，假设某个线程在执行任务之前，需要等待其它线程完成一些前置任务，必须等所有的前置任务都完成，才能开始执行本线程的任务。
+
 #### CyclicBarrier
+
+CyclicBarrirer 从名字上来理解是“循环的屏障”的意思。前面提到了 CountDownLatch 一旦计数值 count 被降为 0 后，就不能再重新设置了，它只能起一次“屏障”的作用。而 CyclicBarrier 拥有 CountDownLatch 的所有功能，还可以使用 reset()方法重置屏障。
 
 #### Phaser
 
