@@ -510,11 +510,13 @@ public class ForkJoinTest {
     }
 
     public static void main(String[] args) {
+        long l = System.currentTimeMillis();
         ForkJoinPool forkJoinPool = new ForkJoinPool();
         ForkJoinTestBean forkJoinTestBean = new ForkJoinTestBean(40);
         ForkJoinTask<Integer> joinTask = forkJoinPool.submit(forkJoinTestBean);
         try {
-            System.out.println(joinTask.get());
+            System.out.println("time is "+(System.currentTimeMillis()-l)+"\tresult"+joinTask.get());
+
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
@@ -523,3 +525,7 @@ public class ForkJoinTest {
     }
 }
 ```
+
+结果如下图：
+
+![ForkJoinTest](https://tva1.sinaimg.cn/large/008i3skNly1gscsl4wak5j30bg04q3zb.jpg)
