@@ -455,14 +455,71 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 ### 并发集合
 
-#### 并发 Map
-
-#### 并发 Queue
-
-#### 并发 Set
+- 并发 Map：ConcurrentHashMap、ConcurrentNavigableMap、ConcurrentSkipListMap
+- 并发 Queue：ConcurrentLinkedQueue、ConcurrentLinkedDeque
+- 并发 Set：ConcurrentSkipListSet、Guava 的 ConcurrentHashSet
 
 ### 通信工具类
 
+|      类名      |                     作用                     |
+| :------------: | :------------------------------------------: |
+|   Semaphore    |                限制线程的数量                |
+|   Exchanger    |               两个线程交换数据               |
+| CountDownLatch |     线程等待直到计数器减为 0 时开始工作      |
+| CyclicBarrier  | 作用跟 CountDownLatch 类似，但是可以重复使用 |
+|     Phaser     |             增强的 CyclicBarrier             |
+
+#### Semaphore
+
+#### Exchanger
+
+#### CountDownLatch
+
+#### CyclicBarrier
+
+#### Phaser
+
 ### Fork/Join 框架
 
-### Stream 并行计算原理
+```java
+public class ForkJoinTest {
+    static class ForkJoinTestBean extends RecursiveTask<Integer> {
+        private static final int THRESHOLD = 2;
+        private int n;
+
+        public ForkJoinTestBean(int n) {
+            this.n = n;
+        }
+
+        @Override
+        protected Integer compute() {
+            int sum = 0;
+            if (n<=1) {
+                return n;
+            } else {
+                ForkJoinTestBean left = new ForkJoinTestBean(n-1);
+                left.fork();
+                ForkJoinTestBean right = new ForkJoinTestBean(n-2);
+                right.fork();
+                Integer leftResult = left.join();
+                Integer rightResult = right.join();
+                sum = leftResult + rightResult;
+            }
+            return sum;
+        }
+    }
+
+    public static void main(String[] args) {
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        ForkJoinTestBean forkJoinTestBean = new ForkJoinTestBean(40);
+        ForkJoinTask<Integer> joinTask = forkJoinPool.submit(forkJoinTestBean);
+        try {
+            System.out.println(joinTask.get());
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            forkJoinPool.shutdown();
+        }
+    }
+}
+```
