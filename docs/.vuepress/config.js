@@ -1,6 +1,6 @@
 module.exports = {
-  title: "张家豪的学习记录", // 设置网站标题
-  description: "记录本人学习过程", //描述
+  title: "求智志", // 设置网站标题
+  description: "记录本人求取智慧的博客", //描述
   dest: "./dist", // 设置输出目录
   port: 65000, //端口
   head: [
