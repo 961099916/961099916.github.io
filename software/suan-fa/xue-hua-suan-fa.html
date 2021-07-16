@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>雪花算法 | 求智志</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.jpg">
+    <meta name="description" content="记录本人求取智慧的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.fd635f40.css" as="style"><link rel="preload" href="/assets/js/app.ded2ed53.js" as="script"><link rel="preload" href="/assets/js/2.ce24dd61.js" as="script"><link rel="preload" href="/assets/js/55.4dc85497.js" as="script"><link rel="prefetch" href="/assets/js/10.1a22a80e.js"><link rel="prefetch" href="/assets/js/11.9f760cf8.js"><link rel="prefetch" href="/assets/js/12.0d317d32.js"><link rel="prefetch" href="/assets/js/13.2a0123ca.js"><link rel="prefetch" href="/assets/js/14.9f95925f.js"><link rel="prefetch" href="/assets/js/15.be26f87a.js"><link rel="prefetch" href="/assets/js/16.5e36095c.js"><link rel="prefetch" href="/assets/js/17.f7878774.js"><link rel="prefetch" href="/assets/js/18.c01194e9.js"><link rel="prefetch" href="/assets/js/19.5072463c.js"><link rel="prefetch" href="/assets/js/20.8ed998af.js"><link rel="prefetch" href="/assets/js/21.307e7327.js"><link rel="prefetch" href="/assets/js/22.81340df2.js"><link rel="prefetch" href="/assets/js/23.da1722fb.js"><link rel="prefetch" href="/assets/js/24.cc4a35fa.js"><link rel="prefetch" href="/assets/js/25.faaf2ac9.js"><link rel="prefetch" href="/assets/js/26.bb146f4c.js"><link rel="prefetch" href="/assets/js/27.f972bc7e.js"><link rel="prefetch" href="/assets/js/28.3cdafb3e.js"><link rel="prefetch" href="/assets/js/29.31fbf9b8.js"><link rel="prefetch" href="/assets/js/3.52765865.js"><link rel="prefetch" href="/assets/js/30.56dce5f9.js"><link rel="prefetch" href="/assets/js/31.9c2d005a.js"><link rel="prefetch" href="/assets/js/32.4d97daa4.js"><link rel="prefetch" href="/assets/js/33.ca35dc64.js"><link rel="prefetch" href="/assets/js/34.73ddff15.js"><link rel="prefetch" href="/assets/js/35.6cb1ecbd.js"><link rel="prefetch" href="/assets/js/36.fb78752d.js"><link rel="prefetch" href="/assets/js/37.e423b29d.js"><link rel="prefetch" href="/assets/js/38.f2f5575c.js"><link rel="prefetch" href="/assets/js/39.b74330f4.js"><link rel="prefetch" href="/assets/js/4.460a85a7.js"><link rel="prefetch" href="/assets/js/40.686b35c9.js"><link rel="prefetch" href="/assets/js/41.a6226ced.js"><link rel="prefetch" href="/assets/js/42.4b7dfdba.js"><link rel="prefetch" href="/assets/js/43.009e4fd8.js"><link rel="prefetch" href="/assets/js/44.c03ac926.js"><link rel="prefetch" href="/assets/js/45.b829b4db.js"><link rel="prefetch" href="/assets/js/46.26342f37.js"><link rel="prefetch" href="/assets/js/47.edd2a30a.js"><link rel="prefetch" href="/assets/js/48.8c655adb.js"><link rel="prefetch" href="/assets/js/49.cf73fa00.js"><link rel="prefetch" href="/assets/js/5.a1ec4714.js"><link rel="prefetch" href="/assets/js/50.b6714e73.js"><link rel="prefetch" href="/assets/js/51.c3a21807.js"><link rel="prefetch" href="/assets/js/52.6516a8ca.js"><link rel="prefetch" href="/assets/js/53.2f7b4761.js"><link rel="prefetch" href="/assets/js/54.92e13b7c.js"><link rel="prefetch" href="/assets/js/56.560ec16e.js"><link rel="prefetch" href="/assets/js/57.b1c5273e.js"><link rel="prefetch" href="/assets/js/58.6e86dfd0.js"><link rel="prefetch" href="/assets/js/59.5baa2fdd.js"><link rel="prefetch" href="/assets/js/6.f3ce096d.js"><link rel="prefetch" href="/assets/js/60.4a0d755a.js"><link rel="prefetch" href="/assets/js/61.9205b6c9.js"><link rel="prefetch" href="/assets/js/62.92e6d31b.js"><link rel="prefetch" href="/assets/js/63.15802b1d.js"><link rel="prefetch" href="/assets/js/64.a4ae336d.js"><link rel="prefetch" href="/assets/js/65.b4a8ad52.js"><link rel="prefetch" href="/assets/js/66.cae2cd98.js"><link rel="prefetch" href="/assets/js/67.b5d895a9.js"><link rel="prefetch" href="/assets/js/68.f949045a.js"><link rel="prefetch" href="/assets/js/69.59b49117.js"><link rel="prefetch" href="/assets/js/7.5dbca8a3.js"><link rel="prefetch" href="/assets/js/70.ac16534a.js"><link rel="prefetch" href="/assets/js/71.cfd5ec81.js"><link rel="prefetch" href="/assets/js/72.1b5e9887.js"><link rel="prefetch" href="/assets/js/73.36dc0e80.js"><link rel="prefetch" href="/assets/js/74.b80fb5a3.js"><link rel="prefetch" href="/assets/js/75.c1b942ac.js"><link rel="prefetch" href="/assets/js/76.69692bf5.js"><link rel="prefetch" href="/assets/js/8.fdb945ef.js"><link rel="prefetch" href="/assets/js/9.e89fc6b7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.fd635f40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">求智志</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link router-link-active">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link router-link-active">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>算法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/software/suan-fa/" aria-current="page" class="sidebar-link">目录介绍</a></li><li><a href="/software/suan-fa/bst.html" class="sidebar-link">BST</a></li><li><a href="/software/suan-fa/shi-shu-zu-wei-yi-de-zui-xiao-zeng-liang.html" class="sidebar-link">使数组唯一的最小增量</a></li><li><a href="/software/suan-fa/pan-ding-zi-fu-shi-fou-wei-yi.html" class="sidebar-link">判定字符是否唯一</a></li><li><a href="/software/suan-fa/jin-zhi-zhuan-hua.html" class="sidebar-link">进制转化</a></li><li><a href="/software/suan-fa/xue-hua-suan-fa.html" aria-current="page" class="active sidebar-link">雪花算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/software/suan-fa/xue-hua-suan-fa.html#原理" class="sidebar-link">原理</a></li><li class="sidebar-sub-header"><a href="/software/suan-fa/xue-hua-suan-fa.html#特点" class="sidebar-link">特点</a></li><li class="sidebar-sub-header"><a href="/software/suan-fa/xue-hua-suan-fa.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/software/suan-fa/xue-hua-suan-fa.html#实现" class="sidebar-link">实现</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="雪花算法"><a href="#雪花算法" class="header-anchor">#</a> 雪花算法</h1> <p>为了解决单纯的时间戳导致的唯一 ID 可能出现重复的情况，UUID：采用无意义字符串，没有排序数据量大时查询效率比较低。数据库自增序列：读写分离时，只有主节点可以进行写操作，可能有单点故障的风险，分表分库，数据迁移合并等比较麻烦。</p> <h2 id="原理"><a href="#原理" class="header-anchor">#</a> 原理</h2> <p>总共长度为 64bit，其中前 41bit 为时间戳，中间 10bit 为机器唯一码，后 12bit 为序列号，所以总体来说此唯一 ID 是随着时间主键变大的。</p> <h2 id="特点"><a href="#特点" class="header-anchor">#</a> 特点</h2> <ul><li>时间位：可以根据时间进行排序，有助于提高查询速度。</li> <li>机器 id 位：适用于分布式环境下对多节点的各个节点进行标识，可以具体根据节点数和部署情况设计划分机器位 10 位长度，如划分 5 位表示进程位等</li> <li>序列号位：是一系列的自增 id，可以支持同一节点同一毫秒生成多个 ID 序号，12 位的计数序列号支持每个节点每毫秒产生 4096 个 ID 序号</li></ul> <h2 id="缺点"><a href="#缺点" class="header-anchor">#</a> 缺点</h2> <ul><li>雪花算法在单机系统上 ID 是递增的，但是在分布式系统多节点的情况下，所有节点的时钟并不能保证不完全同步，所以有可能会出现不是全局递增的情况。</li></ul> <h2 id="实现"><a href="#实现" class="header-anchor">#</a> 实现</h2> <div class="language-java extra-class"><pre class="language-java"><code> <span class="token comment">//下面两个每个5位，加起来就是10位的工作机器id 构建的时候传入workerId、datacenterId</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> workerId<span class="token punctuation">;</span>    <span class="token comment">//工作id</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> datacenterId<span class="token punctuation">;</span>   <span class="token comment">//数据id</span>
+    <span class="token comment">//12位的序列号</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> sequence<span class="token punctuation">;</span>
+     <span class="token comment">//初始时间戳</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> twepoch <span class="token operator">=</span> <span class="token number">1288834974657L</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//长度为5位</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> workerIdBits <span class="token operator">=</span> <span class="token number">5L</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> datacenterIdBits <span class="token operator">=</span> <span class="token number">5L</span><span class="token punctuation">;</span>
+    <span class="token comment">//最大值</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> maxWorkerId <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> workerIdBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> maxDatacenterId <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> datacenterIdBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//序列号id长度</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> sequenceBits <span class="token operator">=</span> <span class="token number">12L</span><span class="token punctuation">;</span>
+    <span class="token comment">//序列号最大值</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> sequenceMask <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> sequenceBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//获取系统时间戳</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">timeStemp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+      <span class="token comment">//下一个ID生成算法</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">long</span> <span class="token function">nextId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> timestamp <span class="token operator">=</span> <span class="token function">timeGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//获取当前时间戳如果小于上次时间戳，则表示时间戳获取出现异常</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>timestamp <span class="token operator">&lt;</span> lastTimestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">&quot;时间戳获取出现异常&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//获取当前时间戳如果等于上次时间戳（同一毫秒内），则在序列号加一；否则序列号赋值为0，从0开始。</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>lastTimestamp <span class="token operator">==</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            sequence <span class="token operator">=</span> <span class="token punctuation">(</span>sequence <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> sequenceMask<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sequence <span class="token operator">&gt;</span> sequenceMask<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                sequence<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            sequence <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//将上次时间戳值刷新</span>
+        lastTimestamp <span class="token operator">=</span> timestamp<span class="token punctuation">;</span>
+
+        <span class="token comment">/**
+          * 返回结果：
+          * (timestamp - twepoch) &lt;&lt; timestampLeftShift) 表示将时间戳减去初始时间戳，再左移相应位数
+          * (datacenterId &lt;&lt; datacenterIdShift) 表示将数据id左移相应位数
+          * (workerId &lt;&lt; workerIdShift) 表示将工作id左移相应位数
+          * | 是按位或运算符，例如：x | y，只有当x，y都为0的时候结果才为0，其它情况结果都为1。
+          * 因为个部分只有相应位上的值有意义，其它位上都是0，所以将各部分的值进行 | 运算就能得到最终拼接好的id
+        */</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>timestamp <span class="token operator">-</span> twepoch<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> timestampLeftShift<span class="token punctuation">)</span> <span class="token operator">|</span>
+                <span class="token punctuation">(</span>datacenterId <span class="token operator">&lt;&lt;</span> datacenterIdShift<span class="token punctuation">)</span> <span class="token operator">|</span>
+                <span class="token punctuation">(</span>workerId <span class="token operator">&lt;&lt;</span> workerIdShift<span class="token punctuation">)</span> <span class="token operator">|</span>
+                sequence<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/11/2021, 8:48:27 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/software/suan-fa/jin-zhi-zhuan-hua.html" class="prev">
+        进制转化
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><!----><!----><!----></div></div>
+    <script src="/assets/js/app.ded2ed53.js" defer></script><script src="/assets/js/2.ce24dd61.js" defer></script><script src="/assets/js/55.4dc85497.js" defer></script>
+  </body>
+</html>

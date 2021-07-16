@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>k8s 集群中安装 kubesphere | 求智志</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.jpg">
+    <meta name="description" content="记录本人求取智慧的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.fd635f40.css" as="style"><link rel="preload" href="/assets/js/app.ded2ed53.js" as="script"><link rel="preload" href="/assets/js/2.ce24dd61.js" as="script"><link rel="preload" href="/assets/js/16.5e36095c.js" as="script"><link rel="prefetch" href="/assets/js/10.1a22a80e.js"><link rel="prefetch" href="/assets/js/11.9f760cf8.js"><link rel="prefetch" href="/assets/js/12.0d317d32.js"><link rel="prefetch" href="/assets/js/13.2a0123ca.js"><link rel="prefetch" href="/assets/js/14.9f95925f.js"><link rel="prefetch" href="/assets/js/15.be26f87a.js"><link rel="prefetch" href="/assets/js/17.f7878774.js"><link rel="prefetch" href="/assets/js/18.c01194e9.js"><link rel="prefetch" href="/assets/js/19.5072463c.js"><link rel="prefetch" href="/assets/js/20.8ed998af.js"><link rel="prefetch" href="/assets/js/21.307e7327.js"><link rel="prefetch" href="/assets/js/22.81340df2.js"><link rel="prefetch" href="/assets/js/23.da1722fb.js"><link rel="prefetch" href="/assets/js/24.cc4a35fa.js"><link rel="prefetch" href="/assets/js/25.faaf2ac9.js"><link rel="prefetch" href="/assets/js/26.bb146f4c.js"><link rel="prefetch" href="/assets/js/27.f972bc7e.js"><link rel="prefetch" href="/assets/js/28.3cdafb3e.js"><link rel="prefetch" href="/assets/js/29.31fbf9b8.js"><link rel="prefetch" href="/assets/js/3.52765865.js"><link rel="prefetch" href="/assets/js/30.56dce5f9.js"><link rel="prefetch" href="/assets/js/31.9c2d005a.js"><link rel="prefetch" href="/assets/js/32.4d97daa4.js"><link rel="prefetch" href="/assets/js/33.ca35dc64.js"><link rel="prefetch" href="/assets/js/34.73ddff15.js"><link rel="prefetch" href="/assets/js/35.6cb1ecbd.js"><link rel="prefetch" href="/assets/js/36.fb78752d.js"><link rel="prefetch" href="/assets/js/37.e423b29d.js"><link rel="prefetch" href="/assets/js/38.f2f5575c.js"><link rel="prefetch" href="/assets/js/39.b74330f4.js"><link rel="prefetch" href="/assets/js/4.460a85a7.js"><link rel="prefetch" href="/assets/js/40.686b35c9.js"><link rel="prefetch" href="/assets/js/41.a6226ced.js"><link rel="prefetch" href="/assets/js/42.4b7dfdba.js"><link rel="prefetch" href="/assets/js/43.009e4fd8.js"><link rel="prefetch" href="/assets/js/44.c03ac926.js"><link rel="prefetch" href="/assets/js/45.b829b4db.js"><link rel="prefetch" href="/assets/js/46.26342f37.js"><link rel="prefetch" href="/assets/js/47.edd2a30a.js"><link rel="prefetch" href="/assets/js/48.8c655adb.js"><link rel="prefetch" href="/assets/js/49.cf73fa00.js"><link rel="prefetch" href="/assets/js/5.a1ec4714.js"><link rel="prefetch" href="/assets/js/50.b6714e73.js"><link rel="prefetch" href="/assets/js/51.c3a21807.js"><link rel="prefetch" href="/assets/js/52.6516a8ca.js"><link rel="prefetch" href="/assets/js/53.2f7b4761.js"><link rel="prefetch" href="/assets/js/54.92e13b7c.js"><link rel="prefetch" href="/assets/js/55.4dc85497.js"><link rel="prefetch" href="/assets/js/56.560ec16e.js"><link rel="prefetch" href="/assets/js/57.b1c5273e.js"><link rel="prefetch" href="/assets/js/58.6e86dfd0.js"><link rel="prefetch" href="/assets/js/59.5baa2fdd.js"><link rel="prefetch" href="/assets/js/6.f3ce096d.js"><link rel="prefetch" href="/assets/js/60.4a0d755a.js"><link rel="prefetch" href="/assets/js/61.9205b6c9.js"><link rel="prefetch" href="/assets/js/62.92e6d31b.js"><link rel="prefetch" href="/assets/js/63.15802b1d.js"><link rel="prefetch" href="/assets/js/64.a4ae336d.js"><link rel="prefetch" href="/assets/js/65.b4a8ad52.js"><link rel="prefetch" href="/assets/js/66.cae2cd98.js"><link rel="prefetch" href="/assets/js/67.b5d895a9.js"><link rel="prefetch" href="/assets/js/68.f949045a.js"><link rel="prefetch" href="/assets/js/69.59b49117.js"><link rel="prefetch" href="/assets/js/7.5dbca8a3.js"><link rel="prefetch" href="/assets/js/70.ac16534a.js"><link rel="prefetch" href="/assets/js/71.cfd5ec81.js"><link rel="prefetch" href="/assets/js/72.1b5e9887.js"><link rel="prefetch" href="/assets/js/73.36dc0e80.js"><link rel="prefetch" href="/assets/js/74.b80fb5a3.js"><link rel="prefetch" href="/assets/js/75.c1b942ac.js"><link rel="prefetch" href="/assets/js/76.69692bf5.js"><link rel="prefetch" href="/assets/js/8.fdb945ef.js"><link rel="prefetch" href="/assets/js/9.e89fc6b7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.fd635f40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">求智志</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link router-link-active">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link router-link-active">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>容器化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/software/rong-qi-hua/" aria-current="page" class="sidebar-link">目录介绍</a></li><li><a href="/software/rong-qi-hua/205.kubernetes-de-an-zhuang.html" class="sidebar-link">Kubernetes的安装</a></li><li><a href="/software/rong-qi-hua/206-k3sk8sk9s.html" class="sidebar-link">K3s、K8s、K9s</a></li><li><a href="/software/rong-qi-hua/207-docker-an-zhuang-chang-yong-ruan-jian.html" class="sidebar-link">Docker 安装 UI 界面</a></li><li><a href="/software/rong-qi-hua/208-kubernetes-ji-ben-shi-yong.html" class="sidebar-link">Kubernetes基本使用</a></li><li><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html" aria-current="page" class="active sidebar-link">k8s 集群中安装 kubesphere</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html#_1-安装-helm2-16-3" class="sidebar-link">1 安装 helm2.16.3</a></li><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html#_2-安装-nfs-存储" class="sidebar-link">2 安装 nfs 存储</a></li><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html#_3-部署-kubesphere" class="sidebar-link">3 部署 kubesphere</a></li><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html#注意" class="sidebar-link">注意</a></li></ul></li><li><a href="/software/rong-qi-hua/210-kubernetes-chuang-jianstorageclass.html" class="sidebar-link">Kubernetes 创建 StorageClass</a></li><li><a href="/software/rong-qi-hua/212-helm.html" class="sidebar-link">Heml的使用</a></li><li><a href="/software/rong-qi-hua/213-docker-compose-shi-yong.html" class="sidebar-link">Docker-compose使用</a></li><li><a href="/software/rong-qi-hua/istio.html" class="sidebar-link">Istio</a></li><li><a href="/software/rong-qi-hua/docker.html" class="sidebar-link">Docker 安装</a></li><li><a href="/software/rong-qi-hua/yun-ping-tai-da-jian.html" class="sidebar-link">云平台搭建</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="k8s-集群中安装-kubesphere"><a href="#k8s-集群中安装-kubesphere" class="header-anchor">#</a> k8s 集群中安装 kubesphere</h1> <p><a href="https://kubesphere.io/docs/zh-CN/installation/prerequisites/" target="_blank" rel="noopener noreferrer">官网中安装 kubesphere 的前提条件如下<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li><code>Kubernetes</code>版本： <code>1.15.x ≤ K8s version ≤ 1.17.x</code>；</li> <li><code>Helm</code>版本： <code>2.10.0 ≤ Helm Version ＜ 3.0.0</code>（不支持 helm 2.16.0 <a href="https://github.com/helm/helm/issues/6894" target="_blank" rel="noopener noreferrer">#6894<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>），且已安装了 Tiller，参考  <a href="https://devopscube.com/install-configure-helm-kubernetes/" target="_blank" rel="noopener noreferrer">如何安装与配置 Helm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> （预计 3.0 支持 Helm v3）；</li> <li>集群已有默认的存储类型（StorageClass），若还没有准备存储请参考  <a href="https://kubesphere.io/docs/zh-CN/appendix/install-openebs" target="_blank" rel="noopener noreferrer">安装 OpenEBS 创建 LocalPV 存储类型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>  用作开发测试环境。</li> <li>集群能够访问外网，若无外网请参考  <a href="https://kubesphere.com.cn/docs/installation/install-on-k8s-airgapped/" target="_blank" rel="noopener noreferrer">在 Kubernetes 离线安装 KubeSphere<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</li></ul> <h2 id="_1-安装-helm2-16-3"><a href="#_1-安装-helm2-16-3" class="header-anchor">#</a> 1 安装 helm2.16.3</h2> <h3 id="客户端-helm-安装"><a href="#客户端-helm-安装" class="header-anchor">#</a> 客户端 helm 安装</h3> <h4 id="_1-1-下载-helm-客户端"><a href="#_1-1-下载-helm-客户端" class="header-anchor">#</a> 1.1 下载 helm 客户端</h4> <div class="language- extra-class"><pre class="language-text"><code>wget https://get.helm.sh/helm-v2.16.3-linux-amd64.tar.gz
+</code></pre></div><h4 id="_1-2-解压缩并拷贝-helm-二进制文件"><a href="#_1-2-解压缩并拷贝-helm-二进制文件" class="header-anchor">#</a> 1.2 解压缩并拷贝 helm 二进制文件</h4> <div class="language- extra-class"><pre class="language-text"><code>tar xf helm-v2.16.3-linux-amd64.tar.gz
+cp linux-amd64/helm /usr/local/bin
+</code></pre></div><h3 id="服务端-tiller-安装"><a href="#服务端-tiller-安装" class="header-anchor">#</a> 服务端 tiller 安装</h3> <h4 id="_1-3-集群每个节点安装-socat"><a href="#_1-3-集群每个节点安装-socat" class="header-anchor">#</a> 1.3 集群每个节点安装 socat</h4> <blockquote><p>否则会报错 Error: cannot connect to Tiller</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>yum install -y socat
+</code></pre></div><h4 id="_1-4-初始化-helm-部署-tiller"><a href="#_1-4-初始化-helm-部署-tiller" class="header-anchor">#</a> 1.4 初始化 helm，部署 tiller</h4> <p>Tiller 是以 Deployment 方式部署在 Kubernetes 集群中的，只需执行<code>helm init</code>命令便可简单的完成安装，但是 Helm 默认会去 storage.googleapis.com 拉取镜像。。。。。。这里需要使用阿里云的仓库完成安装</p> <div class="language- extra-class"><pre class="language-text"><code>#添加阿里云的仓库
+helm init --client-only --stable-repo-url https://aliacs-app-catalog.oss-cn-hangzhou.aliyuncs.com/charts/
+
+helm repo add incubator https://aliacs-app-catalog.oss-cn-hangzhou.aliyuncs.com/charts-incubator/
+
+helm repo update
+
+#创建服务端 使用-i指定阿里云仓库
+helm init --service-account tiller --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3  --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+
+#创建TLS认证服务端，参考地址：#https://github.com/gjmzj/kubeasz/blob/master/docs/guide/helm.md
+
+helm init --service-account tiller --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3 --tiller-tls-cert /etc/kubernetes/ssl/tiller001.pem --tiller-tls-key /etc/kubernetes/ssl/tiller001-key.pem --tls-ca-cert /etc/kubernetes/ssl/ca.pem --tiller-namespace kube-system --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+</code></pre></div><h4 id="_1-5-给-tiller-授权"><a href="#_1-5-给-tiller-授权" class="header-anchor">#</a> 1.5 给 tiller 授权</h4> <blockquote><p>因为 Helm 的服务端 Tiller 是一个部署在 Kubernetes 中 kube-system namespace 下的 deployment，它会去连接 kube-api 在 Kubernetes 里创建和删除应用。而从 Kubernetes1.6 版本开始，API Server 启用了 RBAC 授权。目前的 Tiller 部署时默认没有定义授权的 ServiceAccount，这会导致访问 API Server 时被拒绝。所以我们需要明确为 Tiller 部署添加授权。</p></blockquote> <p>创建 Kubernetes 的服务帐号和绑定角色</p> <div class="language- extra-class"><pre class="language-text"><code>#创建serviceaccount
+kubectl create serviceaccount --namespace kube-system tiller
+
+#创建角色绑定
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+</code></pre></div><p>为 tiller 设置帐号</p> <div class="language- extra-class"><pre class="language-text"><code>#使用kubectl patch更新API对象
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{&quot;spec&quot;:{&quot;template&quot;:{&quot;spec&quot;:{&quot;serviceAccount&quot;:&quot;tiller&quot;}}}}'
+
+#验证是否授权成功
+kubectl get deploy --namespace kube-system   tiller-deploy  --output yaml|grep  serviceAccount
+
+      serviceAccount: tiller
+      serviceAccountName: tiller
+</code></pre></div><h4 id="_1-6-验证-tiller-是否安装成功"><a href="#_1-6-验证-tiller-是否安装成功" class="header-anchor">#</a> 1.6 验证 tiller 是否安装成功</h4> <div class="language- extra-class"><pre class="language-text"><code>kubectl -n kube-system get pods|grep tiller
+tiller-deploy-6d8dfbb696-4cbcz             1/1     Running   0          88s
+
+输入命令	helm version	显示结果以下既为成功
+Client: &amp;version.Version{SemVer:&quot;v2.16.3&quot;, GitCommit:&quot;1ee0254c86d4ed6887327dabed7aa7da29d7eb0d&quot;, GitTreeState:&quot;clean&quot;}
+Server: &amp;version.Version{SemVer:&quot;v2.16.3&quot;, GitCommit:&quot;1ee0254c86d4ed6887327dabed7aa7da29d7eb0d&quot;, GitTreeState:&quot;clean&quot;}
+</code></pre></div><h4 id="_1-7-卸载-helm-服务端-tiller"><a href="#_1-7-卸载-helm-服务端-tiller" class="header-anchor">#</a> 1.7 卸载 helm 服务端 tiller</h4> <div class="language- extra-class"><pre class="language-text"><code>$ helm reset
+或
+$ helm reset -f		强制删除
+</code></pre></div><h2 id="_2-安装-nfs-存储"><a href="#_2-安装-nfs-存储" class="header-anchor">#</a> 2 安装 nfs 存储</h2> <ul><li>官方提供的<a href="https://kubesphere.io/docs/zh-CN/appendix/install-openebs/" target="_blank" rel="noopener noreferrer">openebs 存储<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>貌似不太好使，反正我是安装完后 pod 的状态一直是 pending</li> <li>nfs 存储比较简单，适合实验环境</li> <li>也可以使用别的持久化存储</li></ul> <p><a href="https://blog.csdn.net/weixin_37546425/article/details/104290906" target="_blank" rel="noopener noreferrer">安装 nfs 参考文章<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>nfs 这里选择在 master 安装，上边的参考文章中说 nfs server 安装在 master 节点会有问题，但是我这里没有</p></blockquote> <h3 id="_2-1-安装配置-nfs"><a href="#_2-1-安装配置-nfs" class="header-anchor">#</a> 2.1 安装配置 nfs</h3> <p>client 端，这里为两个 node 节点</p> <div class="language- extra-class"><pre class="language-text"><code>yum -y install nfs-utils
+</code></pre></div><p>server 端，master 节点</p> <div class="language- extra-class"><pre class="language-text"><code>1.安装包
+yum -y install nfs-utils rpcbind
+
+2.编辑配置文件
+配置文件中的*是允许所有网段，根据自己实际情况写明网段
+cat &gt;/etc/exports &lt;&lt;EOF
+/data *(insecure,rw,async,no_root_squash)
+EOF
+
+3.创建目录并修改权限
+这里为了方便实验授予了挂载目录权限为777，请根据实际情况修改目录权限和所有者
+mkdir /data &amp;&amp; chmod 777 /data
+
+4.启动服务
+systemctl enable nfs-server rpcbind &amp;&amp; systemctl start nfs-server rpcbind
+</code></pre></div><p>配置 storageclass，注意修改 nfs 服务端 IP 和共享目录</p> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;storageclass.yaml &lt;&lt;EOF
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nfs-provisioner
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+   name: nfs-provisioner-runner
+   namespace: default
+rules:
+   -  apiGroups: [&quot;&quot;]
+      resources: [&quot;persistentvolumes&quot;]
+      verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;create&quot;, &quot;delete&quot;]
+   -  apiGroups: [&quot;&quot;]
+      resources: [&quot;persistentvolumeclaims&quot;]
+      verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;update&quot;]
+   -  apiGroups: [&quot;storage.k8s.io&quot;]
+      resources: [&quot;storageclasses&quot;]
+      verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
+   -  apiGroups: [&quot;&quot;]
+      resources: [&quot;events&quot;]
+      verbs: [&quot;watch&quot;, &quot;create&quot;, &quot;update&quot;, &quot;patch&quot;]
+   -  apiGroups: [&quot;&quot;]
+      resources: [&quot;services&quot;, &quot;endpoints&quot;]
+      verbs: [&quot;get&quot;,&quot;create&quot;,&quot;list&quot;, &quot;watch&quot;,&quot;update&quot;]
+   -  apiGroups: [&quot;extensions&quot;]
+      resources: [&quot;podsecuritypolicies&quot;]
+      resourceNames: [&quot;nfs-provisioner&quot;]
+      verbs: [&quot;use&quot;]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: run-nfs-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: nfs-provisioner
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: nfs-provisioner-runner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nfs-client-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccount: nfs-provisioner
+      containers:
+        - name: nfs-client-provisioner
+          image: quay.io/external_storage/nfs-client-provisioner:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: nfs-client
+              mountPath: /persistentvolumes
+          env:
+            - name: PROVISIONER_NAME
+              value: fuseim.pri/ifs
+            - name: NFS_SERVER
+              value: 此处修改为nfs服务器ip
+            - name: NFS_PATH
+              value: /data   #这里为nfs共享目录
+      volumes:
+        - name: nfs-client
+          nfs:
+            server: 此处修改为nfs服务器ip
+            path: /data   #这里为nfs共享目录
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage
+provisioner: fuseim.pri/ifs
+reclaimPolicy: Retain
+EOF
+</code></pre></div><p>创建 storageclass</p> <div class="language- extra-class"><pre class="language-text"><code>kubectl apply -f storageclass.yaml
+</code></pre></div><p>设置默认 strorageclass</p> <div class="language- extra-class"><pre class="language-text"><code>kubectl patch storageclass nfs-storage -p '{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}'
+</code></pre></div><p>检查 nfs-client pod 状态</p> <div class="language- extra-class"><pre class="language-text"><code>#这里是在default命名空间下创建的
+kubectl get pods
+
+NAME                                      READY   STATUS    RESTARTS   AGE
+nfs-client-provisioner-7b9746695c-nrz4n   1/1     Running   0          2m38s
+</code></pre></div><p>检查默认存储</p> <div class="language- extra-class"><pre class="language-text"><code>#这里是在default命名空间下创建的
+kubectl get sc
+
+NAME                    PROVISIONER      AGE
+nfs-storage (default)   fuseim.pri/ifs   7m22s
+</code></pre></div><h2 id="_3-部署-kubesphere"><a href="#_3-部署-kubesphere" class="header-anchor">#</a> 3 部署 kubesphere</h2> <p><a href="https://kubesphere.io/docs/zh-CN/installation/install-on-k8s/" target="_blank" rel="noopener noreferrer">官方文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="_3-1-最小化安装-kubesphere"><a href="#_3-1-最小化安装-kubesphere" class="header-anchor">#</a> 3.1 最小化安装 KubeSphere</h3> <div class="language- extra-class"><pre class="language-text"><code>kubectl apply -f https://raw.githubusercontent.com/kubesphere/ks-installer/master/kubesphere-minimal.yaml
+</code></pre></div><h3 id="_3-2-查看安装日志"><a href="#_3-2-查看安装日志" class="header-anchor">#</a> 3.2 查看安装日志</h3> <div class="language- extra-class"><pre class="language-text"><code>#使用如下命令查看安装日志
+kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath='{.items[0].metadata.name}') -f
+
+当日志最后提示如下即表明安装完成，但是还是要等待一些pod完全运行起来才可以
+Start installing monitoring
+
+task monitoring status is successful
+total: 1     completed:1
+
+#####################################################
+###              Welcome to KubeSphere!           ###
+#####################################################
+
+Console: http://192.168.9.10:30880
+Account: admin
+Password: P@88w0rd
+
+NOTES：
+  1. After logging into the console, please check the
+     monitoring status of service components in
+     the &quot;Cluster Status&quot;. If the service is not
+     ready, please wait patiently. You can start
+     to use when all components are ready.
+  2. Please modify the default password after login.
+
+#####################################################
+</code></pre></div><p>安装日志中会有一个报错如下，但是没有影响</p> <div class="language- extra-class"><pre class="language-text"><code>TASK [ks-core/ks-core : KubeSphere | Delete Ingress-controller configmap] 
+fatal: [localhost]: FAILED! =&gt; {&quot;changed&quot;: true, &quot;cmd&quot;: &quot;/usr/local/bin/kubectl delete cm -n kubesphere-system ks-router-config\n&quot;, &quot;delta&quot;: &quot;0:00:00.562513&quot;, &quot;end&quot;: &quot;2020-04-28 07:18:28.772284&quot;, &quot;msg&quot;: &quot;non-zero return code&quot;, &quot;rc&quot;: 1, &quot;start&quot;: &quot;2020-04-28 07:18:28.209771&quot;, &quot;stderr&quot;: &quot;Error from server (NotFound): configmaps \&quot;ks-router-config\&quot; not found&quot;, &quot;stderr_lines&quot;: [&quot;Error from server (NotFound): configmaps \&quot;ks-router-config\&quot; not found&quot;], &quot;stdout&quot;: &quot;&quot;, &quot;stdout_lines&quot;: []}
+...ignoring
+</code></pre></div><p>检查所有 pod 状态，都为 running 才可以</p> <div class="language- extra-class"><pre class="language-text"><code>kubectl get pods -A
+
+NAMESPACE                      NAME                                        READY   STATUS    RESTARTS   AGE
+default                        nfs-client-provisioner-7b9746695c-nrz4n     1/1     Running   0          18m
+kube-system                    calico-kube-controllers-bc44d789c-ksgnt     1/1     Running   0          39h
+kube-system                    calico-node-2t4gr                           1/1     Running   0          39h
+kube-system                    calico-node-5bzjl                           1/1     Running   0          39h
+kube-system                    calico-node-fjdll                           1/1     Running   0          39h
+kube-system                    coredns-58cc8c89f4-8jrlt                    1/1     Running   0          39h
+kube-system                    coredns-58cc8c89f4-nt5z5                    1/1     Running   0          39h
+kube-system                    etcd-k8s-master1                            1/1     Running   0          39h
+kube-system                    kube-apiserver-k8s-master1                  1/1     Running   0          39h
+kube-system                    kube-controller-manager-k8s-master1         1/1     Running   0          39h
+kube-system                    kube-proxy-b7vj4                            1/1     Running   0          39h
+kube-system                    kube-proxy-bghx7                            1/1     Running   0          39h
+kube-system                    kube-proxy-ntrxx                            1/1     Running   0          39h
+kube-system                    kube-scheduler-k8s-master1                  1/1     Running   0          39h
+kube-system                    kuboard-756d46c4d4-dwzwt                    1/1     Running   0          39h
+kube-system                    metrics-server-78cff478b7-lwcfl             1/1     Running   0          39h
+kube-system                    tiller-deploy-6d8dfbb696-ldpjd              1/1     Running   0          40m
+kubernetes-dashboard           dashboard-metrics-scraper-b68468655-t2wgd   1/1     Running   0          39h
+kubernetes-dashboard           kubernetes-dashboard-64999dbccd-zwnn5       1/1     Running   1          39h
+kubesphere-controls-system     default-http-backend-5d464dd566-5hlzs       1/1     Running   0          6m9s
+kubesphere-controls-system     kubectl-admin-6c664db975-kp6r5              1/1     Running   0          3m10s
+kubesphere-monitoring-system   kube-state-metrics-566cdbcb48-cc4fv         4/4     Running   0          5m32s
+kubesphere-monitoring-system   node-exporter-5lvpx                         2/2     Running   0          5m32s
+kubesphere-monitoring-system   node-exporter-hlfbh                         2/2     Running   0          5m32s
+kubesphere-monitoring-system   node-exporter-qxkm6                         2/2     Running   0          5m32s
+kubesphere-monitoring-system   prometheus-k8s-0                            3/3     Running   1          4m32s
+kubesphere-monitoring-system   prometheus-k8s-system-0                     3/3     Running   1          4m32s
+kubesphere-monitoring-system   prometheus-operator-6b97679cfd-6dztx        1/1     Running   0          5m32s
+kubesphere-system              ks-account-596657f8c6-kzx9w                 1/1     Running   0          5m56s
+kubesphere-system              ks-apigateway-78bcdc8ffc-2rvbg              1/1     Running   0          5m58s
+kubesphere-system              ks-apiserver-5b548d7c5c-dxqt7               1/1     Running   0          5m57s
+kubesphere-system              ks-console-78bcf96dbf-kdh7q                 1/1     Running   0          5m53s
+kubesphere-system              ks-controller-manager-696986f8d9-fklzv      1/1     Running   0          5m55s
+kubesphere-system              ks-installer-75b8d89dff-zm6fl               1/1     Running   0          7m49s
+kubesphere-system              openldap-0                                  1/1     Running   0          6m21s
+kubesphere-system              redis-6fd6c6d6f9-dqh2s                      1/1     Running   0          6m25s
+</code></pre></div><p>访问 kubesphere:30880 用户名：admin 默认密码：P@88w0rd</p> <p><img src="https://kubesphere.com.cn/forum/assets/files/2020-04-28/1588058902-372472-ishot2020-04-28152813.png" alt="https://kubesphere.com.cn/forum/assets/files/2020-04-28/1588058902-372472-ishot2020-04-28152813.png"></p> <p>登陆后的首界面</p> <p><img src="https://kubesphere.com.cn/forum/assets/files/2020-04-28/1588058969-394455-ishot2020-04-28152911.png" alt="https://kubesphere.com.cn/forum/assets/files/2020-04-28/1588058969-394455-ishot2020-04-28152911.png"></p> <h2 id="注意"><a href="#注意" class="header-anchor">#</a> 注意</h2> <ul><li>特别注意版本，如果版本不对，安装不成功，此相关版本已尝试可行</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/10/2021, 1:33:12 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/software/rong-qi-hua/208-kubernetes-ji-ben-shi-yong.html" class="prev">
+        Kubernetes基本使用
+      </a></span> <span class="next"><a href="/software/rong-qi-hua/210-kubernetes-chuang-jianstorageclass.html">
+        Kubernetes 创建 StorageClass
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----><!----><!----></div></div>
+    <script src="/assets/js/app.ded2ed53.js" defer></script><script src="/assets/js/2.ce24dd61.js" defer></script><script src="/assets/js/16.5e36095c.js" defer></script>
+  </body>
+</html>

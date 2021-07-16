@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>String 源码阅读 | 求智志</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.jpg">
+    <meta name="description" content="记录本人求取智慧的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.fd635f40.css" as="style"><link rel="preload" href="/assets/js/app.ded2ed53.js" as="script"><link rel="preload" href="/assets/js/2.ce24dd61.js" as="script"><link rel="preload" href="/assets/js/47.edd2a30a.js" as="script"><link rel="prefetch" href="/assets/js/10.1a22a80e.js"><link rel="prefetch" href="/assets/js/11.9f760cf8.js"><link rel="prefetch" href="/assets/js/12.0d317d32.js"><link rel="prefetch" href="/assets/js/13.2a0123ca.js"><link rel="prefetch" href="/assets/js/14.9f95925f.js"><link rel="prefetch" href="/assets/js/15.be26f87a.js"><link rel="prefetch" href="/assets/js/16.5e36095c.js"><link rel="prefetch" href="/assets/js/17.f7878774.js"><link rel="prefetch" href="/assets/js/18.c01194e9.js"><link rel="prefetch" href="/assets/js/19.5072463c.js"><link rel="prefetch" href="/assets/js/20.8ed998af.js"><link rel="prefetch" href="/assets/js/21.307e7327.js"><link rel="prefetch" href="/assets/js/22.81340df2.js"><link rel="prefetch" href="/assets/js/23.da1722fb.js"><link rel="prefetch" href="/assets/js/24.cc4a35fa.js"><link rel="prefetch" href="/assets/js/25.faaf2ac9.js"><link rel="prefetch" href="/assets/js/26.bb146f4c.js"><link rel="prefetch" href="/assets/js/27.f972bc7e.js"><link rel="prefetch" href="/assets/js/28.3cdafb3e.js"><link rel="prefetch" href="/assets/js/29.31fbf9b8.js"><link rel="prefetch" href="/assets/js/3.52765865.js"><link rel="prefetch" href="/assets/js/30.56dce5f9.js"><link rel="prefetch" href="/assets/js/31.9c2d005a.js"><link rel="prefetch" href="/assets/js/32.4d97daa4.js"><link rel="prefetch" href="/assets/js/33.ca35dc64.js"><link rel="prefetch" href="/assets/js/34.73ddff15.js"><link rel="prefetch" href="/assets/js/35.6cb1ecbd.js"><link rel="prefetch" href="/assets/js/36.fb78752d.js"><link rel="prefetch" href="/assets/js/37.e423b29d.js"><link rel="prefetch" href="/assets/js/38.f2f5575c.js"><link rel="prefetch" href="/assets/js/39.b74330f4.js"><link rel="prefetch" href="/assets/js/4.460a85a7.js"><link rel="prefetch" href="/assets/js/40.686b35c9.js"><link rel="prefetch" href="/assets/js/41.a6226ced.js"><link rel="prefetch" href="/assets/js/42.4b7dfdba.js"><link rel="prefetch" href="/assets/js/43.009e4fd8.js"><link rel="prefetch" href="/assets/js/44.c03ac926.js"><link rel="prefetch" href="/assets/js/45.b829b4db.js"><link rel="prefetch" href="/assets/js/46.26342f37.js"><link rel="prefetch" href="/assets/js/48.8c655adb.js"><link rel="prefetch" href="/assets/js/49.cf73fa00.js"><link rel="prefetch" href="/assets/js/5.a1ec4714.js"><link rel="prefetch" href="/assets/js/50.b6714e73.js"><link rel="prefetch" href="/assets/js/51.c3a21807.js"><link rel="prefetch" href="/assets/js/52.6516a8ca.js"><link rel="prefetch" href="/assets/js/53.2f7b4761.js"><link rel="prefetch" href="/assets/js/54.92e13b7c.js"><link rel="prefetch" href="/assets/js/55.4dc85497.js"><link rel="prefetch" href="/assets/js/56.560ec16e.js"><link rel="prefetch" href="/assets/js/57.b1c5273e.js"><link rel="prefetch" href="/assets/js/58.6e86dfd0.js"><link rel="prefetch" href="/assets/js/59.5baa2fdd.js"><link rel="prefetch" href="/assets/js/6.f3ce096d.js"><link rel="prefetch" href="/assets/js/60.4a0d755a.js"><link rel="prefetch" href="/assets/js/61.9205b6c9.js"><link rel="prefetch" href="/assets/js/62.92e6d31b.js"><link rel="prefetch" href="/assets/js/63.15802b1d.js"><link rel="prefetch" href="/assets/js/64.a4ae336d.js"><link rel="prefetch" href="/assets/js/65.b4a8ad52.js"><link rel="prefetch" href="/assets/js/66.cae2cd98.js"><link rel="prefetch" href="/assets/js/67.b5d895a9.js"><link rel="prefetch" href="/assets/js/68.f949045a.js"><link rel="prefetch" href="/assets/js/69.59b49117.js"><link rel="prefetch" href="/assets/js/7.5dbca8a3.js"><link rel="prefetch" href="/assets/js/70.ac16534a.js"><link rel="prefetch" href="/assets/js/71.cfd5ec81.js"><link rel="prefetch" href="/assets/js/72.1b5e9887.js"><link rel="prefetch" href="/assets/js/73.36dc0e80.js"><link rel="prefetch" href="/assets/js/74.b80fb5a3.js"><link rel="prefetch" href="/assets/js/75.c1b942ac.js"><link rel="prefetch" href="/assets/js/76.69692bf5.js"><link rel="prefetch" href="/assets/js/8.fdb945ef.js"><link rel="prefetch" href="/assets/js/9.e89fc6b7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.fd635f40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">求智志</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link router-link-active">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link router-link-active">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>源码</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/software/yuan-ma/" aria-current="page" class="sidebar-link">目录介绍</a></li><li><a href="/software/yuan-ma/arraylisty.html" class="sidebar-link">ArrayList</a></li><li><a href="/software/yuan-ma/hashmap.html" class="sidebar-link">HashMap</a></li><li><a href="/software/yuan-ma/java.html" class="sidebar-link">Java</a></li><li><a href="/software/yuan-ma/linkedlist.html" class="sidebar-link">LinkedList</a></li><li><a href="/software/yuan-ma/string.html" aria-current="page" class="active sidebar-link">String 源码阅读</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/software/yuan-ma/string.html#_1-属性" class="sidebar-link">1. 属性</a></li><li class="sidebar-sub-header"><a href="/software/yuan-ma/string.html#_2-构造方法" class="sidebar-link">2. 构造方法</a></li><li class="sidebar-sub-header"><a href="/software/yuan-ma/string.html#_3-常用方法" class="sidebar-link">3. 常用方法</a></li><li class="sidebar-sub-header"><a href="/software/yuan-ma/string.html#_4-常见问题" class="sidebar-link">4. 常见问题</a></li></ul></li><li><a href="/software/yuan-ma/threadlocal.html" class="sidebar-link">ThreadLocal</a></li><li><a href="/software/yuan-ma/rpc.html" class="sidebar-link">RPC</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="string-源码阅读"><a href="#string-源码阅读" class="header-anchor">#</a> String 源码阅读</h1> <h2 id="_1-属性"><a href="#_1-属性" class="header-anchor">#</a> 1. 属性</h2> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/** The value is used for character storage. */</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">char</span> value<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** Cache the hash code for the string */</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> hash<span class="token punctuation">;</span> <span class="token comment">// Default to 0</span>
+
+<span class="token comment">/** use serialVersionUID from JDK 1.0.2 for interoperability */</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">6849794470754667710L</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>使用 final 修饰的 value。只能初始化一次，如果大量拼接，不可使用该类型</li> <li>使用字符组进行缓存数据</li></ul> <h2 id="_2-构造方法"><a href="#_2-构造方法" class="header-anchor">#</a> 2. 构造方法</h2> <h3 id="public-string"><a href="#public-string" class="header-anchor">#</a> public String()</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+   * Initializes a newly created {@code String} object so that it represents
+   * an empty character sequence.  Note that use of this constructor is
+   * unnecessary since Strings are immutable.
+   */</span>
+  <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过设置&quot;&quot;.value，实现创建对象.</li> <li>hash 值默认为 0。</li></ul> <h3 id="public-string-string-original"><a href="#public-string-string-original" class="header-anchor">#</a> public String(String original)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Initializes a newly created {@code String} object so that it represents
+ * the same sequence of characters as the argument; in other words, the
+ * newly created string is a copy of the argument string. Unless an
+ * explicit copy of {@code original} is needed, use of this constructor is
+ * unnecessary since Strings are immutable.
+ *
+ * @param  original
+ *         A {@code String}
+ */</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token class-name">String</span> original<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> original<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>hash <span class="token operator">=</span> original<span class="token punctuation">.</span>hash<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过传入的字符串，设置对象，并且设置对应的 hash</li></ul> <h3 id="public-string-char-value"><a href="#public-string-char-value" class="header-anchor">#</a> public String(char value[])</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Allocates a new {@code String} so that it represents the sequence of
+ * characters currently contained in the character array argument. The
+ * contents of the character array are copied; subsequent modification of
+ * the character array does not affect the newly created string.
+ *
+ * @param  value
+ *         The initial value of the string
+ */</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token keyword">char</span> value<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过传入的字符组进行复制，从而创建对象。</li></ul> <h3 id="public-string-byte-bytes"><a href="#public-string-byte-bytes" class="header-anchor">#</a> public String(byte bytes[])</h3> <div class="language-java extra-class"><pre class="language-java"><code>    <span class="token comment">/**
+    * Constructs a new {@code String} by decoding the specified array of bytes
+    * using the platform's default charset.  The length of the new {@code
+    * String} is a function of the charset, and hence may not be equal to the
+    * length of the byte array.
+    *
+    * &lt;p&gt; The behavior of this constructor when the given bytes are not valid
+    * in the default charset is unspecified.  The {@link
+    * java.nio.charset.CharsetDecoder} class should be used when more control
+    * over the decoding process is required.
+    *
+    * @param  bytes
+    *         The bytes to be decoded into characters
+    *
+    * @since  JDK1.1
+    */</span>
+   <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token keyword">byte</span> bytes<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">(</span>bytes<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> bytes<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过字节组进行创建对象，调用该对象的其他方法，传入字节组，开始和结束的位置进行创建</li></ul> <h3 id="public-string-stringbuffer-buffer"><a href="#public-string-stringbuffer-buffer" class="header-anchor">#</a> public String(StringBuffer buffer)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Allocates a new string that contains the sequence of characters
+ * currently contained in the string buffer argument. The contents of the
+ * string buffer are copied; subsequent modification of the string buffer
+ * does not affect the newly created string.
+ *
+ * @param  buffer
+ *         A {@code StringBuffer}
+ */</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token class-name">StringBuffer</span> buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">synchronized</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>buffer<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> buffer<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过 StringBuffer 进行构建对象，通过 StringBufer.getValue()返回字符组，配合字符组长度创建对象</li> <li>StringBuffer 通过 synchronized 进行出现线程数据共享，由此可见 StringBuffer 是线程安全的</li></ul> <h3 id="public-string-stringbuilder-builder"><a href="#public-string-stringbuilder-builder" class="header-anchor">#</a> public String(StringBuilder builder)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+  * Allocates a new string that contains the sequence of characters
+  * currently contained in the string builder argument. The contents of the
+  * string builder are copied; subsequent modification of the string builder
+  * does not affect the newly created string.
+  *
+  * &lt;p&gt; This constructor is provided to ease migration to {@code
+  * StringBuilder}. Obtaining a string from a string builder via the {@code
+  * toString} method is likely to run faster and is generally preferred.
+  *
+  * @param   builder
+  *          A {@code StringBuilder}
+  *
+  * @since  1.5
+  */</span>
+ <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token class-name">StringBuilder</span> builder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>builder<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> builder<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre></div><ul><li>和上个方法对比，可看出 StringBuilder 线程不安全。</li></ul> <h2 id="_3-常用方法"><a href="#_3-常用方法" class="header-anchor">#</a> 3. 常用方法</h2> <h3 id="字符串的长度-length"><a href="#字符串的长度-length" class="header-anchor">#</a> 字符串的长度 length()</h3> <div class="language-java extra-class"><pre class="language-java"><code>    <span class="token comment">/**
+    * Returns the length of this string.
+    * The length is equal to the number of &lt;a href=&quot;Character.html#unicode&quot;&gt;Unicode
+    * code units&lt;/a&gt; in the string.
+    *
+    * @return  the length of the sequence of characters represented by this
+    *          object.
+    */</span>
+   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">return</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过字符组的长度从而获得字符串的长度</li></ul> <h3 id="是否为空-isempty"><a href="#是否为空-isempty" class="header-anchor">#</a> 是否为空 isEmpty()</h3> <div class="language-java extra-class"><pre class="language-java"><code>    <span class="token comment">/**
+  * Returns {@code true} if, and only if, {@link #length()} is {@code 0}.
+  *
+  * @return {@code true} if {@link #length()} is {@code 0}, otherwise
+  * {@code false}
+  *
+  * @since 1.6
+  */</span>
+ <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">return</span> value<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre></div><ul><li>检测是否为空时未检测对象是否为 null，所以使用该方法时需要考虑是否为 null</li></ul> <h3 id="获得字符串的第几个字符-charat-int-index"><a href="#获得字符串的第几个字符-charat-int-index" class="header-anchor">#</a> 获得字符串的第几个字符 charAt(int index)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Returns the {@code char} value at the
+ * specified index. An index ranges from {@code 0} to
+ * {@code length() - 1}. The first {@code char} value of the sequence
+ * is at index {@code 0}, the next at index {@code 1},
+ * and so on, as for array indexing.
+ *
+ * &lt;p&gt;If the {@code char} value specified by the index is a
+ * &lt;a href=&quot;Character.html#unicode&quot;&gt;surrogate&lt;/a&gt;, the surrogate
+ * value is returned.
+ *
+ * @param      index   the index of the {@code char} value.
+ * @return     the {@code char} value at the specified index of this string.
+ *             The first {@code char} value is at index {@code 0}.
+ * @exception  IndexOutOfBoundsException  if the {@code index}
+ *             argument is negative or not less than the length of this
+ *             string.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">char</span> <span class="token function">charAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>index <span class="token operator">&gt;=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">StringIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> value<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>通过传入的字符串的位置进行获取，如果不在返回内会抛出<code>StringIndexOutOfBoundsException</code>异常。</li></ul> <h3 id="比较内容是否相等-equals-object-object"><a href="#比较内容是否相等-equals-object-object" class="header-anchor">#</a> 比较内容是否相等 equals(Object object)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Compares this string to the specified object.  The result is {@code
+ * true} if and only if the argument is not {@code null} and is a {@code
+ * String} object that represents the same sequence of characters as this
+ * object.
+ *
+ * @param  anObject
+ *         The object to compare this {@code String} against
+ *
+ * @return  {@code true} if the given object represents a {@code String}
+ *          equivalent to this string, {@code false} otherwise
+ *
+ * @see  #compareTo(String)
+ * @see  #equalsIgnoreCase(String)
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>anObject <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">String</span> anotherString <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span>anObject<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">char</span> v1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+            <span class="token keyword">char</span> v2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">--</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>v1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> v2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>基本的数据类型相等的判断只需要<code>==</code>就可以判断，但是封装类型，需要通过 equals 进行判断。</li> <li>如果需要对自定义对象进行判断是否相等，需要重写对象的<code>equals</code>方法，从而实现自定义比较方法。如果不重写，则默认比较内存地址。</li></ul> <h3 id="忽略大小写比较是否相等-equalsignorecase-string-anotherstring"><a href="#忽略大小写比较是否相等-equalsignorecase-string-anotherstring" class="header-anchor">#</a> 忽略大小写比较是否相等 equalsIgnoreCase(String anotherString)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * Compares this {@code String} to another {@code String}, ignoring case
+ * considerations.  Two strings are considered equal ignoring case if they
+ * are of the same length and corresponding characters in the two strings
+ * are equal ignoring case.
+ *
+ * &lt;p&gt; Two characters {@code c1} and {@code c2} are considered the same
+ * ignoring case if at least one of the following is true:
+ * &lt;ul&gt;
+ *   &lt;li&gt; The two characters are the same (as compared by the
+ *        {@code ==} operator)
+ *   &lt;li&gt; Applying the method {@link
+ *        java.lang.Character#toUpperCase(char)} to each character
+ *        produces the same result
+ *   &lt;li&gt; Applying the method {@link
+ *        java.lang.Character#toLowerCase(char)} to each character
+ *        produces the same result
+ * &lt;/ul&gt;
+ *
+ * @param  anotherString
+ *         The {@code String} to compare this {@code String} against
+ *
+ * @return  {@code true} if the argument is not {@code null} and it
+ *          represents an equivalent {@code String} ignoring case; {@code
+ *          false} otherwise
+ *
+ * @see  #equals(Object)
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span><span class="token class-name">String</span> anotherString<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anotherString<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">true</span>
+            <span class="token operator">:</span> <span class="token punctuation">(</span>anotherString <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length <span class="token operator">==</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token function">regionMatches</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> anotherString<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol><li>进行判断对象的内存地址是否相同---&gt;地址相同，说明同一个对象，自己比较自己肯定 true</li> <li>然后判断是否为空，长度是否相同，然后再循环比较每个字符忽略大小写比较</li></ol> <h3 id="比较字符串的大小-compareto-string-anotherstring"><a href="#比较字符串的大小-compareto-string-anotherstring" class="header-anchor">#</a> 比较字符串的大小 compareTo(String anotherString)</h3> <div class="language-java extra-class"><pre class="language-java"><code>
+    <span class="token comment">/**
+     * Compares two strings lexicographically.
+     * The comparison is based on the Unicode value of each character in
+     * the strings. The character sequence represented by this
+     * {@code String} object is compared lexicographically to the
+     * character sequence represented by the argument string. The result is
+     * a negative integer if this {@code String} object
+     * lexicographically precedes the argument string. The result is a
+     * positive integer if this {@code String} object lexicographically
+     * follows the argument string. The result is zero if the strings
+     * are equal; {@code compareTo} returns {@code 0} exactly when
+     * the {@link #equals(Object)} method would return {@code true}.
+     * &lt;p&gt;
+     * This is the definition of lexicographic ordering. If two strings are
+     * different, then either they have different characters at some index
+     * that is a valid index for both strings, or their lengths are different,
+     * or both. If they have different characters at one or more index
+     * positions, let &lt;i&gt;k&lt;/i&gt; be the smallest such index; then the string
+     * whose character at position &lt;i&gt;k&lt;/i&gt; has the smaller value, as
+     * determined by using the &amp;lt; operator, lexicographically precedes the
+     * other string. In this case, {@code compareTo} returns the
+     * difference of the two character values at position {@code k} in
+     * the two string -- that is, the value:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * this.charAt(k)-anotherString.charAt(k)
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     * If there is no index position at which they differ, then the shorter
+     * string lexicographically precedes the longer string. In this case,
+     * {@code compareTo} returns the difference of the lengths of the
+     * strings -- that is, the value:
+     * &lt;blockquote&gt;&lt;pre&gt;
+     * this.length()-anotherString.length()
+     * &lt;/pre&gt;&lt;/blockquote&gt;
+     *
+     * @param   anotherString   the {@code String} to be compared.
+     * @return  the value {@code 0} if the argument string is equal to
+     *          this string; a value less than {@code 0} if this string
+     *          is lexicographically less than the string argument; and a
+     *          value greater than {@code 0} if this string is
+     *          lexicographically greater than the string argument.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compareTo</span><span class="token punctuation">(</span><span class="token class-name">String</span> anotherString<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len2 <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> lim <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>len1<span class="token punctuation">,</span> len2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span> v1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+        <span class="token keyword">char</span> v2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> lim<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">char</span> c1 <span class="token operator">=</span> v1<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">char</span> c2 <span class="token operator">=</span> v2<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c1 <span class="token operator">!=</span> c2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> c1 <span class="token operator">-</span> c2<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            k<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> len1 <span class="token operator">-</span> len2<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ol><li>找出长度最短的字符串长度</li> <li>循环比较，如果有不相等的则返回插值</li> <li>一直想等则返回长度差值</li></ol> <h3 id="判断字符串是否从某个字符串开始的-startswith-string-prefix-int-toffset"><a href="#判断字符串是否从某个字符串开始的-startswith-string-prefix-int-toffset" class="header-anchor">#</a> 判断字符串是否从某个字符串开始的 startsWith(String prefix, int toffset)</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+    * Tests if the substring of this string beginning at the
+    * specified index starts with the specified prefix.
+    *
+    * @param   prefix    the prefix.
+    * @param   toffset   where to begin looking in this string.
+    * @return  {@code true} if the character sequence represented by the
+    *          argument is a prefix of the substring of this object starting
+    *          at index {@code toffset}; {@code false} otherwise.
+    *          The result is {@code false} if {@code toffset} is
+    *          negative or greater than the length of this
+    *          {@code String} object; otherwise the result is the same
+    *          as the result of the expression
+    *          &lt;pre&gt;
+    *          this.substring(toffset).startsWith(prefix)
+    *          &lt;/pre&gt;
+    */</span>
+   <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token class-name">String</span> prefix<span class="token punctuation">,</span> <span class="token keyword">int</span> toffset<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">char</span> ta<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+       <span class="token keyword">int</span> <span class="token keyword">to</span> <span class="token operator">=</span> toffset<span class="token punctuation">;</span>
+       <span class="token keyword">char</span> pa<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> prefix<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+       <span class="token keyword">int</span> po <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+       <span class="token keyword">int</span> pc <span class="token operator">=</span> prefix<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+       <span class="token comment">// Note: toffset might be near -1&gt;&gt;&gt;1.</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>toffset <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>toffset <span class="token operator">&gt;</span> value<span class="token punctuation">.</span>length <span class="token operator">-</span> pc<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>pc <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token keyword">if</span> <span class="token punctuation">(</span>ta<span class="token punctuation">[</span><span class="token keyword">to</span><span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">!=</span> pa<span class="token punctuation">[</span>po<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+</code></pre></div><ol><li>获取对象的字符组、开始位置、传入的字符组，计算得出结束位置</li> <li>判断开始位置和结束位置是否超出</li> <li>循环比较是否相等</li></ol> <h2 id="_4-常见问题"><a href="#_4-常见问题" class="header-anchor">#</a> 4. 常见问题</h2></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/11/2021, 7:53:56 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/software/yuan-ma/linkedlist.html" class="prev">
+        LinkedList
+      </a></span> <span class="next"><a href="/software/yuan-ma/threadlocal.html">
+        ThreadLocal
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----><!----><!----></div></div>
+    <script src="/assets/js/app.ded2ed53.js" defer></script><script src="/assets/js/2.ce24dd61.js" defer></script><script src="/assets/js/47.edd2a30a.js" defer></script>
+  </body>
+</html>

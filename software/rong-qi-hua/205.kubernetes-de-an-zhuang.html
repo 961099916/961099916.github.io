@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kubernetes的安装 | 求智志</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.jpg">
+    <meta name="description" content="记录本人求取智慧的博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.fd635f40.css" as="style"><link rel="preload" href="/assets/js/app.ded2ed53.js" as="script"><link rel="preload" href="/assets/js/2.ce24dd61.js" as="script"><link rel="preload" href="/assets/js/12.0d317d32.js" as="script"><link rel="prefetch" href="/assets/js/10.1a22a80e.js"><link rel="prefetch" href="/assets/js/11.9f760cf8.js"><link rel="prefetch" href="/assets/js/13.2a0123ca.js"><link rel="prefetch" href="/assets/js/14.9f95925f.js"><link rel="prefetch" href="/assets/js/15.be26f87a.js"><link rel="prefetch" href="/assets/js/16.5e36095c.js"><link rel="prefetch" href="/assets/js/17.f7878774.js"><link rel="prefetch" href="/assets/js/18.c01194e9.js"><link rel="prefetch" href="/assets/js/19.5072463c.js"><link rel="prefetch" href="/assets/js/20.8ed998af.js"><link rel="prefetch" href="/assets/js/21.307e7327.js"><link rel="prefetch" href="/assets/js/22.81340df2.js"><link rel="prefetch" href="/assets/js/23.da1722fb.js"><link rel="prefetch" href="/assets/js/24.cc4a35fa.js"><link rel="prefetch" href="/assets/js/25.faaf2ac9.js"><link rel="prefetch" href="/assets/js/26.bb146f4c.js"><link rel="prefetch" href="/assets/js/27.f972bc7e.js"><link rel="prefetch" href="/assets/js/28.3cdafb3e.js"><link rel="prefetch" href="/assets/js/29.31fbf9b8.js"><link rel="prefetch" href="/assets/js/3.52765865.js"><link rel="prefetch" href="/assets/js/30.56dce5f9.js"><link rel="prefetch" href="/assets/js/31.9c2d005a.js"><link rel="prefetch" href="/assets/js/32.4d97daa4.js"><link rel="prefetch" href="/assets/js/33.ca35dc64.js"><link rel="prefetch" href="/assets/js/34.73ddff15.js"><link rel="prefetch" href="/assets/js/35.6cb1ecbd.js"><link rel="prefetch" href="/assets/js/36.fb78752d.js"><link rel="prefetch" href="/assets/js/37.e423b29d.js"><link rel="prefetch" href="/assets/js/38.f2f5575c.js"><link rel="prefetch" href="/assets/js/39.b74330f4.js"><link rel="prefetch" href="/assets/js/4.460a85a7.js"><link rel="prefetch" href="/assets/js/40.686b35c9.js"><link rel="prefetch" href="/assets/js/41.a6226ced.js"><link rel="prefetch" href="/assets/js/42.4b7dfdba.js"><link rel="prefetch" href="/assets/js/43.009e4fd8.js"><link rel="prefetch" href="/assets/js/44.c03ac926.js"><link rel="prefetch" href="/assets/js/45.b829b4db.js"><link rel="prefetch" href="/assets/js/46.26342f37.js"><link rel="prefetch" href="/assets/js/47.edd2a30a.js"><link rel="prefetch" href="/assets/js/48.8c655adb.js"><link rel="prefetch" href="/assets/js/49.cf73fa00.js"><link rel="prefetch" href="/assets/js/5.a1ec4714.js"><link rel="prefetch" href="/assets/js/50.b6714e73.js"><link rel="prefetch" href="/assets/js/51.c3a21807.js"><link rel="prefetch" href="/assets/js/52.6516a8ca.js"><link rel="prefetch" href="/assets/js/53.2f7b4761.js"><link rel="prefetch" href="/assets/js/54.92e13b7c.js"><link rel="prefetch" href="/assets/js/55.4dc85497.js"><link rel="prefetch" href="/assets/js/56.560ec16e.js"><link rel="prefetch" href="/assets/js/57.b1c5273e.js"><link rel="prefetch" href="/assets/js/58.6e86dfd0.js"><link rel="prefetch" href="/assets/js/59.5baa2fdd.js"><link rel="prefetch" href="/assets/js/6.f3ce096d.js"><link rel="prefetch" href="/assets/js/60.4a0d755a.js"><link rel="prefetch" href="/assets/js/61.9205b6c9.js"><link rel="prefetch" href="/assets/js/62.92e6d31b.js"><link rel="prefetch" href="/assets/js/63.15802b1d.js"><link rel="prefetch" href="/assets/js/64.a4ae336d.js"><link rel="prefetch" href="/assets/js/65.b4a8ad52.js"><link rel="prefetch" href="/assets/js/66.cae2cd98.js"><link rel="prefetch" href="/assets/js/67.b5d895a9.js"><link rel="prefetch" href="/assets/js/68.f949045a.js"><link rel="prefetch" href="/assets/js/69.59b49117.js"><link rel="prefetch" href="/assets/js/7.5dbca8a3.js"><link rel="prefetch" href="/assets/js/70.ac16534a.js"><link rel="prefetch" href="/assets/js/71.cfd5ec81.js"><link rel="prefetch" href="/assets/js/72.1b5e9887.js"><link rel="prefetch" href="/assets/js/73.36dc0e80.js"><link rel="prefetch" href="/assets/js/74.b80fb5a3.js"><link rel="prefetch" href="/assets/js/75.c1b942ac.js"><link rel="prefetch" href="/assets/js/76.69692bf5.js"><link rel="prefetch" href="/assets/js/8.fdb945ef.js"><link rel="prefetch" href="/assets/js/9.e89fc6b7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.fd635f40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">求智志</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link router-link-active">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="软件" class="dropdown-title"><span class="title">软件</span> <span class="arrow down"></span></button> <button type="button" aria-label="软件" class="mobile-dropdown-title"><span class="title">软件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/software/yuan-ma/" class="nav-link">
+  源码
+</a></li><li class="dropdown-item"><!----> <a href="/software/chang-yong-ji-shu/" class="nav-link">
+  常用技术
+</a></li><li class="dropdown-item"><!----> <a href="/software/rong-qi-hua/" class="nav-link router-link-active">
+  容器化
+</a></li><li class="dropdown-item"><!----> <a href="/software/shu-ju-ku/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/software/she-ji-mo-shi/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/software/suan-fa/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/software/xiang-mu-zong-jie/" class="nav-link">
+  项目总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="硬件" class="dropdown-title"><span class="title">硬件</span> <span class="arrow down"></span></button> <button type="button" aria-label="硬件" class="mobile-dropdown-title"><span class="title">硬件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/hardware/shu-mei-pai/" class="nav-link">
+  树莓派
+</a></li><li class="dropdown-item"><!----> <a href="/hardware/esp8266/" class="nav-link">
+  ESP8266
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label=" 杂项" class="dropdown-title"><span class="title"> 杂项</span> <span class="arrow down"></span></button> <button type="button" aria-label=" 杂项" class="mobile-dropdown-title"><span class="title"> 杂项</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/sundry/chan-pin-jing-li/" class="nav-link">
+  产品经理
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/xin-li-xue/" class="nav-link">
+  心理学
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/bo-yi-lun/" class="nav-link">
+  博弈论
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/jin-rong/" class="nav-link">
+  金融
+</a></li><li class="dropdown-item"><!----> <a href="/sundry/dao-jia/" class="nav-link">
+  道家
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系方式" class="dropdown-title"><span class="title">联系方式</span> <span class="arrow down"></span></button> <button type="button" aria-label="联系方式" class="mobile-dropdown-title"><span class="title">联系方式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/961099916" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="tencent://message/?uin=961099916&amp;Site=&amp;Menu=yes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  QQ
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_34833599" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/jiuxialb/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>容器化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/software/rong-qi-hua/" aria-current="page" class="sidebar-link">目录介绍</a></li><li><a href="/software/rong-qi-hua/205.kubernetes-de-an-zhuang.html" aria-current="page" class="active sidebar-link">Kubernetes的安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/205.kubernetes-de-an-zhuang.html#sealos安装集群" class="sidebar-link">Sealos安装集群</a></li><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/205.kubernetes-de-an-zhuang.html#rancher安装集群" class="sidebar-link">Rancher安装集群</a></li><li class="sidebar-sub-header"><a href="/software/rong-qi-hua/205.kubernetes-de-an-zhuang.html#脚本安装" class="sidebar-link">脚本安装</a></li></ul></li><li><a href="/software/rong-qi-hua/206-k3sk8sk9s.html" class="sidebar-link">K3s、K8s、K9s</a></li><li><a href="/software/rong-qi-hua/207-docker-an-zhuang-chang-yong-ruan-jian.html" class="sidebar-link">Docker 安装 UI 界面</a></li><li><a href="/software/rong-qi-hua/208-kubernetes-ji-ben-shi-yong.html" class="sidebar-link">Kubernetes基本使用</a></li><li><a href="/software/rong-qi-hua/209-kubesphere-de-an-zhuang.html" class="sidebar-link">k8s 集群中安装 kubesphere</a></li><li><a href="/software/rong-qi-hua/210-kubernetes-chuang-jianstorageclass.html" class="sidebar-link">Kubernetes 创建 StorageClass</a></li><li><a href="/software/rong-qi-hua/212-helm.html" class="sidebar-link">Heml的使用</a></li><li><a href="/software/rong-qi-hua/213-docker-compose-shi-yong.html" class="sidebar-link">Docker-compose使用</a></li><li><a href="/software/rong-qi-hua/istio.html" class="sidebar-link">Istio</a></li><li><a href="/software/rong-qi-hua/docker.html" class="sidebar-link">Docker 安装</a></li><li><a href="/software/rong-qi-hua/yun-ping-tai-da-jian.html" class="sidebar-link">云平台搭建</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="kubernetes的安装"><a href="#kubernetes的安装" class="header-anchor">#</a> Kubernetes的安装</h1> <h2 id="sealos安装集群"><a href="#sealos安装集群" class="header-anchor">#</a> Sealos安装集群</h2> <h3 id="下载sealos"><a href="#下载sealos" class="header-anchor">#</a> 下载Sealos</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 推荐下载最新版，会修复一些BUG,下载并安装sealos, sealos是个golang的二进制工具，直接下载拷贝到bin目录即可, release页面也可下载</span>
+<span class="token function">wget</span> -c https://sealyun.oss-cn-beijing.aliyuncs.com/latest/sealos <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+    <span class="token function">chmod</span> +x sealos <span class="token operator">&amp;&amp;</span> <span class="token function">mv</span> sealos /usr/bin
+</code></pre></div><h3 id="下载kube安装包"><a href="#下载kube安装包" class="header-anchor">#</a> 下载Kube安装包</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 下载离线资源包 1.18.0</span>
+<span class="token function">wget</span> -c https://sealyun.oss-cn-beijing.aliyuncs.com/7b6af025d4884fdd5cd51a674994359c-1.18.0/kube1.18.0.tar.gz
+<span class="token comment"># 下载离线资源包 1.16.0</span>
+<span class="token function">wget</span> https://sealyun.oss-cn-beijing.aliyuncs.com/37374d999dbadb788ef0461844a70151-1.16.0/kube1.16.0.tar.gz
+<span class="token comment"># 下载离线资源包 1.15.0</span>
+<span class="token function">wget</span> -C https://sealyun.oss-cn-beijing.aliyuncs.com/free/kube1.15.0.tar.gz
+<span class="token comment"># 下载离线资源包 1.14.1</span>
+<span class="token function">wget</span> -C https://github.com/sealstore/cloud-kernel/releases/download/offline/kube1.14.1.tar.gz
+</code></pre></div><p>执行初始化命令</p> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos init --user root --passwd root <span class="token punctuation">\</span>
+	--master <span class="token number">192.168</span>.0.2  --master <span class="token number">192.168</span>.0.3  --master <span class="token number">192.168</span>.0.4  <span class="token punctuation">\</span>
+	--node <span class="token number">192.168</span>.0.5 <span class="token punctuation">\</span>
+	--pkg-url /root/kube1.18.0.tar.gz <span class="token punctuation">\</span>
+	--version v1.18.0
+</code></pre></div><p><a href="https://www.notion.so/0e85e47360fd41d9a211377e43bc272c" target="_blank" rel="noopener noreferrer">Sealos参数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="添加master"><a href="#添加master" class="header-anchor">#</a> 添加Master</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos <span class="token function">join</span> --master <span class="token number">192.168</span>.0.6 --master <span class="token number">192.168</span>.0.7
+sealos <span class="token function">join</span> --master <span class="token number">192.168</span>.0.6-192.168.0.9  <span class="token comment"># 或者多个连续IP</span>
+</code></pre></div><h3 id="删除master"><a href="#删除master" class="header-anchor">#</a> 删除Master</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos clean --master <span class="token number">192.168</span>.0.6 --master <span class="token number">192.168</span>.0.7
+sealos clean --master <span class="token number">192.168</span>.0.6-192.168.0.9  <span class="token comment"># 或者多个连续IP</span>
+</code></pre></div><h3 id="添加node"><a href="#添加node" class="header-anchor">#</a> 添加Node</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos <span class="token function">join</span> --node <span class="token number">192.168</span>.0.6 --node <span class="token number">192.168</span>.0.7
+sealos <span class="token function">join</span> --node <span class="token number">192.168</span>.0.6-192.168.0.9  <span class="token comment"># 或者多个连续IP</span>
+</code></pre></div><h3 id="删除node"><a href="#删除node" class="header-anchor">#</a> 删除Node</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos clean --node <span class="token number">192.168</span>.0.6 --node <span class="token number">192.168</span>.0.7
+sealos clean --node <span class="token number">192.168</span>.0.6-192.168.0.9  <span class="token comment"># 或者多个连续IP</span>
+</code></pre></div><h3 id="清理集群"><a href="#清理集群" class="header-anchor">#</a> 清理集群</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>sealos clean --all
+</code></pre></div><h3 id="安装应用"><a href="#安装应用" class="header-anchor">#</a> 安装应用</h3> <p><a href="https://www.notion.so/e0ef6db783924c108cb90da10cc1393d" target="_blank" rel="noopener noreferrer"> Sealos安装应用<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h3> <p><a href="https://sealyun.com/docs/" target="_blank" rel="noopener noreferrer">快速开始 | sealos | kubernetes安装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="注意"><a href="#注意" class="header-anchor">#</a> 注意</h3> <ul><li>若安装过程中出错，则可执行清楚集群命令或者删除集群的所有主机命令进行重置，同时重启一下Master节点，虚拟IP才可清除。</li> <li>注意Docker的版本和Kubernetes版本对应，否则可能出现节点添加不上问题（出现过命名空间无法删除问题，重装版本对应的Docker消失）</li> <li>如果可以，采用root权限安装，否则可能出现权限不足现象</li></ul> <h2 id="rancher安装集群"><a href="#rancher安装集群" class="header-anchor">#</a> Rancher安装集群</h2> <h3 id="_1-创建集群"><a href="#_1-创建集群" class="header-anchor">#</a> 1.创建集群</h3> <ul><li><p>添加集群</p> <p><a href="https://imgconvert.csdnimg.cn/aHR0cDovL25vdGVib29rLnpoYW5namlhaGFvLnNpdGUvMjAyMDA1MjcxMDA4MDcucG5n?x-oss-process=image/format,png" target="_blank" rel="noopener noreferrer">https://imgconvert.csdnimg.cn/aHR0cDovL25vdGVib29rLnpoYW5namlhaGFvLnNpdGUvMjAyMDA1MjcxMDA4MDcucG5n?x-oss-process=image/format,png<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p>选择自定义，然后填写创建的配置，点击下一步</p></li> <li><p><img src="http://notebook.zhangjiahao.site/20200527101008.png" alt="创建"></p></li> <li><p>添加节点
+<a href="https://imgconvert.csdnimg.cn/aHR0cDovL25vdGVib29rLnpoYW5namlhaGFvLnNpdGUvMjAyMDA1MjcxMDExMjAucG5n?x-oss-process=image/format,png" target="_blank" rel="noopener noreferrer">https://imgconvert.csdnimg.cn/aHR0cDovL25vdGVib29rLnpoYW5namlhaGFvLnNpdGUvMjAyMDA1MjcxMDExMjAucG5n?x-oss-process=image/format,png<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ul> <h3 id="_2-安装-master"><a href="#_2-安装-master" class="header-anchor">#</a> 2.安装 master</h3> <p>安装 master 节点，需要选择 Control
+然后复制执行命令在相应的主机执行命令即可</p> <h3 id="_3-安装-node"><a href="#_3-安装-node" class="header-anchor">#</a> 3.安装 node</h3> <p>只需要选择 work
+然后复制执行命令在相应的主机执行命令即可</p> <h3 id="_4-笔记本合盖"><a href="#_4-笔记本合盖" class="header-anchor">#</a> 4.笔记本合盖</h3> <p>需要设置合盖不影响，否则盒盖休眠就会影响该节点</p> <h3 id="_5-主机名"><a href="#_5-主机名" class="header-anchor">#</a> 5.主机名</h3> <p>若主机名重复，则可能导致无法做安装节点
+若 k8s.master k8s.node 他主机名显示的都为 k8s 导致无法添加</p> <h2 id="脚本安装"><a href="#脚本安装" class="header-anchor">#</a> 脚本安装</h2> <h3 id="服务器规划"><a href="#服务器规划" class="header-anchor">#</a> 服务器规划</h3> <p><a href="https://www.notion.so/ec37373bbe8f45928e65a53616cf6857" target="_blank" rel="noopener noreferrer">服务器规划<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="修改hostname-所有节点"><a href="#修改hostname-所有节点" class="header-anchor">#</a> 修改hostname（所有节点）</h3> <ol><li>vi /etc/hosts</li></ol> <div class="language-jsx extra-class"><pre class="language-jsx"><code><span class="token number">172.22</span><span class="token number">.181</span><span class="token number">.192</span> k8s<span class="token operator">-</span>master
+<span class="token number">01172.22</span><span class="token number">.181</span><span class="token number">.194</span> k8s<span class="token operator">-</span>master02
+<span class="token number">172.22</span><span class="token number">.181</span><span class="token number">.196</span> k8s<span class="token operator">-</span>master03
+<span class="token number">172.22</span><span class="token number">.181</span><span class="token number">.190</span> k8s<span class="token operator">-</span>node01
+<span class="token number">172.22</span><span class="token number">.181</span><span class="token number">.189</span> k8s<span class="token operator">-</span>node02
+</code></pre></div><ol><li>export APISERVER_NAME=apiserver.lb</li> <li>export APISERVER_IP=172.22.181.197</li> <li>export POD_SUBNET=10.100.0.1/16</li> <li>echo &quot;${APISERVER_IP} ${APISERVER_NAME}&quot; &gt;&gt; /etc/hosts</li></ol> <h3 id="安装前检查-所有节点"><a href="#安装前检查-所有节点" class="header-anchor">#</a> 安装前检查（所有节点）</h3> <ol><li>任意节点 centos 版本为 7.6 或 7.7</li> <li>任意节点 CPU 内核数量大于等于 2，且内存大于等于 4G</li> <li>任意节点 hostname 不是 localhost，且不包含下划线、小数点、大写字母</li> <li>任意节点都有固定的内网 IP 地址</li> <li>任意节点上 Kubelet使用的 IP 地址 可互通（无需 NAT 映射即可相互访问），且没有防火墙、安全组隔离</li> <li>任意节点不会直接使用 docker run 或 docker-compose 运行容器</li></ol> <h3 id="安装负载均衡-apiserver-lb"><a href="#安装负载均衡-apiserver-lb" class="header-anchor">#</a> 安装负载均衡（apiserver.lb）</h3> <ol><li>yum install haproxy</li> <li>vi /etc/haproxy/haproxy.cfg</li> <li>修改配置文件，修改结果见附件haproxy.cfg</li> <li>systemctl restart haproxy &amp;&amp; systemctl enable haproxy</li></ol> <h3 id="安装-docker-kubelet-所有master、node节点"><a href="#安装-docker-kubelet-所有master、node节点" class="header-anchor">#</a> 安装 docker / kubelet（所有master、node节点）</h3> <ol><li>上传install_kubelet.sh文件到用户目录（文件见附件）</li> <li>./install_kubelet.sh</li></ol> <h3 id="初始化第一个master节点-k8s-master01"><a href="#初始化第一个master节点-k8s-master01" class="header-anchor">#</a> 初始化第一个master节点（K8s-master01）</h3> <ol><li>export POD_SUBNET=10.100.0.1/16</li> <li>上传init_master.sh文件到用户目录（文件见附件）</li> <li>./install_ master.sh</li> <li>执行结果</li></ol> <blockquote></blockquote> <p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4749b708-6f7b-4294-af6b-42fcf85f6317/image1.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4749b708-6f7b-4294-af6b-42fcf85f6317/image1.png"></p> <ol><li>执行红框部分。</li> <li>复制绿框部分与黄框部分。</li> <li>查看pod运行状态</li></ol> <blockquote><p>watch kubectl get pod -n kube-system -o wide</p></blockquote> <ol><li>查看节点初始化结果</li></ol> <blockquote><p>kubectl get nodes</p></blockquote> <ol><li>请等到所有容器组（9个）全部处于 Running 状态，才进行下一步</li></ol> <h3 id="初始化第二、三个master节点-k8s-master02、k8s-master03"><a href="#初始化第二、三个master节点-k8s-master02、k8s-master03" class="header-anchor">#</a> 初始化第二、三个master节点（K8s-master02、K8s-master03）</h3> <ol><li>执行绿框复制内容。</li> <li>检查初始化结果</li></ol> <blockquote><p>kubectl get nodes</p></blockquote> <h3 id="初始化-worker节点-k8s-node01、k8s-node02"><a href="#初始化-worker节点-k8s-node01、k8s-node02" class="header-anchor">#</a> 初始化 worker节点（K8s-node01、K8s-node02）</h3> <ol><li>执行黄框复制内容。</li> <li>检查初始化结果</li></ol> <blockquote><p>kubectl get nodes</p></blockquote> <h3 id="移除worker节点"><a href="#移除worker节点" class="header-anchor">#</a> 移除worker节点</h3> <ol><li>kubeadm reset</li> <li>kubectl delete node k8s-nodexx（节点名称）</li></ol> <h3 id="安装kubernetes-dashboard-k8s-master01"><a href="#安装kubernetes-dashboard-k8s-master01" class="header-anchor">#</a> 安装Kubernetes Dashboard（K8s-master01）</h3> <ol><li>执行以下命令安装</li></ol> <blockquote><p>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/recommended.yaml</p></blockquote> <ol><li>上传auth.yaml到用户目录（文件见附件）</li> <li>执行以下命令创建ServiceAccount 和 ClusterRoleBinding</li></ol> <blockquote><p>kubectl apply -f ./auth.yaml</p></blockquote> <ol><li>生成证书
+<ol><li>grep 'client-certificate-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d &gt;&gt; kubecfg.crt</li> <li>grep 'client-key-data' /etc/kubernetes/admin.conf | head -n 1 | awk '{print $2}' | base64 -d &gt;&gt; kubecfg.key</li> <li>openssl pkcs12 -export -clcerts -inkey kubecfg.key -in kubecfg.crt -out kubecfg.p12 -name &quot;kubernetes-client&quot;</li></ol></li> <li>将kubecfg.p12证书下载到本地</li> <li>获取token</li></ol> <blockquote><p>kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')</p></blockquote> <ol><li>将证书导入chrome浏览器</li> <li>访问https://172.22.181.192:6443/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</li> <li>输入token登录。</li></ol> <h3 id="问题排查"><a href="#问题排查" class="header-anchor">#</a> 问题排查</h3> <ol><li>Calico镜像无法拉取，可手工拉取</li></ol> <blockquote><p>docker pull calico/kube-controllers:v3.9.2</p></blockquote> <ol><li>节点无法正常启动，可查看日志信息进行排查</li></ol> <blockquote><p>journalctl -f -u kubelet</p></blockquote> <h3 id="附件"><a href="#附件" class="header-anchor">#</a> 附件</h3> <p>auth.yaml</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kubernetes<span class="token punctuation">-</span>dashboard
+
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRoleBinding
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cluster<span class="token punctuation">-</span>admin
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kubernetes<span class="token punctuation">-</span>dashboard
+</code></pre></div><p>haproxy.cfg</p> <div class="language-bash extra-class"><pre class="language-bash"><code>global
+ 
+    log         <span class="token number">127.0</span>.0.1 local2
+ 
+    <span class="token function">chroot</span>      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     <span class="token number">4000</span>
+    user        haproxy
+    group       haproxy
+    daemon
+ 
+    <span class="token comment"># turn on stats unix socket</span>
+    stats socket /var/lib/haproxy/stats
+ 
+defaults
+    mode                    tcp           <span class="token comment"># 修改默认为四层代理</span>
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except <span class="token number">127.0</span>.0.0/8
+    option                  redispatch
+    retries                 <span class="token number">3</span>
+    <span class="token function">timeout</span> http-request    10s
+    <span class="token function">timeout</span> queue           1m
+    <span class="token function">timeout</span> connect         10s
+    <span class="token function">timeout</span> client          1m
+    <span class="token function">timeout</span> server          1m
+    <span class="token function">timeout</span> http-keep-alive 10s
+    <span class="token function">timeout</span> check           10s
+    maxconn                 <span class="token number">3000</span>
+ 
+frontend  main <span class="token number">172.22</span>.181.197:6443
+    acl url_static       path_beg       -i /static /images /javascript /stylesheets
+    acl url_static       path_end       -i .jpg .gif .png .css .js
+ 
+    default_backend             k8s-master
+ 
+backend k8s-master
+    mode        tcp             <span class="token comment"># 修改为tcp</span>
+    balance     roundrobin
+    server  k8s-master01  <span class="token number">172.22</span>.181.192:6443 check     <span class="token comment"># 三个master主机</span>
+    server  k8s-master02  <span class="token number">172.22</span>.181.194:6443 check
+    server  k8s-master03  <span class="token number">172.22</span>.181.196:6443 check
+</code></pre></div><p>init_master.sh</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># 只在 master 节点执行</span>
+
+<span class="token comment"># 脚本出错时终止执行</span>
+<span class="token builtin class-name">set</span> -e
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${<span class="token operator">#</span>POD_SUBNET}</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span> <span class="token variable">${<span class="token operator">#</span>APISERVER_NAME}</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> -e <span class="token string">&quot;<span class="token entity" title="\033">\033</span>[31;1m请确保您已经设置了环境变量 POD_SUBNET 和 APISERVER_NAME <span class="token entity" title="\033">\033</span>[0m&quot;</span>
+  <span class="token builtin class-name">echo</span> 当前POD_SUBNET<span class="token operator">=</span><span class="token variable">$POD_SUBNET</span>
+  <span class="token builtin class-name">echo</span> 当前APISERVER_NAME<span class="token operator">=</span><span class="token variable">$APISERVER_NAME</span>
+  <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment"># 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2</span>
+<span class="token function">rm</span> -f ./kubeadm-config.yaml
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> ./kubeadm-config.yaml</span>
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: v1.16.2
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
+controlPlaneEndpoint: &quot;<span class="token variable">${APISERVER_NAME}</span>:6443&quot;
+networking:
+  serviceSubnet: &quot;10.96.0.0/16&quot;
+  podSubnet: &quot;<span class="token variable">${POD_SUBNET}</span>&quot;
+  dnsDomain: &quot;cluster.local&quot;
+EOF</span>
+
+<span class="token comment"># kubeadm init</span>
+<span class="token comment"># 根据您服务器网速的情况，您需要等候 3 - 10 分钟</span>
+kubeadm init --config<span class="token operator">=</span>kubeadm-config.yaml --upload-certs
+
+<span class="token comment"># 配置 kubectl</span>
+<span class="token function">rm</span> -rf /root/.kube/
+<span class="token function">mkdir</span> /root/.kube/
+<span class="token function">cp</span> -i /etc/kubernetes/admin.conf /root/.kube/config
+
+<span class="token comment"># 安装 calico 网络插件</span>
+<span class="token comment"># 参考文档 https://docs.projectcalico.org/v3.9/getting-started/kubernetes/</span>
+<span class="token function">rm</span> -f calico-3.9.2.yaml
+<span class="token function">wget</span> https://kuboard.cn/install-script/calico/calico-3.9.2.yaml
+<span class="token function">sed</span> -i <span class="token string">&quot;s#192\.168\.0\.0/16#<span class="token variable">${POD_SUBNET}</span>#&quot;</span> calico-3.9.2.yaml
+kubectl apply -f calico-3.9.2.yaml
+</code></pre></div><p>install_kubelet.sh</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># 在 master 节点和 worker 节点都要执行</span>
+
+<span class="token comment"># 安装 docker</span>
+<span class="token comment"># 参考文档如下</span>
+<span class="token comment"># https://docs.docker.com/install/linux/docker-ce/centos/ </span>
+<span class="token comment"># https://docs.docker.com/install/linux/linux-postinstall/</span>
+
+<span class="token comment"># 卸载旧版本</span>
+yum remove -y docker <span class="token punctuation">\</span>
+docker-client <span class="token punctuation">\</span>
+docker-client-latest <span class="token punctuation">\</span>
+docker-common <span class="token punctuation">\</span>
+docker-latest <span class="token punctuation">\</span>
+docker-latest-logrotate <span class="token punctuation">\</span>
+docker-logrotate <span class="token punctuation">\</span>
+docker-selinux <span class="token punctuation">\</span>
+docker-engine-selinux <span class="token punctuation">\</span>
+docker-engine
+
+<span class="token comment"># 设置 yum repository</span>
+yum <span class="token function">install</span> -y yum-utils <span class="token punctuation">\</span>
+device-mapper-persistent-data <span class="token punctuation">\</span>
+lvm2
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+<span class="token comment"># 安装并启动 docker</span>
+yum <span class="token function">install</span> -y docker-ce-18.09.7 docker-ce-cli-18.09.7 containerd.io
+systemctl <span class="token builtin class-name">enable</span> docker
+systemctl start docker
+
+<span class="token comment"># 安装 nfs-utils</span>
+<span class="token comment"># 必须先安装 nfs-utils 才能挂载 nfs 网络存储</span>
+yum <span class="token function">install</span> -y nfs-utils
+yum <span class="token function">install</span> -y <span class="token function">wget</span>
+
+<span class="token comment"># 关闭 防火墙</span>
+systemctl stop firewalld
+systemctl disable firewalld
+
+<span class="token comment"># 关闭 SeLinux</span>
+setenforce <span class="token number">0</span>
+<span class="token function">sed</span> -i <span class="token string">&quot;s/SELINUX=enforcing/SELINUX=disabled/g&quot;</span> /etc/selinux/config
+
+<span class="token comment"># 关闭 swap</span>
+swapoff -a
+<span class="token function">yes</span> <span class="token operator">|</span> <span class="token function">cp</span> /etc/fstab /etc/fstab_bak
+<span class="token function">cat</span> /etc/fstab_bak <span class="token operator">|</span><span class="token function">grep</span> -v swap <span class="token operator">&gt;</span> /etc/fstab
+
+<span class="token comment"># 修改 /etc/sysctl.conf</span>
+<span class="token comment"># 如果有配置，则修改</span>
+<span class="token function">sed</span> -i <span class="token string">&quot;s#^net.ipv4.ip_forward.*#net.ipv4.ip_forward=1#g&quot;</span>  /etc/sysctl.conf
+<span class="token function">sed</span> -i <span class="token string">&quot;s#^net.bridge.bridge-nf-call-ip6tables.*#net.bridge.bridge-nf-call-ip6tables=1#g&quot;</span>  /etc/sysctl.conf
+<span class="token function">sed</span> -i <span class="token string">&quot;s#^net.bridge.bridge-nf-call-iptables.*#net.bridge.bridge-nf-call-iptables=1#g&quot;</span>  /etc/sysctl.conf
+<span class="token comment"># 可能没有，追加</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;net.ipv4.ip_forward = 1&quot;</span> <span class="token operator">&gt;&gt;</span> /etc/sysctl.conf
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;net.bridge.bridge-nf-call-ip6tables = 1&quot;</span> <span class="token operator">&gt;&gt;</span> /etc/sysctl.conf
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;net.bridge.bridge-nf-call-iptables = 1&quot;</span> <span class="token operator">&gt;&gt;</span> /etc/sysctl.conf
+<span class="token comment"># 执行命令以应用</span>
+sysctl -p
+
+<span class="token comment"># 配置K8S的yum源</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> /etc/yum.repos.d/kubernetes.repo</span>
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF</span>
+
+<span class="token comment"># 卸载旧版本</span>
+yum remove -y kubelet kubeadm kubectl
+
+<span class="token comment"># 安装kubelet、kubeadm、kubectl</span>
+yum <span class="token function">install</span> -y kubelet-1.16.2 kubeadm-1.16.2 kubectl-1.16.2
+
+<span class="token comment"># 修改docker Cgroup Driver为systemd</span>
+<span class="token comment"># # 将/usr/lib/systemd/system/docker.service文件中的这一行 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span>
+<span class="token comment"># # 修改为 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd</span>
+<span class="token comment"># 如果不修改，在添加 worker 节点时可能会碰到如下错误</span>
+<span class="token comment"># [WARNING IsDockerSystemdCheck]: detected &quot;cgroupfs&quot; as the Docker cgroup driver. The recommended driver is &quot;systemd&quot;. </span>
+<span class="token comment"># Please follow the guide at https://kubernetes.io/docs/setup/cri/</span>
+<span class="token function">sed</span> -i <span class="token string">&quot;s#^ExecStart=/usr/bin/dockerd.*#ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd#g&quot;</span> /usr/lib/systemd/system/docker.service
+
+<span class="token comment"># 设置 docker 镜像，提高 docker 镜像下载速度和稳定性</span>
+<span class="token comment"># 如果您访问 https://hub.docker.io 速度非常稳定，亦可以跳过这个步骤</span>
+<span class="token function">curl</span> -sSL https://get.daocloud.io/daotools/set_mirror.sh <span class="token operator">|</span> <span class="token function">sh</span> -s http://f1361db2.m.daocloud.io
+
+<span class="token comment"># 重启 docker，并启动 kubelet</span>
+systemctl daemon-reload
+systemctl restart docker
+systemctl <span class="token builtin class-name">enable</span> kubelet <span class="token operator">&amp;&amp;</span> systemctl start kubelet
+
+docker version
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">7/10/2021, 1:33:12 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/software/rong-qi-hua/" class="prev router-link-active">
+        目录介绍
+      </a></span> <span class="next"><a href="/software/rong-qi-hua/206-k3sk8sk9s.html">
+        K3s、K8s、K9s
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----><!----><!----></div></div>
+    <script src="/assets/js/app.ded2ed53.js" defer></script><script src="/assets/js/2.ce24dd61.js" defer></script><script src="/assets/js/12.0d317d32.js" defer></script>
+  </body>
+</html>
