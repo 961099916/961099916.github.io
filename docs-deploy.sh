@@ -1,4 +1,4 @@
-yarn docs:build
+yarn build
 
 cd .vuepress/dist
 
