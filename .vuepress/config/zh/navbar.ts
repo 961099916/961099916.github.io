@@ -10,14 +10,14 @@ export const navbar = [
       },
       {
         text: "框架",
-        children: [{ text: "Spring", link: "/docs/it/spring-home" }],
+        children: [{ text: "Spring", link: "/docs/it/framework-spring" },{ text: "Mybatis", link: "/docs/it/framework-mybatis" }],
       },
     ],
   },
   {
     text: "兴趣",
     icon: "Fire",
-    children: [{ text: "Money", link: "/docs/interest/money-home" }],
+    children: [{ text: "股票", link: "/docs/interest/money-home" },{ text: "读书", link: "/docs/book/book-1" }],
   },
   { text: "博客", link: "/posts", icon: "DocumentAttachment" },
   { text: "案例", link: "/docs/others/examples", icon: "Fire" },

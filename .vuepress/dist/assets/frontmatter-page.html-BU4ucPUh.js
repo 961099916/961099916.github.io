@@ -1,4 +1,0 @@
-const data = JSON.parse('{"key":"v-9e44ddb4","path":"/docs/theme/frontmatter-page.html","title":"普通文档","lang":"zh-CN","frontmatter":{"title":"普通文档","date":"2023-02-12T00:00:00.000Z"},"headers":[{"level":2,"title":"password","slug":"password","link":"#password","children":[]},{"level":2,"title":"sticky","slug":"sticky","link":"#sticky","children":[]},{"level":2,"title":"pageClass","slug":"pageclass","link":"#pageclass","children":[]}],"git":{"createdTime":1708223948000,"updatedTime":1708223948000,"contributors":[{"name":"zhangjiahao","email":"961099916@qq.com","commits":1}]},"filePathRelative":"docs/theme/frontmatter-page.md"}');
-export {
-  data
-};
