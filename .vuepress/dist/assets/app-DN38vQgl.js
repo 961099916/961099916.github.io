@@ -9218,7 +9218,7 @@ const pagesData$1 = {
   // path: /docs/book/book-1.html
   "v-649dd081": () => __vitePreload(() => import(
     /* webpackChunkName: "v-649dd081" */
-    "./book-1.html-C9Qt4e5I.js"
+    "./book-1.html-DaYA7nGq.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /docs/interest/money-home.html
   "v-001df2ba": () => __vitePreload(() => import(
@@ -9228,17 +9228,17 @@ const pagesData$1 = {
   // path: /docs/it/db-mysql.html
   "v-c8405786": () => __vitePreload(() => import(
     /* webpackChunkName: "v-c8405786" */
-    "./db-mysql.html-DlW-Y6Y8.js"
+    "./db-mysql.html-DKfm7ZaA.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /docs/it/framework-mybatis.html
   "v-45ebc61e": () => __vitePreload(() => import(
     /* webpackChunkName: "v-45ebc61e" */
-    "./framework-mybatis.html-37orL8n8.js"
+    "./framework-mybatis.html-Cy_7f0U9.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /docs/it/framework-spring.html
   "v-512268b4": () => __vitePreload(() => import(
     /* webpackChunkName: "v-512268b4" */
-    "./framework-spring.html-rHVdtpKN.js"
+    "./framework-spring.html-_PNt0Mnf.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /docs/it/java-home.html
   "v-4ec39238": () => __vitePreload(() => import(
@@ -9304,77 +9304,77 @@ const pagesComponents = {
   // path: /timeline/
   "v-01560935": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-01560935" */
-    "./index.html-B4oDMxXF.js"
+    "./index.html-os18kqUW.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/
   "v-e1e3da16": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-e1e3da16" */
-    "./index.html-DGBBXaM_.js"
+    "./index.html-CJnIc_vd.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /friendship-link/
   "v-53355ebb": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-53355ebb" */
-    "./index.html-BnEd1d3A.js"
+    "./index.html-DYIpQ0kf.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /categories/fupan/1/
   "v-295ee559": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-295ee559" */
-    "./index.html-DrCQGccu.js"
+    "./index.html-kvZtyOM4.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /tags/fupan/1/
   "v-f57d0588": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-f57d0588" */
-    "./index.html-D-muFls3.js"
+    "./index.html-CJAJrfXi.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/1/
   "v-03d52fd3": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-03d52fd3" */
-    "./index.html-Dm_t2HHC.js"
+    "./index.html-DCE3LLUH.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /
   "v-8daa1a0e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-8daa1a0e" */
-    "./index.html-Df2etpH4.js"
+    "./index.html-pUeSgTM0.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /blogs/2024-02-18.html
   "v-071aaa46": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-071aaa46" */
-    "./2024-02-18.html-BnQ19LOi.js"
+    "./2024-02-18.html-DDD7cpem.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/book/book-1.html
   "v-649dd081": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-649dd081" */
-    "./book-1.html-DEubROQt.js"
+    "./book-1.html-AYEQudhG.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/money-home.html
   "v-001df2ba": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-001df2ba" */
-    "./money-home.html-6dhNY5Zh.js"
+    "./money-home.html-1LGsrnbj.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/db-mysql.html
   "v-c8405786": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-c8405786" */
-    "./db-mysql.html-CQpuypas.js"
+    "./db-mysql.html-n0tu00LH.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-mybatis.html
   "v-45ebc61e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-45ebc61e" */
-    "./framework-mybatis.html-COdSUus7.js"
+    "./framework-mybatis.html-CaMD-L29.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-spring.html
   "v-512268b4": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-512268b4" */
-    "./framework-spring.html-B2mdJT2K.js"
+    "./framework-spring.html-D9hP_f63.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/java-home.html
   "v-4ec39238": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-7okb_nXr.js"
+    "./java-home.html-D2pXSj9i.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /404.html
   "v-3706649a": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-3706649a" */
-    "./404.html-CkUddCzT.js"
+    "./404.html-BXFF5zNs.js"
   ), true ? __vite__mapDeps([]) : void 0))
 };
 var layoutsSymbol = Symbol(
@@ -9743,7 +9743,7 @@ function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
     }
   }
 }
-const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"参考","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"股票","link":"/docs/interest/money-home"},{"text":"读书","link":"/docs/book/book-1"}]},{"text":"博客","link":"/posts","icon":"DocumentAttachment"},{"text":"案例","link":"/docs/others/examples","icon":"Fire"}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"股票","children":["money-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
+const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"参考","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"股票","link":"/docs/interest/money-home"},{"text":"读书","link":"/docs/book/book-1"}]}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"股票","children":["money-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
 const themeData = ref(themeData$1);
 const useThemeData = () => themeData;
 const themeLocaleDataSymbol = Symbol("");
@@ -18386,12 +18386,12 @@ const clientConfig8 = defineClientConfig({
 });
 const clientConfig9 = {
   enhance: ({ app }) => {
-    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-CKA9hjP4.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-CLLN2ZbK.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const clientConfig10 = {
   enhance: ({ app }) => {
-    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-BUz_WMml.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-lNISwvjJ.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-B1atPZLZ.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-iS5JcdtE.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-76v76isk.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-D0XYN6uV.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -83348,7 +83348,7 @@ var createVueApp = async () => {
   setupGlobalComponents(app);
   const globalComputed = setupGlobalComputed(app, router, clientConfigs);
   {
-    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-DKTiJJ3D.js"), true ? __vite__mapDeps([]) : void 0);
+    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-BV4Qc4KO.js"), true ? __vite__mapDeps([]) : void 0);
     setupDevtools(app, globalComputed);
   }
   for (const clientConfig of clientConfigs) {

@@ -1,4 +1,4 @@
-import { e as defineComponent, q as ref, g as computed, o as openBlock, c as createElementBlock, a as createBaseVNode, F as Fragment, k as renderList, p as normalizeStyle, m as createVNode, u as unref, P as Pagation, _ as _export_sfc } from "./app-DB9gXOx7.js";
+import { e as defineComponent, q as ref, g as computed, o as openBlock, c as createElementBlock, a as createBaseVNode, F as Fragment, k as renderList, p as normalizeStyle, m as createVNode, u as unref, P as Pagation, _ as _export_sfc } from "./app-DN38vQgl.js";
 const examplesData = [
   {
     thumbnail: "https://avatars.githubusercontent.com/u/87223862?v=4",
