@@ -21,6 +21,5 @@ git remote -v
 git push origin master -f
 
 cd ../
-rm -rf dist
 cd ../
 ./push.sh

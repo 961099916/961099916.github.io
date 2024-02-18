@@ -11,8 +11,8 @@ bannerBrand:
   description: '个人成长记录'
   tagline: 个人成长记录
   buttons:
-    - { text: 指南, link: '/docs/guide/introduce' }
-    - { text: 主题配置, link: '/docs/theme/series', type: 'plain' }
+    - { text: Java, link: '/docs/it/java-home.html' }
+    - { text: 兴趣, link: '/docs/interest/money-home.html', type: 'plain' }
   socialLinks:
     - { icon: 'LogoGithub', link: 'https://github.com/961099916/961099916.github.io' }
 blog: # blog 模块的配置

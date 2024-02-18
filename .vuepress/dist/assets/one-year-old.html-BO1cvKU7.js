@@ -1,0 +1,4 @@
+const data = JSON.parse('{"key":"v-d084fa38","path":"/blogs/one-year-old.html","title":"vuepress-theme-reco 一周岁","lang":"zh-CN","frontmatter":{"title":"vuepress-theme-reco 一周岁","date":"2019-10-26T00:00:00.000Z","categories":["blog"]},"headers":[{"level":2,"title":"1","slug":"_1","link":"#_1","children":[]},{"level":2,"title":"2","slug":"_2","link":"#_2","children":[]},{"level":2,"title":"3","slug":"_3","link":"#_3","children":[]},{"level":2,"title":"4","slug":"_4","link":"#_4","children":[]}],"git":{"createdTime":1708223948000,"updatedTime":1708223948000,"contributors":[{"name":"zhangjiahao","email":"961099916@qq.com","commits":1}]},"filePathRelative":"blogs/one-year-old.md"}');
+export {
+  data
+};
