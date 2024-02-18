@@ -1,0 +1,40 @@
+export const navbar = [
+  { text: "首页", link: "/", icon: "Home" },
+  {
+    text: "参考",
+    icon: "Cafe",
+    children: [
+      {
+        text: "基础",
+        children: [
+          { text: "Java", link: "/docs/it/java-home" },
+          { text: "Spring", link: "/docs/it/series" },
+          { text: "Markdown 扩展", link: "/docs/theme/custom-container" },
+          { text: "其他", link: "/docs/theme/custom-style" },
+        ],
+      },
+      {
+        text: "插件",
+        children: [
+          { text: "page", link: "/docs/plugins/page" },
+          { text: "comments", link: "/docs/plugins/comments" },
+          { text: "vue-previews", link: "/docs/plugins/vue-previews" },
+          { text: "bulletin-popover", link: "/docs/plugins/bulletin-popover" },
+        ],
+      },
+    ],
+  },
+  {
+    text: "版本",
+    icon: "Fire",
+    children: [
+      { text: "2.x(rc)", link: "https://vuepress-theme-reco.recoluan.com/" },
+      {
+        text: "1.x",
+        link: "http://v1.vuepress-reco.recoluan.com/views/1.x/",
+      },
+    ],
+  },
+  { text: "博客", link: "/posts", icon: "DocumentAttachment" },
+  { text: "案例", link: "/docs/others/examples", icon: "Fire" },
+];
