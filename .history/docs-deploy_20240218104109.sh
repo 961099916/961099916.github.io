@@ -1,6 +1,6 @@
 yarn docs:build
 
-cd .vuepress/dist
+cd docs/.vuepress/dist
 
 ls
 
