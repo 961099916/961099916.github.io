@@ -1,0 +1,4 @@
+const data = JSON.parse('{"key":"v-8daa1a0e","path":"/","title":"","lang":"zh-CN","frontmatter":{"home":true,"modules":["BannerBrand","Blog","MdContent","Footer"],"bannerBrand":{"bgImage":"/bg.svg","title":"张家豪的博客","description":"个人成长记录","tagline":"个人成长记录","buttons":[{"text":"Java","link":"/docs/it/java-home.html"},{"text":"兴趣","link":"/docs/interest/money-home.html","type":"plain"}],"socialLinks":[{"icon":"LogoGithub","link":"https://github.com/961099916/961099916.github.io"}]},"blog":{"socialLinks":[{"icon":"LogoGithub","link":"https://github.com/961099916"}]},"footer":{"record":"域名备案文案","recordLink":"域名备案地址","cyberSecurityRecord":"公安备案文案","cyberSecurityLink":"公安备案地址","startYear":2018}},"headers":[],"git":{"createdTime":1708223948000,"updatedTime":1708231250000,"contributors":[{"name":"zhangjiahao","email":"961099916@qq.com","commits":2},{"name":"张家豪","email":"961099916@qq.com","commits":1}]},"filePathRelative":"README.md"}');
+export {
+  data
+};

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "张家豪的成长记录",
   "repository": "git@github.com:recoluan/vuepress-theme-reco-demo.git",
-  "author": "reco_luan <recoluan@outlook.com>",
+  "author": "张家豪",
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev .",
@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "vuepress": "2.0.0-rc.0",
-    "vuepress-theme-reco": "2.0.0-rc.5"
+    "vuepress-theme-reco": "2.0.1-alpha.32"
   }
 }

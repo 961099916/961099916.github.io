@@ -27,7 +27,6 @@ date: 2024-02-18
 - long 8 字节 默认值 0L 封装类型 Long
 - double 8 字节 默认值 0.0d 封装类型 Double
 - boolean 默认值 false 封装类型 Boolean
-
    - JVM 虚拟机中没有提供 boolean 值专用的字节码指令，编译后是用 int 数据类型代替的，而 boolean 数组则会被编译成 byte 数组。所以 boolean 单独使用时是 4 个字节，数组中是 1 个字节。
 - 注意： 除了八种基础类型外都是封装类型
 
