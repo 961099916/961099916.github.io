@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "张家豪的成长记录",
-  "repository": "git@github.com:recoluan/vuepress-theme-reco-demo.git",
+  "repository": "git@github.com:961099916/961099916.github.io.git",
   "author": "张家豪",
   "license": "MIT",
   "scripts": {
@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "vuepress": "2.0.0-rc.0",
-    "vuepress-theme-reco": "2.0.1-alpha.32"
+    "vuepress-theme-reco": "2.0.0-rc.5"
   }
 }
