@@ -1,4 +1,0 @@
-const data = JSON.parse('{"key":"v-056b967b","path":"/blogs/deploy.html","title":"Pages 部署","lang":"zh-CN","frontmatter":{"title":"Pages 部署","date":"2019-05-14T00:00:00.000Z","categories":["blog"]},"headers":[{"level":2,"title":"GitHub","slug":"github","link":"#github","children":[{"level":3,"title":"手动部署","slug":"手动部署","link":"#手动部署","children":[]},{"level":3,"title":"自动部署","slug":"自动部署","link":"#自动部署","children":[]}]},{"level":2,"title":"GitLab","slug":"gitlab","link":"#gitlab","children":[{"level":3,"title":"手动部署","slug":"手动部署-1","link":"#手动部署-1","children":[]},{"level":3,"title":"自动部署","slug":"自动部署-1","link":"#自动部署-1","children":[]}]}],"git":{"createdTime":1708223948000,"updatedTime":1708223948000,"contributors":[{"name":"zhangjiahao","email":"961099916@qq.com","commits":1}]},"filePathRelative":"blogs/deploy.md"}');
-export {
-  data
-};
