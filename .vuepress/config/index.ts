@@ -15,8 +15,8 @@ export const themeConfig = {
 
   logo: "/logo.png",
   author: "张家豪",
-  docsRepo: "https://github.com/vuepress-reco/vuepress-theme-reco",
-  docsBranch: "main",
+  docsRepo: "https://github.com/961099916/961099916.github.io.git",
+  docsBranch: "master",
   docsDir: "/",
   colorMode: "dark",
 };
