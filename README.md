@@ -20,6 +20,7 @@ blog: # blog 模块的配置
     - { icon: 'LogoGithub', link: 'https://github.com/961099916' }
 footer: # 底部模块的配置
   record: jiuxialb.top
+  recordLink: https://blog.jiuxialb.top
   cyberSecurityRecord: 京ICP备2023005466号
   cyberSecurityLink: https://beian.miit.gov.cn
   startYear: 2024
