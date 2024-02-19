@@ -21,5 +21,6 @@ blog: # blog 模块的配置
 footer: # 底部模块的配置
   record: jiuxialb.top
   cyberSecurityRecord: 京ICP备2023005466号
+  cyberSecurityLink: https://beian.miit.gov.cn
   startYear: 2024
 ---
