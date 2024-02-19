@@ -2,9 +2,9 @@
 title: 云平台搭建
 date: 2024-02-18
 categories:
-- 运维
+    - 运维
 tags:
-- docker
+  - docker
 ---
 
 云平台主要采用的技术如下：
