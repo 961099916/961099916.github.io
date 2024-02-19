@@ -2,7 +2,7 @@ export const series = {
   "/docs/it/": [
     {
       text: "JDK",
-      children: ["java-home"],
+      children: ["java-home","java-concurrent","java-cglib","java-string","java-collection"],
     },
     {
       text: "JVM",
@@ -43,7 +43,7 @@ export const series = {
   ],
   "/docs/book/": [
     {
-      text: "金融",
+      text: "计算机",
       children: ["book-1"],
     },
   ],
