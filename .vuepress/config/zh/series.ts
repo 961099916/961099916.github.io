@@ -29,7 +29,7 @@ export const series = {
     {
       text: "容器化",
       children: [
-        "opertaion-cloudplatform",
+        "operation-cloudplatform",
       ],
     },
   ],
