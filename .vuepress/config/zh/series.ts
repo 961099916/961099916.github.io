@@ -52,6 +52,10 @@ export const series = {
       text: "计算机",
       children: ["book-1","book-2"],
     },
+    {
+      text: "金融",
+      children: ["book-3"],
+    },
   ],
 
 };
