@@ -1,10 +1,8 @@
 ---
 title: 《RocketMQ技术内幕》
 date: 2024-02-18
-categories:
-    - 读书
 tags:
-  - 计算机
+    - 计算机
 ---
 
 ## 1. 设计理念与目标

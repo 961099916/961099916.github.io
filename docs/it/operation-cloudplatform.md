@@ -1,8 +1,6 @@
 ---
 title: 云平台搭建
 date: 2024-02-18
-categories:
-    - 运维
 tags:
   - docker
 ---
