@@ -2,7 +2,7 @@ export const navbar = [
   { text: "首页", link: "/", icon: "Home" },
   {
     text: "Java",
-    icon: "Cafe",
+    icon: "Code",
     children: [
       {
         text: "JDK",
