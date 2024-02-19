@@ -5,6 +5,10 @@ export const series = {
       children: ["java-home"],
     },
     {
+      text: "JVM",
+      children: ["jvm-home"],
+    },
+    {
       text: "Spring",
       children: [
         "framework-spring",

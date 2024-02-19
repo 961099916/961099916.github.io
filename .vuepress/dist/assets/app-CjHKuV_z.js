@@ -9255,6 +9255,11 @@ const pagesData$1 = {
     /* webpackChunkName: "v-4ec39238" */
     "./java-home.html-DElxYmaw.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
+  // path: /docs/it/jvm-home.html
+  "v-c7ef3976": () => __vitePreload(() => import(
+    /* webpackChunkName: "v-c7ef3976" */
+    "./jvm-home.html--PqPMTJS.js"
+  ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => __vitePreload(() => import(
     /* webpackChunkName: "v-3706649a" */
@@ -9314,87 +9319,92 @@ const pagesComponents = {
   // path: /timeline/
   "v-01560935": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-01560935" */
-    "./index.html-CQu5SNQe.js"
+    "./index.html-MXqZfSbl.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/
   "v-e1e3da16": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-e1e3da16" */
-    "./index.html-BnD3sQ3V.js"
+    "./index.html-BootTTIr.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /friendship-link/
   "v-53355ebb": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-53355ebb" */
-    "./index.html-DeKaWNkD.js"
+    "./index.html-C3Ckla8K.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /categories/fupan/1/
   "v-295ee559": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-295ee559" */
-    "./index.html-M0dAkymc.js"
+    "./index.html-BwXtPPLm.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /tags/fupan/1/
   "v-f57d0588": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-f57d0588" */
-    "./index.html-BGYXqyqO.js"
+    "./index.html-DBEYm4kO.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/1/
   "v-03d52fd3": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-03d52fd3" */
-    "./index.html-ICVo79vZ.js"
+    "./index.html-tLWYe2hm.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /
   "v-8daa1a0e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-8daa1a0e" */
-    "./index.html-CnplXRSx.js"
+    "./index.html-DWmhbqL-.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /blogs/2024-02-18.html
   "v-071aaa46": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-071aaa46" */
-    "./2024-02-18.html-BfbSWT9r.js"
+    "./2024-02-18.html-B3D8dFOf.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/book/book-1.html
   "v-649dd081": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-649dd081" */
-    "./book-1.html-BFTLccJB.js"
+    "./book-1.html-CGedKjYU.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/coin-home.html
   "v-6ef28048": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-6ef28048" */
-    "./coin-home.html-Bc0mVZFc.js"
+    "./coin-home.html-BH1Nhx9Y.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/first-home.html
   "v-7d0a0c93": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-7d0a0c93" */
-    "./first-home.html-CD1DB5lH.js"
+    "./first-home.html-DYNfJdJq.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/money-home.html
   "v-001df2ba": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-001df2ba" */
-    "./money-home.html-FKQkfQ1k.js"
+    "./money-home.html-CWu1EGRA.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/db-mysql.html
   "v-c8405786": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-c8405786" */
-    "./db-mysql.html-nNWFRgw9.js"
+    "./db-mysql.html-CuLXq9Hn.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-mybatis.html
   "v-45ebc61e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-45ebc61e" */
-    "./framework-mybatis.html-DkwYeeVj.js"
+    "./framework-mybatis.html-YQh4gzVw.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-spring.html
   "v-512268b4": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-512268b4" */
-    "./framework-spring.html-CyisLyoJ.js"
+    "./framework-spring.html-DWatq_Nz.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/java-home.html
   "v-4ec39238": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-BndNtgOb.js"
+    "./java-home.html-BejtMniH.js"
+  ), true ? __vite__mapDeps([]) : void 0)),
+  // path: /docs/it/jvm-home.html
+  "v-c7ef3976": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
+    /* webpackChunkName: "v-c7ef3976" */
+    "./jvm-home.html-CIFmseol.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /404.html
   "v-3706649a": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-3706649a" */
-    "./404.html-C509k6iJ.js"
+    "./404.html-CV1rqUa3.js"
   ), true ? __vite__mapDeps([]) : void 0))
 };
 var layoutsSymbol = Symbol(
@@ -9763,7 +9773,7 @@ function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
     }
   }
 }
-const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"Java","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"理财","link":"/docs/interest/money-home"},{"text":"读书","link":"/docs/book/book-1"}]}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"基础知识","children":["money-home"]},{"text":"首板","children":["first-home"]},{"text":"数字货币","children":["coin-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
+const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"Java","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"JVM","children":[{"text":"Java","link":"/docs/it/jvm-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"理财","children":[{"text":"基础知识","link":"/docs/interest/money-home"},{"text":"首板","link":"/docs/interest/first-home"},{"text":"数字货币","link":"/docs/interest/coin-home"}]},{"text":"读书","link":"/docs/book/book-1"}]}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"JVM","children":["jvm-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"基础知识","children":["money-home"]},{"text":"首板","children":["first-home"]},{"text":"数字货币","children":["coin-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
 const themeData = ref(themeData$1);
 const useThemeData = () => themeData;
 const themeLocaleDataSymbol = Symbol("");
@@ -17356,6 +17366,158 @@ const searchIndex$1 = [
     "extraFields": []
   },
   {
+    "title": "JVM",
+    "headers": [
+      {
+        "level": 2,
+        "title": "JVM 的编译",
+        "slug": "jvm-的编译",
+        "link": "#jvm-的编译",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "类加载子系统",
+        "slug": "类加载子系统",
+        "link": "#类加载子系统",
+        "children": [
+          {
+            "level": 3,
+            "title": "加载",
+            "slug": "加载",
+            "link": "#加载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "链接-Linking",
+            "slug": "链接-linking",
+            "link": "#链接-linking",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "初始化-Initialization",
+            "slug": "初始化-initialization",
+            "link": "#初始化-initialization",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "运行时数据区",
+        "slug": "运行时数据区",
+        "link": "#运行时数据区",
+        "children": [
+          {
+            "level": 3,
+            "title": "虚拟机栈",
+            "slug": "虚拟机栈",
+            "link": "#虚拟机栈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "本地方法栈",
+            "slug": "本地方法栈",
+            "link": "#本地方法栈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "程序计数器",
+            "slug": "程序计数器",
+            "link": "#程序计数器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "方法区",
+            "slug": "方法区",
+            "link": "#方法区",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "堆",
+            "slug": "堆",
+            "link": "#堆",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "执行引擎",
+        "slug": "执行引擎",
+        "link": "#执行引擎",
+        "children": [
+          {
+            "level": 3,
+            "title": "解释器",
+            "slug": "解释器",
+            "link": "#解释器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "JIT",
+            "slug": "jit",
+            "link": "#jit",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "垃圾回收器",
+            "slug": "垃圾回收器",
+            "link": "#垃圾回收器",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "优化",
+        "slug": "优化",
+        "link": "#优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "获取 jvm 数据",
+            "slug": "获取-jvm-数据",
+            "link": "#获取-jvm-数据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "jvm 数据分析",
+            "slug": "jvm-数据分析",
+            "link": "#jvm-数据分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "调优",
+            "slug": "调优",
+            "link": "#调优",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "优化工具",
+        "slug": "优化工具",
+        "link": "#优化工具",
+        "children": []
+      }
+    ],
+    "path": "/docs/it/jvm-home.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/404.html",
@@ -18420,12 +18582,12 @@ const clientConfig8 = defineClientConfig({
 });
 const clientConfig9 = {
   enhance: ({ app }) => {
-    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-BF34ikzT.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-BWM9BV-q.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const clientConfig10 = {
   enhance: ({ app }) => {
-    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-D6oqDz-T.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-BBNgFK7q.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-jtOBtucw.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-BMcBDatm.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-BXfJ8FY5.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-DsuOMav1.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -83144,6 +83306,7 @@ const pagesRoutes = [
   ["v-45ebc61e", "/docs/it/framework-mybatis.html", { "title": "mybatis" }, [":md"]],
   ["v-512268b4", "/docs/it/framework-spring.html", { "title": "Spring 整体架构" }, [":md"]],
   ["v-4ec39238", "/docs/it/java-home.html", { "title": "Java 基础面试题" }, [":md"]],
+  ["v-c7ef3976", "/docs/it/jvm-home.html", { "title": "JVM" }, [":md"]],
   ["v-3706649a", "/404.html", { "title": "" }, []]
 ];
 var Vuepress = /* @__PURE__ */ defineComponent({
@@ -83384,7 +83547,7 @@ var createVueApp = async () => {
   setupGlobalComponents(app);
   const globalComputed = setupGlobalComputed(app, router, clientConfigs);
   {
-    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-C01TVKzT.js"), true ? __vite__mapDeps([]) : void 0);
+    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-D_mWW0_v.js"), true ? __vite__mapDeps([]) : void 0);
     setupDevtools(app, globalComputed);
   }
   for (const clientConfig of clientConfigs) {
@@ -83412,15 +83575,15 @@ export {
   createElementBlock as c,
   createVueApp,
   createStaticVNode as d,
-  defineComponent as e,
-  usePageFrontmatter as f,
-  computed as g,
-  withBase as h,
-  createOneColor as i,
-  createCommentVNode as j,
-  renderList as k,
-  createBlock as l,
-  createVNode as m,
+  createVNode as e,
+  defineComponent as f,
+  usePageFrontmatter as g,
+  computed as h,
+  withBase as i,
+  createOneColor as j,
+  createCommentVNode as k,
+  renderList as l,
+  createBlock as m,
   normalizeClass as n,
   openBlock as o,
   normalizeStyle as p,
