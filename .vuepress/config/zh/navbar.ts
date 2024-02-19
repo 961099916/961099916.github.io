@@ -6,11 +6,7 @@ export const navbar = [
     children: [
       {
         text: "JDK",
-        children: [{ text: "Java", link: "/docs/it/java-home" }],
-      },
-      {
-        text: "JVM",
-        children: [{ text: "Java", link: "/docs/it/jvm-home" }],
+        children: [{ text: "Java", link: "/docs/it/java-home" }, { text: "JVM", link: "/docs/it/jvm-home" }],
       },
       {
         text: "框架",
