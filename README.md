@@ -19,9 +19,7 @@ blog: # blog 模块的配置
   socialLinks: # 社交地址
     - { icon: 'LogoGithub', link: 'https://github.com/961099916' }
 footer: # 底部模块的配置
-  record: 个人学习笔记记录
-  recordLink: jiuxialb.top
-  cyberSecurityRecord: 京ICP备2023005466号-1
-  cyberSecurityLink: 北京市市辖区丰台区
-  startYear: 2018
+  record: jiuxialb.top
+  cyberSecurityRecord: 京ICP备2023005466号
+  startYear: 2024
 ---
