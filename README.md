@@ -18,6 +18,7 @@ bannerBrand:
 blog: # blog 模块的配置
   socialLinks: # 社交地址
     - { icon: 'LogoGithub', link: 'https://github.com/961099916' }
+    - { icon:'LogoQQ',link:'tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=961099916&website=www.oicqzone.com'}
 footer: # 底部模块的配置
   record: jiuxialb.top
   recordLink: https://blog.jiuxialb.top
