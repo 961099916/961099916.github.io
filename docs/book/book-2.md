@@ -346,7 +346,6 @@ date: 2024-02-18
       - 在消息发送过程中，可能会多次执行选择消息队列这个方法，lastBrokerName 就是上一次选择的执行发送消息失败的 Broker。第一次执行消息队列选择时，lastBrokerName 为 null，此时直接用 sendWhichQueue 自增再获取值，与当前路由表中消息队列的个数取模，返回该位置的 MessageQueue(selectOneMessageQueue()方法，如果消息发送失败，下次进行消息队列选择时规避上次 MesageQueue 所在的 Broker，否则有可能再次失败。或许有读者会问，Broker 不可用后，路由信息中为什么还会包含该 Broker 的路由信息呢？其实这不难解释：首先，NameServer 检测 Broker 是否可用是有延迟的，最短为一次心跳检测间隔（10s）；其次，NameServer 不是检测到 Broker 宕机后马上推送消息给消息生产者，而是消息生产者每隔 30s 更新一次路由信息，因此消息生产者最快感知 Broker 最新的路由信息也需要 30s。这就需要引入一种机制，在 Broker 宕机期间，一次消息发送失败后，将该 Broker 暂时排除在消息队列的选择范围中。
 
     - ## sendLatencyFaultEnable=true，启用 Broker 故障延迟机制。调用 MQFaultStrategy#selectOneMessageQueue
-
           - 1. 轮询获取一个消息队列。
           - 2. 验证该消息队列是否可用，latencyFaultTolerance.isAvailable(mq.getBrokerName())是关键。
           - 3. 如果返回的MessageQueue可用，则移除latencyFaultTolerance关于该topic的条目，表明该Broker故障已经修复。
@@ -462,12 +461,10 @@ date: 2024-02-18
 - ## 存储流程
 
   - Dispatch 操作
-
-        - 短轮询：longPollingEnable=false，第一次未拉取到消息后等待shortPollingTimeMills时间后再试。shortPollingTimeMills默认为1s。
-        - 长轮询：longPollingEnable=true，以消费者端设置的挂起超时时间为依据，受Default MQPullConsumer的brokerSuspendMaxTimeMillis控制，默认20s，长轮询有两个线程来相互实现。PullRequestHoldService默认每隔5s重试一次。DefaultMessageStore#ReputMessageService方法在每当有消息到达后，转发消息，然后调用PullRequestHoldService线程中的拉取任务，尝试拉取，每处理一次，线程休眠1ms，继续下一次检查。
+    - 短轮询：longPollingEnable=false，第一次未拉取到消息后等待shortPollingTimeMills时间后再试。shortPollingTimeMills默认为1s。
+     - 长轮询：longPollingEnable=true，以消费者端设置的挂起超时时间为依据，受Default MQPullConsumer的brokerSuspendMaxTimeMillis控制，默认20s，长轮询有两个线程来相互实现。PullRequestHoldService默认每隔5s重试一次。DefaultMessageStore#ReputMessageService方法在每当有消息到达后，转发消息，然后调用PullRequestHoldService线程中的拉取任务，尝试拉取，每处理一次，线程休眠1ms，继续下一次检查。
 
   - Consumer
-
         - 先从rebalanceImpl实例的本地缓存变量topicSubscribeInfoTable中，获取该topic主题下的消息消费队列集合mqSet。
         - 然后以topic和consumerGroup为参数调用mQClientFactory.findConsumerIdList()方法向Broker端发送获取该消费组下消费者ID列表的RPC通信请求（Broker端基于前面消息消费端上报的心跳包数据构建的consumerTable做出响应返回，业务请求码为GET_CONSUMER_LIST_BY_GROUP）。
         - 接着对topic下的消息消费队列、消费者ID进行排序，然后用消息队列分配策略算法（默认为消息队列的平均分配算法），计算待拉取的消息队列。这里的平均分配算法类似于分页算法，求出每一页需要包含的平均大小和每个页面记录的范围，遍历整个范围，计算当前消息消费端应该分配到的记录（这里即为MessageQueue）。
@@ -808,28 +805,19 @@ date: 2024-02-18
   - 4. 消息拉取长轮询机制分析
 
     - RocketMQ 并没有真正实现推模式，而是消费者主动向消息服务器拉取消息，RocketMQ 推模式是循环向消息服务端发送消息拉取请求，如果消息消费者向 RocketMQ 发送消息拉取时，消息并未到达消费队列，且未启用长轮询机制，则会在服务端等待 shortPollingTimeMills 时间后（挂起），再去判断消息是否已到达消息队列。如果消息未到达，则提示消息拉取客户端 PULL_NOT_FOUND（消息不存在），如果开启长轮询模式，RocketMQ 一方面会每 5s 轮询检查一次消息是否可达，同时一有新消息到达后，立即通知挂起线程再次验证新消息是否是自己感兴趣的，如果是则从 CommitLog 文件提取消息返回给消息拉取客户端，否则挂起超时，超时时间由消息拉取方在消息拉取时封装在请求参数中，推模式默认为 15s，拉模式通过 DefaultMQPullConsumer#setBrokerSuspendMaxTimeMillis 进行设置。RocketMQ 通过在 Broker 端配置 longPollingEnable 为 true 来开启长轮询模式。
-
       - RocketMQ 轮询机制由两个线程共同完成
-
         - PullRequestHoldService：每隔 5s 重试一次
-
           - 1.  首先从 ManyPullRequest 中获取当前该主题队列所有的挂起拉取任务。值得注意的是，该方法使用了 synchronized，说明该数据结构存在并发访问，该属性是 PullRequest HoldService 线程的私有属性。
           - 2.  如果消息队列的最大偏移量大于待拉取偏移量，且消息匹配，则调用 execute Request WhenWakeup 将消息返回给消息拉取客户端，否则等待下一次尝试，
           - 3.  如果挂起超时，则不继续等待，直接返回客户消息未找到
           - 4.这里的核心又回到长轮询的入口代码了，其核心是设置 brokerAllowSuspend 为 false，表示不支持拉取线程挂起，即当根据偏移量无法获取消息时，将不挂起线程并等待新消息，而是直接返回告诉客户端本次消息拉取未找到消息
-
         - DefaultMessageStore#ReputMessageService：每处理一次重新拉取，线程休眠 1s，继续下一次检查。
-
 ### 消息队列负载与重新分布机制
-
 - RebalanceService 线程默认每隔 20s 执行一次 mqClientFactory.doRebalance()方法
-
   - 1. 从主题订阅信息缓存表中获取主题的队列信息。发送请求从 Broker 中获取该消费组内当前所有的消费者客户端 ID，主题的队列可能分布在多个 Broker 上，那么请求该发往哪个 Broker 呢？RocketeMQ 从主题的路由信息表中随机选择一个 Broker。Broker 为什么会存在消费组内所有消费者的信息呢？我们不妨回忆一下，消费者在启动的时候会向 MQClientInstance 中注册消费者，然后 MQClientInstance 会向所有的 Broker 发送心跳包，心跳包中包含 MQClientInstance 的消费者信息，如代码清单 5-42 所示。如果 mqSet、cidAll 任意一个为空，则忽略本次消息队列负载。
   - 2. 对 cidAll、mqAll 进行排序。这一步很重要，同一个消费组内看到的视图应保持一致，确保同一个消费队列不会被多个消费者分配
   - 3. ConcurrentMap〈MessageQueue, ProcessQueue〉 processQueueTable 是当前消费者负载的消息队列缓存表，如果缓存表中的 MessageQueue 不包含在 mqSet 中，说明经过本次消息队列负载后，该 mq 被分配给其他消费者，需要暂停该消息队列消息的消费。方法是将 ProccessQueue 的状态设置为 droped=true，该 ProcessQueue 中的消息将不会再被消费，调用 removeUnnecessaryMessageQueue 方法判断是否将 MessageQueue、ProccessQueue 从缓存表中移除。removeUnnecessaryMessageQueue 在 RebalanceImple 中定义为抽象方法。removeUnnecessaryMessageQueue 方法主要用于持久化待移除 MessageQueue 的消息消费进度。在推模式下，如果是集群模式并且是顺序消息消费，还需要先解锁队列
-
 - 5 种分配算法
-
   - AllocateMessageQueueAveragely：平均分配，推荐使用。
   - AllocateMessageQueueAveragelyByCircle：平均轮询分配，推荐使用。
 
