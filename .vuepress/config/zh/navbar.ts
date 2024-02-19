@@ -12,6 +12,10 @@ export const navbar = [
         text: "框架",
         children: [{ text: "Spring", link: "/docs/it/framework-spring" }, { text: "Mybatis", link: "/docs/it/framework-mybatis" }],
       },
+      {
+        text: "运维",
+        children: [{ text: "Docker", link: "/docs/it/operation-cloudplatform" }],
+      },
     ],
   },
   {
