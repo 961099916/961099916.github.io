@@ -26,6 +26,12 @@ export const series = {
         "db-mysql",
       ],
     },
+    {
+      text: "容器化",
+      children: [
+        "opertaion-cloudplatform",
+      ],
+    },
   ],
   "/docs/interest/": [
     {
@@ -44,7 +50,7 @@ export const series = {
   "/docs/book/": [
     {
       text: "计算机",
-      children: ["book-1"],
+      children: ["book-1","book-2"],
     },
   ],
 
