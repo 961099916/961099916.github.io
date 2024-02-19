@@ -9220,6 +9220,16 @@ const pagesData$1 = {
     /* webpackChunkName: "v-649dd081" */
     "./book-1.html-DaYA7nGq.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
+  // path: /docs/interest/coin-home.html
+  "v-6ef28048": () => __vitePreload(() => import(
+    /* webpackChunkName: "v-6ef28048" */
+    "./coin-home.html-__lWc1T6.js"
+  ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
+  // path: /docs/interest/first-home.html
+  "v-7d0a0c93": () => __vitePreload(() => import(
+    /* webpackChunkName: "v-7d0a0c93" */
+    "./first-home.html-DQccYbRo.js"
+  ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /docs/interest/money-home.html
   "v-001df2ba": () => __vitePreload(() => import(
     /* webpackChunkName: "v-001df2ba" */
@@ -9243,7 +9253,7 @@ const pagesData$1 = {
   // path: /docs/it/java-home.html
   "v-4ec39238": () => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-CVOh_4EQ.js"
+    "./java-home.html-DElxYmaw.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => __vitePreload(() => import(
@@ -9304,77 +9314,87 @@ const pagesComponents = {
   // path: /timeline/
   "v-01560935": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-01560935" */
-    "./index.html-C_vd5McF.js"
+    "./index.html-C3lohrYo.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/
   "v-e1e3da16": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-e1e3da16" */
-    "./index.html-BsNDL_qR.js"
+    "./index.html-Dxl61Tw8.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /friendship-link/
   "v-53355ebb": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-53355ebb" */
-    "./index.html-BNdL46js.js"
+    "./index.html-C6ZlMGVE.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /categories/fupan/1/
   "v-295ee559": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-295ee559" */
-    "./index.html-9-8HsSuJ.js"
+    "./index.html-CtHqEjpp.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /tags/fupan/1/
   "v-f57d0588": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-f57d0588" */
-    "./index.html-EROU5RDB.js"
+    "./index.html-Bd4f4uMR.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/1/
   "v-03d52fd3": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-03d52fd3" */
-    "./index.html-iDyst_g0.js"
+    "./index.html-gW4u9uH-.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /
   "v-8daa1a0e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-8daa1a0e" */
-    "./index.html-CxRzmMqK.js"
+    "./index.html-DP8pMKxb.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /blogs/2024-02-18.html
   "v-071aaa46": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-071aaa46" */
-    "./2024-02-18.html-CssR8p4M.js"
+    "./2024-02-18.html-zi9O_LPq.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/book/book-1.html
   "v-649dd081": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-649dd081" */
-    "./book-1.html-Bx-JNPO2.js"
+    "./book-1.html-NFRG40my.js"
+  ), true ? __vite__mapDeps([]) : void 0)),
+  // path: /docs/interest/coin-home.html
+  "v-6ef28048": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
+    /* webpackChunkName: "v-6ef28048" */
+    "./coin-home.html-DD1OhLY6.js"
+  ), true ? __vite__mapDeps([]) : void 0)),
+  // path: /docs/interest/first-home.html
+  "v-7d0a0c93": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
+    /* webpackChunkName: "v-7d0a0c93" */
+    "./first-home.html-BOnBXdk5.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/money-home.html
   "v-001df2ba": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-001df2ba" */
-    "./money-home.html-gYX0aBTn.js"
+    "./money-home.html-BiPpatNR.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/db-mysql.html
   "v-c8405786": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-c8405786" */
-    "./db-mysql.html-93WVP5fK.js"
+    "./db-mysql.html-DDwoDJQM.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-mybatis.html
   "v-45ebc61e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-45ebc61e" */
-    "./framework-mybatis.html-DOGjQHDh.js"
+    "./framework-mybatis.html-fC1iTpGD.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-spring.html
   "v-512268b4": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-512268b4" */
-    "./framework-spring.html-DlLTKRUA.js"
+    "./framework-spring.html-FRqATNDm.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/java-home.html
   "v-4ec39238": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-Dzz944Mn.js"
+    "./java-home.html-BoDGkFTf.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /404.html
   "v-3706649a": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-3706649a" */
-    "./404.html-B0vVFwY2.js"
+    "./404.html-DfLlYiSl.js"
   ), true ? __vite__mapDeps([]) : void 0))
 };
 var layoutsSymbol = Symbol(
@@ -9743,7 +9763,7 @@ function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
     }
   }
 }
-const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"参考","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"股票","link":"/docs/interest/money-home"},{"text":"读书","link":"/docs/book/book-1"}]}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"股票","children":["money-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
+const themeData$1 = JSON.parse('{"locales":{"/":{"selectLanguageText":"选择语言","selectLanguageName":"简体中文","lastUpdatedText":"最后更新时间","navbar":[{"text":"首页","link":"/","icon":"Home"},{"text":"参考","icon":"Cafe","children":[{"text":"JDK","children":[{"text":"Java","link":"/docs/it/java-home"}]},{"text":"框架","children":[{"text":"Spring","link":"/docs/it/framework-spring"},{"text":"Mybatis","link":"/docs/it/framework-mybatis"}]}]},{"text":"兴趣","icon":"Fire","children":[{"text":"股票","children":[{"text":"理财","link":"/docs/interest/money-home"}]},{"text":"读书","link":"/docs/book/book-1"}]}],"series":{"/docs/it/":[{"text":"JDK","children":["java-home"]},{"text":"Spring","children":["framework-spring"]},{"text":"Mybatis","children":["framework-mybatis"]},{"text":"MySQL","children":["db-mysql"]}],"/docs/interest/":[{"text":"基础知识","children":["money-home"]},{"text":"首板","children":["first-home"]},{"text":"数字货币","children":["coin-home"]}],"/docs/book/":[{"text":"金融","children":["book-1"]}]},"commentConfig":{"type":"valine","options":{"appId":"pKlk0DsX2vYltyPe3pGivP0R-gzGzoHsz","appKey":"eEmo182Slt75nd9rehbo9jRh","placeholder":"填写邮箱可以收到回复提醒哦！","verify":false,"recordIP":true,"visitor":true,"hideComments":false,"meta":["nick"]}}}},"logo":"/logo.png","author":"张家豪","docsRepo":"https://github.com/961099916/961099916.github.io.git","docsBranch":"master","docsDir":"/","colorMode":"dark"}');
 const themeData = ref(themeData$1);
 const useThemeData = () => themeData;
 const themeLocaleDataSymbol = Symbol("");
@@ -17006,6 +17026,20 @@ const searchIndex$1 = [
     "extraFields": []
   },
   {
+    "title": "数字货币",
+    "headers": [],
+    "path": "/docs/interest/coin-home.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "首板",
+    "headers": [],
+    "path": "/docs/interest/first-home.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "股票",
     "headers": [],
     "path": "/docs/interest/money-home.html",
@@ -18386,12 +18420,12 @@ const clientConfig8 = defineClientConfig({
 });
 const clientConfig9 = {
   enhance: ({ app }) => {
-    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-BFWwp4Ya.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-BM5ah-mI.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const clientConfig10 = {
   enhance: ({ app }) => {
-    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-ag951k6Q.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-Bk-4K7Jc.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-DcSPKkaj.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-CZFaoG6A.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-BCQ3KLK9.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-B0URGxWu.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -83103,6 +83137,8 @@ const pagesRoutes = [
   ["v-8daa1a0e", "/", { "title": "" }, ["/README.md"]],
   ["v-071aaa46", "/blogs/2024-02-18.html", { "title": "2024-02-18 复盘" }, [":md"]],
   ["v-649dd081", "/docs/book/book-1.html", { "title": "读书" }, [":md"]],
+  ["v-6ef28048", "/docs/interest/coin-home.html", { "title": "数字货币" }, [":md"]],
+  ["v-7d0a0c93", "/docs/interest/first-home.html", { "title": "首板" }, [":md"]],
   ["v-001df2ba", "/docs/interest/money-home.html", { "title": "股票" }, [":md"]],
   ["v-c8405786", "/docs/it/db-mysql.html", { "title": "Mysql" }, [":md"]],
   ["v-45ebc61e", "/docs/it/framework-mybatis.html", { "title": "mybatis" }, [":md"]],
@@ -83348,7 +83384,7 @@ var createVueApp = async () => {
   setupGlobalComponents(app);
   const globalComputed = setupGlobalComputed(app, router, clientConfigs);
   {
-    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-KtEQGVx7.js"), true ? __vite__mapDeps([]) : void 0);
+    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-DcFJYV8B.js"), true ? __vite__mapDeps([]) : void 0);
     setupDevtools(app, globalComputed);
   }
   for (const clientConfig of clientConfigs) {

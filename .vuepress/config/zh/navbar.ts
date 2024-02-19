@@ -1,7 +1,7 @@
 export const navbar = [
   { text: "首页", link: "/", icon: "Home" },
   {
-    text: "参考",
+    text: "Java",
     icon: "Cafe",
     children: [
       {
@@ -10,14 +10,14 @@ export const navbar = [
       },
       {
         text: "框架",
-        children: [{ text: "Spring", link: "/docs/it/framework-spring" },{ text: "Mybatis", link: "/docs/it/framework-mybatis" }],
+        children: [{ text: "Spring", link: "/docs/it/framework-spring" }, { text: "Mybatis", link: "/docs/it/framework-mybatis" }],
       },
     ],
   },
   {
     text: "兴趣",
     icon: "Fire",
-    children: [{ text: "股票", link: "/docs/interest/money-home" },{ text: "读书", link: "/docs/book/book-1" }],
+    children: [{ text: "股票", children: [{ text: "理财", link: "/docs/interest/money-home" }] }, { text: "读书", link: "/docs/book/book-1" }],
   },
   // { text: "博客", link: "/posts", icon: "DocumentAttachment" },
   // { text: "案例", link: "/docs/others/examples", icon: "Fire" },

@@ -25,8 +25,16 @@ export const series = {
   ],
   "/docs/interest/": [
     {
-      text: "股票",
+      text: "基础知识",
       children: ["money-home"],
+    },
+    {
+      text: "首板",
+      children: ["first-home"],
+    },
+    {
+      text: "数字货币",
+      children: ["coin-home"],
     },
   ],
   "/docs/book/": [
