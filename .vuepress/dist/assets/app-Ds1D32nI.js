@@ -9243,7 +9243,7 @@ const pagesData$1 = {
   // path: /docs/it/java-home.html
   "v-4ec39238": () => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-CZH826jV.js"
+    "./java-home.html-C5dPTzSf.js"
   ), true ? __vite__mapDeps([]) : void 0).then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => __vitePreload(() => import(
@@ -9304,77 +9304,77 @@ const pagesComponents = {
   // path: /timeline/
   "v-01560935": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-01560935" */
-    "./index.html-D1TRKjKs.js"
+    "./index.html-C5a3skgt.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/
   "v-e1e3da16": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-e1e3da16" */
-    "./index.html-C-DWLV0B.js"
+    "./index.html-CwDzx_Wv.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /friendship-link/
   "v-53355ebb": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-53355ebb" */
-    "./index.html-BH2yb1SV.js"
+    "./index.html-D90cQ-Ry.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /categories/fupan/1/
   "v-295ee559": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-295ee559" */
-    "./index.html-B2y4tKF6.js"
+    "./index.html-DJDEwY2J.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /tags/fupan/1/
   "v-f57d0588": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-f57d0588" */
-    "./index.html-C50jzuqX.js"
+    "./index.html-WVLWIUu-.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /posts/1/
   "v-03d52fd3": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-03d52fd3" */
-    "./index.html-Dg4YQv-4.js"
+    "./index.html-C-Kd-Yyc.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /
   "v-8daa1a0e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-8daa1a0e" */
-    "./index.html-CChNqVg3.js"
+    "./index.html-BAdAc-oV.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /blogs/2024-02-18.html
   "v-071aaa46": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-071aaa46" */
-    "./2024-02-18.html-BkyyEtlL.js"
+    "./2024-02-18.html-dwG1sOyN.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/book/book-1.html
   "v-649dd081": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-649dd081" */
-    "./book-1.html-B4efS_DM.js"
+    "./book-1.html-iVNtcNcF.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/interest/money-home.html
   "v-001df2ba": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-001df2ba" */
-    "./money-home.html-ByEdcbsR.js"
+    "./money-home.html-eJJh4IQk.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/db-mysql.html
   "v-c8405786": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-c8405786" */
-    "./db-mysql.html-ZFhHnVMh.js"
+    "./db-mysql.html-B15pUdp5.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-mybatis.html
   "v-45ebc61e": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-45ebc61e" */
-    "./framework-mybatis.html-BJvO01Ik.js"
+    "./framework-mybatis.html-CayE73L9.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/framework-spring.html
   "v-512268b4": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-512268b4" */
-    "./framework-spring.html-CKZ4oKrF.js"
+    "./framework-spring.html-GOZUxP3S.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /docs/it/java-home.html
   "v-4ec39238": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-4ec39238" */
-    "./java-home.html-D3FhIG-s.js"
+    "./java-home.html-CuQy5lPi.js"
   ), true ? __vite__mapDeps([]) : void 0)),
   // path: /404.html
   "v-3706649a": /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import(
     /* webpackChunkName: "v-3706649a" */
-    "./404.html-CuTRMZeL.js"
+    "./404.html-SuIfDHSZ.js"
   ), true ? __vite__mapDeps([]) : void 0))
 };
 var layoutsSymbol = Symbol(
@@ -18386,12 +18386,12 @@ const clientConfig8 = defineClientConfig({
 });
 const clientConfig9 = {
   enhance: ({ app }) => {
-    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-DCahFd33.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("demo", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./demo-C2dLTuaG.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const clientConfig10 = {
   enhance: ({ app }) => {
-    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-Bawu_iZW.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-BBJjYjn5.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-B_psqSwA.js"), true ? __vite__mapDeps([]) : void 0)));
+    app.component("CustomBanner", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./CustomBanner-DuqqrjLi.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Examples", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Examples-kammrKGQ.js"), true ? __vite__mapDeps([]) : void 0))), app.component("Md5", /* @__PURE__ */ defineAsyncComponent(() => __vitePreload(() => import("./Md5-CDtjFmpN.js"), true ? __vite__mapDeps([]) : void 0)));
   }
 };
 const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -83348,7 +83348,7 @@ var createVueApp = async () => {
   setupGlobalComponents(app);
   const globalComputed = setupGlobalComputed(app, router, clientConfigs);
   {
-    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-D5yxc4sQ.js"), true ? __vite__mapDeps([]) : void 0);
+    const { setupDevtools } = await __vitePreload(() => import("./setupDevtools-X4YFRK4B-O0De3jQf.js"), true ? __vite__mapDeps([]) : void 0);
     setupDevtools(app, globalComputed);
   }
   for (const clientConfig of clientConfigs) {
