@@ -11,10 +11,11 @@
     "build": "vuepress build ."
   },
   "dependencies": {
-    "vuepress": "2.0.0-rc.0",
+    "vuepress": "2.0.0-rc.7",
     "vuepress-theme-reco": "2.0.0-rc.5"
   },
   "devDependencies": {
-    "echarts": "^5.5.0"
+    "echarts": "^5.5.0",
+    "vuepress-plugin-md-enhance": "^2.0.0-rc.24"
   }
 }
