@@ -21,7 +21,7 @@ export const navbar = [
   {
     text: "兴趣",
     icon: "Fire",
-    children: [{ text: "理财", children: [{ text: "基础知识", link: "/docs/interest/money-home" }, { text: "首板", link: "/docs/interest/first-home" }, { text: "数字货币", link: "/docs/interest/coin-home" }] }, { text: "读书", link: "/docs/book/book-1" }],
+    children: [{ text: "理财", children: [{ text: "基础知识", link: "/docs/interest/money-home" }, { text: "短线", link: "/docs/interest/short-home" }, { text: "数字货币", link: "/docs/interest/coin-home" }] }, { text: "读书", link: "/docs/book/book-1" }],
   },
   { text: "博客", link: "/posts", icon: "DocumentAttachment" },
   // { text: "案例", link: "/docs/others/examples", icon: "Fire" },

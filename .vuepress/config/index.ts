@@ -12,7 +12,6 @@ export const themeConfig = {
       // bulletin: zhConfig.bulletin,
     },
   },
-
   logo: "/logo.png",
   author: "张家豪",
   docsRepo: "https://github.com/961099916/961099916.github.io.git",

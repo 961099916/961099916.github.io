@@ -39,8 +39,8 @@ export const series = {
       children: ["money-home"],
     },
     {
-      text: "首板",
-      children: ["first-home"],
+      text: "短线",
+      children: ["short-home","short-see","short-person-niepanchongsheng","short-person-zhiyechaoshou","short-person-beijingchaojia"],
     },
     {
       text: "数字货币",
