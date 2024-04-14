@@ -43,7 +43,6 @@ export default sidebar({
       prefix: "",
       children: "structure",
     },
-
   ],
   "/读书/": [
     {
