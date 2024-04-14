@@ -38,7 +38,7 @@ export default sidebar({
   ],
   "/理财/": [
     {
-      text: "中间件",
+      text: "理财",
       icon: "laptop-code",
       prefix: "",
       children: "structure",
