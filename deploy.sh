@@ -1,6 +1,6 @@
 npm run build
 
-cd .vuepress/dist
+cd src/.vuepress/dist
 
 ls
 
@@ -20,6 +20,8 @@ git remote -v
 
 git push origin master -f
 
+
+cd ../
 cd ../
 cd ../
 ./push.sh
