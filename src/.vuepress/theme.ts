@@ -73,6 +73,8 @@ export default hopeTheme({
     comment: {
       provider: "Waline",
       serverURL: "https://vercel-l4zyv5epd-961099916s-projects.vercel.app/",
+      meta: ['nick'],
+      
     },
     components: {
       components: ["Badge", "VPCard"],
