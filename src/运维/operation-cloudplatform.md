@@ -1,0 +1,642 @@
+---
+title: 云平台搭建
+date: 2024-02-18
+---
+
+云平台主要采用的技术如下：
+
+| 名称       | 简介                                                                  |
+| ---------- | --------------------------------------------------------------------- |
+| Docker     | 应用容器引擎，从而实现同一应用运行在任何地方                          |
+| Kubernetes | 容器化编排工具，能够实现容器化的集群部署                              |
+| Rancher    | Kubernetes 管理工具，能够快速搭建高可用 Kubernetes 和搭建部分常用服务 |
+| Harbor     | 私有镜像仓库                                                          |
+| Jenkins    | 持续集成工具                                                          |
+
+
+## 环境准备
+
+### 1.关闭防火墙
+
+```shell
+### 停止防火墙
+systemctl stop firewalld.service
+### 禁止开机启动
+systemctl disable firewalld.service
+```
+
+### 2.更新 yum
+
+```shell
+yum update
+```
+
+### 3.安装工具
+
+```shell
+yum install -y yum-utils device-mapper-persistent-data lvm2
+```
+
+## 安装 Docker
+
+```shell
+### 添加Docker源
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+### 更新yum
+yum update -y
+### 安装Docker
+yum install -y docker-ce
+### 启动Docker
+systemctl start docker
+```
+
+### 1. 设置开机启动
+
+```shell
+systemctl enable docker
+```
+
+### 2.使用阿里加速
+
+```shell
+### 使用阿里的容器镜像服务进行加速（个人加速器可更换）
+### Linux 加速
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://q47dgr1i.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+## 安装 Rancher
+
+```shell
+### 拉取镜像
+sudo docker pull rancher/rancher
+### 运行镜像
+sudo docker run -d --restart=unless-stopped -p 8080:80  -p 8443:443 --name rancher rancher/rancher
+```
+
+- 如果映射端口为 80、443 可能会导致无法访问，更换端口即可
+
+## 安装 Kubernetes
+
+### 1.创建集群
+
+- 添加集群
+![](https://img-blog.csdnimg.cn/img_convert/08b16a99f99d283943e901e6538175c9.png#id=DlN8G&originHeight=429&originWidth=3017&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 选择自定义，然后填写创建的配置，点击下一步
+- ![](https://img-blog.csdnimg.cn/img_convert/2c3d4296756fca322c8b4fa8f2d714ba.png#id=MIBAN&originHeight=1648&originWidth=3073&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 添加节点
+- ![](https://img-blog.csdnimg.cn/img_convert/917da469670cd455c0add3a09cad4f67.png#id=VjeVb&originHeight=731&originWidth=3009&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+### 2.安装 master
+
+安装 master 节点，需要选择 Control
+然后复制执行命令在相应的主机执行命令即可
+
+### 3.安装 node
+
+只需要选择 work
+然后复制执行命令在相应的主机执行命令即可
+
+### 4.笔记本合盖
+
+需要设置合盖不影响，否则盒盖休眠就会影响该节点
+
+### 5.主机名
+
+若主机名重复，则可能导致无法做安装节点
+若 k8s.master k8s.node 他主机名显示的都为 k8s 导致无法添加
+
+## Rancher-cli 工具使用
+
+- linux 下载链接：[https://releases.rancher.com/cli2/v2.4.3/rancher-linux-amd64-v2.4.3.tar.gz](https://releases.rancher.com/cli2/v2.4.3/rancher-linux-amd64-v2.4.3.tar.gz)
+- window 下载链接：[https://releases.rancher.com/cli2/v2.4.3/rancher-windows-386-v2.4.3.zip](https://releases.rancher.com/cli2/v2.4.3/rancher-windows-386-v2.4.3.zip)
+- MacOS 下载链接：[https://releases.rancher.com/cli2/v2.4.3/rancher-darwin-amd64-v2.4.3.tar.gz](https://releases.rancher.com/cli2/v2.4.3/rancher-darwin-amd64-v2.4.3.tar.gz)
+
+### 通过 UI 添加 token
+
+![](https://img-blog.csdnimg.cn/img_convert/9fe828979b7ec9d3ca8aa68f3f4def65.png#id=TfICt&originHeight=487&originWidth=1400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://img-blog.csdnimg.cn/img_convert/c2354ae8e881435897dd9416e058cd7c.png#id=jX3Bn&originHeight=640&originWidth=3019&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+![](https://img-blog.csdnimg.cn/img_convert/4d10fe0ab8bf67f05ec54be4405f760a.png#id=rRBSm&originHeight=673&originWidth=1175&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+### 使用
+
+```shell
+## 进入解压包中，使用命令即可登录rancher
+./rancher login https://172.22.190.240:8443/v3 -t token-d7sx4:jh2wgcjjnmvq7m9l9rbr8qdw5fr7nrd2bjssjfngmcjrsxncdphf7d
+```
+
+需要下载`kubectl`工具对`kubernetes`进行操作
+
+### 安装 kubectl
+
+```shell
+# 1. 配置阿里云源
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+EOF
+
+# 2. 开始安装
+yum -y install  kubectl
+# 3. 测试 查看节点
+./rancher kubectl get nodes
+```
+
+## 安装 Harbor
+
+```shell
+# 1. 下载安装文件（可以在指定目录下载）
+wget https://storage.googleapis.com/harbor-releases/harbor-online-installer-v1.5.2.tgz
+
+# 2. 解压下载的文件
+tar xvf harbor-online-installer-v1.5.2.tgz
+```
+
+### 配置 Harbor
+
+```shell
+1. 修改Harbor的配置文件
+cd harbor
+vim harbor.cfg
+
+内容如下：
+
+# hostname设置访问地址，可以使用ip、域名，不可以设置为127.0.0.1或localhost
+hostname = hub.k8s.com
+
+# 访问协议，默认是http，也可以设置https，如果设置https，则nginx ssl需要设置on
+ui_url_protocol = http
+
+# mysql数据库root用户默认密码root123，实际使用时修改下
+db_password = root@1234
+
+max_job_workers = 3
+customize_crt = on
+ssl_cert = /data/cert/server.crt
+ssl_cert_key = /data/cert/server.key
+secretkey_path = /data
+admiral_url = NA
+
+# 邮件设置，发送重置密码邮件时使用
+email_identity =
+email_server = smtp.mydomain.com
+email_server_port = 25
+email_username = sample_admin@mydomain.com
+email_password = abc
+email_from = admin <sample_admin@mydomain.com>
+email_ssl = false
+
+# 启动Harbor后，管理员UI登录的密码，默认是Harbor12345
+harbor_admin_password = root@1234
+
+# 认证方式，这里支持多种认证方式，如LADP、本次存储、数据库认证。默认是db_auth，mysql数据库认证
+auth_mode = db_auth
+
+# LDAP认证时配置项
+#ldap_url = ldaps://ldap.mydomain.com
+#ldap_searchdn = uid=searchuser,ou=people,dc=mydomain,dc=com
+#ldap_search_pwd = password
+#ldap_basedn = ou=people,dc=mydomain,dc=com
+#ldap_filter = (objectClass=person)
+#ldap_uid = uid
+#ldap_scope = 3
+#ldap_timeout = 5
+
+# 是否开启自注册
+self_registration = on
+
+# Token有效时间，默认30分钟
+token_expiration = 30
+
+# 用户创建项目权限控制，默认是everyone（所有人），也可以设置为adminonly（只能管理员）
+project_creation_restriction = everyone
+
+verify_remote_cert = on
+```
+
+### 启动 Harbor
+
+```shell
+# 1.在当前安装目录下
+./install.sh
+```
+
+### 注意
+
+执行 install.sh 报以下错误
+
+```shell
+root@ubuntu:~/harbor# ./prepare
+Generated and saved secret to file: /data/secretkey
+Generated configuration file: ./common/config/nginx/nginx.conf
+Generated configuration file: ./common/config/adminserver/env
+Generated configuration file: ./common/config/ui/env
+Generated configuration file: ./common/config/registry/config.yml
+Generated configuration file: ./common/config/db/env
+Generated configuration file: ./common/config/jobservice/env
+Generated configuration file: ./common/config/jobservice/config.yml
+Generated configuration file: ./common/config/log/logrotate.conf
+Generated configuration file: ./common/config/jobservice/config.yml
+Generated configuration file: ./common/config/ui/app.conf
+Fail to generate key file: ./common/config/ui/private_key.pem, cert file: ./common/config/registry/root.crt
+```
+
+需要修改 prepare 文件，将第 498 行：
+
+```shell
+empty_subj = "/C=/ST=/L=/O=/CN=/"
+```
+
+修改如下：
+
+```shell
+empty_subj = "/C=US/ST=California/L=Palo Alto/O=VMware, Inc./OU=Harbor/CN=notarysigner"
+```
+
+## 安装 Jenkins
+
+```shell
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+yum install jenkins
+## 启动
+systemctl restart jenkins
+## 密码
+cat /var/lib/jenkins/secrets/initialAdminPassowrd
+```
+
+### 提升权限
+
+```shell
+# 将jenkins账号分别加入到root组中
+gpasswd -a root jenkins
+vi /etc/sysconfig/jenkins
+# JENKINS_USER=root
+# JENKINS_GROUP=root
+## 重启
+service Jenkins restart
+```
+
+### 设置环境
+
+```shell
+## 下载java
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz"
+## 下载maven
+wget https://archive.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+```
+
+### 配置 Jenkins 插件工具
+
+Manage Jenkins --- > Global Tool Configure
+![](https://img-blog.csdnimg.cn/img_convert/ef906bee1b727ee324f4980ecce5ea07.png#id=uPRzP&originHeight=1891&originWidth=3511&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+### 设置流水线
+
+- 新建 Item
+- ![](https://img-blog.csdnimg.cn/img_convert/d138925af8b3793e0f702bbf3a96b8b3.png#id=pvaOC&originHeight=587&originWidth=383&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 选择创建任务的类型和名称
+- ![](https://img-blog.csdnimg.cn/img_convert/c0501ff196f4cea7ca4931235e479dcb.png#id=CC6kB&originHeight=792&originWidth=1193&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 配置源码管理
+- ![](https://img-blog.csdnimg.cn/img_convert/787caf3167d459c869cb888c1e8065af.png#id=fYrMX&originHeight=575&originWidth=1470&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 构建触发器：可设置定时构建、WebHooks 触发构建
+- 构建环境：需要 NodeJs 的可以添加环境，或者直接在脚本中直接通过 node 的位置直接执行
+- ![](https://img-blog.csdnimg.cn/img_convert/2ccf4ee74f2e556133d89ed9338771e4.png#id=ShFai&originHeight=662&originWidth=1600&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- build 命令：可指定文件执行 maven 命令
+- Post Steps: 可以指定运行脚本等，根据安装的插件可添加很多功能
+- 构建设置：可设置通知
+- ![](https://img-blog.csdnimg.cn/img_convert/1b2c44a52b0de234ba80598afe72986c.png#id=YFVp9&originHeight=801&originWidth=1634&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+## Kubernetes 部署 Nginx 测试
+
+通过 rancher-cli 进行部署，部署文件的内容：
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: "default"
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.12.2
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "test-nginx"
+  namespace: "default"
+  labels:
+    app: "test-nginx"
+spec:
+  ports:
+    - name: "80"
+      port: 80
+      targetPort: 80
+  selector:
+    app: nginx
+status:
+  loadBalancer: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: nginx
+  name: test-nginx
+spec:
+  rules:
+    - host: test-nginx.default.172.22.190.240.xip.io
+      http:
+        paths:
+          - backend:
+              serviceName: test-nginx
+              servicePort: 80
+            path: /
+status:
+  loadBalancer:
+    ingress:
+      - ip: 172.22.190.240
+```
+
+## Jenkins 打包 SpringBoot 镜像测试
+
+### 设置 Jenkins 流水线
+
+- 添加源码管理并指定分支
+- ![](https://img-blog.csdnimg.cn/img_convert/07a3b50c578607f9279bc2abb4d2c3d7.png#id=Ll9Er&originHeight=588&originWidth=1517&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 项目中使用到了 NodeJs，添加 NodeJs 构建环境
+- ![](https://img-blog.csdnimg.cn/img_convert/f6cfebd0d0fd1c3b65649d4f2d153324.png#id=r6NO9&originHeight=407&originWidth=1538&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 执行 Maven 命令进行构建打包
+- ![](https://img-blog.csdnimg.cn/img_convert/bde92288e06c6c32d205145b05591cc4.png#id=smevV&originHeight=215&originWidth=1582&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 执行自定义（deploy）制作镜像-->推送镜像--->部署的脚本
+- ![](https://img-blog.csdnimg.cn/img_convert/460ed58e8d85267038d0e647da418ee8.png#id=oeiQX&originHeight=421&originWidth=1487&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 点击应用，保存该流水线。
+- deploy 内容
+
+```shell
+#!/bin/bash
+cd ./contract-parent/contract-server && \
+docker build -t  172.22.190.250/library/contract:latest . && \
+docker push 172.22.190.250/library/contract:latest && \
+/usr/local/bin/rancher kubectl apply -f deployment.yaml && \
+cd ../../ && \
+cd ./project-parent/project-server && \
+docker build -t  172.22.190.250/library/project:latest . && \
+docker push 172.22.190.250/library/project:latest && \
+/usr/local/bin/rancher kubectl apply -f deployment.yaml && \
+cd ../../ && \
+cd ./public-data-parent/public-data-server &&  \
+docker build -t  172.22.190.250/library/public-data:latest . && docker push 172.22.190.250/library/public-data:latest && /usr/local/bin/rancher kubectl apply -f deployment.yaml && cd ../../ && \
+cd ./omgt-web && rm -rf dest && npm install && \
+npm run build && docker build -t  172.22.190.250/library/omgt-web:latest . && \
+docker push 172.22.190.250/library/omgt-web:latest && \
+/usr/local/bin/rancher kubectl apply -f deployment.yaml && cd ../../
+```
+
+- 其中一个 Dockerfile 的内容
+
+```latex
+FROM anapsix/alpine-java:8_server-jre_unlimited
+MAINTAINER 961099916@qq.com
+ENV TZ=Asia/Shanghai
+RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN mkdir -p /omgt
+WORKDIR /omgt
+EXPOSE 8038
+ADD ./target/public-data-server.jar ./
+CMD sleep 10;java -Djava.security.egd=file:/dev/./urandom -jar public-data-server.jar >> start.log
+```
+
+- 其中一个 deployment.yaml 的内容
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-data-deployment
+  namespace: default
+  labels:
+    app: public-data
+    dept: omgt
+    env: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: public-data
+      dept: omgt
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: public-data
+        dept: omgt
+        env: dev
+    spec:
+      containers:
+        - name: omgt-public-data
+          image: 172.22.190.250/library/public-data:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8038
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-data-service
+  namespace: default
+  labels:
+    app: public-data
+    dept: omgt
+    env: dev
+spec:
+  ports:
+    - name: "8038"
+      port: 8038
+      targetPort: 8038
+  selector:
+    app: public-data
+    dept: omgt
+    env: dev
+status:
+  loadBalancer: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: public-data
+    dept: omgt
+  name: public-data-ingress
+spec:
+  rules:
+    - host: public-data-ingress.default.172.22.190.240.xip.io
+      http:
+        paths:
+          - backend:
+              serviceName: public-data-service
+              servicePort: 8038
+            path: /
+status:
+  loadBalancer:
+    ingress:
+      - ip: 172.22.190.240
+```
+
+### 查看打包过程
+
+- 点击 Build Now 运行流水线
+- ![](https://img-blog.csdnimg.cn/img_convert/5137cc7253d2dbb8be17874e2b1795d0.png#id=DaUgQ&originHeight=333&originWidth=302&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 点击历史可进入正在运行的流水线
+- ![](https://img-blog.csdnimg.cn/img_convert/f02181d2bd9668b0798e469c7b5921a8.png#id=m72yr&originHeight=185&originWidth=408&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+- 通过控制台进行查看流水线日志
+- ![](https://img-blog.csdnimg.cn/img_convert/6063e8220ccf8374ca0eb73ed3f6171d.png#id=rbai7&originHeight=357&originWidth=293&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+### 查看 Kubernetes 集群中是否部署成功
+
+- 查看指定的命名空间和服务名称
+- ![](https://img-blog.csdnimg.cn/img_convert/d5c34862297264db309bb5e4022fcb11.png#id=T7FlF&originHeight=430&originWidth=1466&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
+
+## 后记
+
+部署文件的编写可能需要学习 Kubernetes 才能编写，而次次重新编写可能过于麻烦，可通过`cookiecutter`进行模板化生成
+
+### 1.安装 cookiecutter
+
+```shell
+pip install cookiecutter
+```
+
+### 2.编写配置文件
+
+```shell
+# 创建文件
+mkdir cookiecutter.json
+```
+
+cookiecutter 内容如下：
+
+```json
+{
+  "project": "kubernetes",
+  "dept": "omgt",
+  "env": "dev",
+  "namespace": "default",
+  "app_name": "nginx",
+  "app_port": "8080",
+  "app_replicas": "1",
+  "app_image": "nginx",
+  "app_image_version": "latest",
+  "lbip": "192.168.1.3"
+}
+```
+
+### 3.创建模版文件
+
+```shell
+mkdir {{cookiecutter.project}}
+touch default_dev.yaml
+```
+
+default_dev.yaml 内容如下：
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{cookiecutter.app_name}}-deployment
+  namespace: {{cookiecutter.namespace}}
+  labels:
+    app: {{cookiecutter.app_name}}
+    dept: {{cookiecutter.dept}}
+    env: {{cookiecutter.env}}
+spec:
+  replicas: {{cookiecutter.app_replicas}}
+  selector:
+    matchLabels:
+      app: {{cookiecutter.app_name}}
+      dept: {{cookiecutter.dept}}
+      env: {{cookiecutter.env}}
+  template:
+    metadata:
+      labels:
+        app: {{cookiecutter.app_name}}
+        dept: {{cookiecutter.dept}}
+        env: {{cookiecutter.env}}
+    spec:
+      containers:
+      - name: nginx
+        image: {{cookiecutter.app_image}}:{{cookiecutter.app_image_version}}
+        ports:
+        - containerPort: {{cookiecutter.app_port}}
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{cookiecutter.app_name}}-service
+  namespace: {{cookiecutter.namespace}}
+  labels:
+    app: {{cookiecutter.app_name}}
+    dept: {{cookiecutter.dept}}
+    env: {{cookiecutter.env}}
+spec:
+  ports:
+  - name: "{{cookiecutter.app_port}}"
+    port: {{cookiecutter.app_port}}
+    targetPort: {{cookiecutter.app_port}}
+  selector:
+    app: {{cookiecutter.app_name}}
+    dept: {{cookiecutter.dept}}
+    env: {{cookiecutter.env}}
+status:
+  loadBalancer: {}
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+     app: {{cookiecutter.app_name}}
+     dept: {{cookiecutter.dept}}
+  name: {{cookiecutter.app_name}}-ingress
+
+spec:
+  rules:
+  - host: {{cookiecutter.app_name}}-ingress.{{cookiecutter.namespace}}.{{cookiecutter.lbip}}.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: {{cookiecutter.app_name}}-service
+          servicePort: {{cookiecutter.app_port}}
+        path: /
+status:
+  loadBalancer:
+    ingress:
+    - ip: {{cookiecutter.lbip}}
+```
