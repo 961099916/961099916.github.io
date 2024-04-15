@@ -4,6 +4,10 @@ import sidebar from "./sidebar.js";
 import { MR_HOPE_AVATAR } from "./logo.js";
 
 export default hopeTheme({
+  head: [
+    ['meta', { name: 'keywords', content: 'antdocs,antdeisgn,vuepress,vuepress-theme,theme,ant,docs,antd,antdocs of vuepress,主题,vuepress主题,antd设计,blog,vuepress-blog' }],
+    ['meta', { name: 'baidu-site-verification', content:'codeva-fi0B6bPNUy'}]
+  ],
   hostname: "https://961099916.github.io",
 
   author: {
