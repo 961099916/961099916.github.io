@@ -9,13 +9,13 @@ export default hopeTheme({
     ['meta', { name: 'baidu-site-verification', content:'codeva-fi0B6bPNUy'}]
   ],
   hostname: "https://961099916.github.io",
-
+  darkmode: "switch",
   author: {
     name: "九夏",
     url: "https://blog.jiuxialb.top/",
   },
   iconAssets: "fontawesome-with-brands",
-  logo: "/logo.png",
+  logo: "logo.png",
   repo: "961099916/961099916.github.io",
   docsDir: "src",
   // 导航栏
