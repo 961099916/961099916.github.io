@@ -22,5 +22,5 @@ if __name__ == '__main__':
     print(date.strftime('%Y-%m-%d'))
     print('bg.svg' not in os.listdir(stock_path))
     download_date(date)
-    stock_zt_pool_em_df = ak.stock_zt_pool_em(date='20240415')
-    print(stock_zt_pool_em_df)
+    stock_zh_a_hist_df = ak.stock_zh_a_hist(symbol="000001", period="daily", start_date="20170301", end_date='20210907', adjust="")
+    print(stock_zh_a_hist_df)
