@@ -4,6 +4,8 @@
 import requests
 import datetime
 import os
+import akshare as ak
+
 
 
 
@@ -20,3 +22,5 @@ if __name__ == '__main__':
     print(date.strftime('%Y-%m-%d'))
     print('bg.svg' not in os.listdir(stock_path))
     download_date(date)
+    stock_zt_pool_em_df = ak.stock_zt_pool_em(date='20240415')
+    print(stock_zt_pool_em_df)
