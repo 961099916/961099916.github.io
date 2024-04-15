@@ -1,11 +1,8 @@
 ---
 title: 北京炒家
 date: 2024-02-22
-meta:
-  - name: referrer
-    content: no-referrer
-
 ---
+
 ## 2018-09-19
 ### 买入
 ##### 中天能源600856
