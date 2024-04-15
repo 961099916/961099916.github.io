@@ -65,7 +65,7 @@ export default hopeTheme({
 
       ],
     },
-    sitemap:false,
+    sitemap:true,
     search: true,
     blog: true,
     // 启用之前需安装 @waline/client
