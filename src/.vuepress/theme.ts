@@ -20,7 +20,7 @@ export default hopeTheme({
   sidebar,
   sidebarSorter: ["date-desc"],
   // 页脚
-  footer: "默认页脚",
+  footer: "九夏博客",
   displayFooter: true,
   // 博客相关
   blog: {
