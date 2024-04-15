@@ -22,7 +22,7 @@ export default hopeTheme({
   navbar,
   // 侧边栏
   sidebar,
-  sidebarSorter: ["date-desc"],
+  sidebarSorter: ["order","date-desc"],
   // 页脚
   footer: "九夏博客",
   displayFooter: false,
