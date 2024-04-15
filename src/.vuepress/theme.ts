@@ -21,7 +21,7 @@ export default hopeTheme({
   sidebarSorter: ["date-desc"],
   // 页脚
   footer: "九夏博客",
-  displayFooter: true,
+  displayFooter: false,
   // 博客相关
   blog: {
     description: "学习",
