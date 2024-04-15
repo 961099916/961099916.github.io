@@ -96,6 +96,7 @@ export default hopeTheme({
       imgSize: true,
       include: true,
       mark: true,
+      markmap: true,
       stylize: [
         {
           matcher: "Recommended",
