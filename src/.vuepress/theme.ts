@@ -38,7 +38,7 @@ export default hopeTheme({
   // 加密配置
   encrypt: {
     config: {
-      "/每日复盘/": ["1234"],
+      "/每日复盘/": ["410439"],
     },
   },
   // 多语言配置
