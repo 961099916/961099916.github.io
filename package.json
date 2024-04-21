@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@vue/repl": "^4.1.1",
-    "@vuepress/bundler-vite": "2.0.0-rc.9",
+    "@vuepress/bundler-vite": "^2.0.0-rc.9",
     "@vuepress/plugin-search": "^2.0.0-rc.24",
     "@waline/client": "^3.1.3",
     "echarts": "^5.5.0",
@@ -25,5 +25,10 @@
     "vuepress-plugin-md-enhance": "^2.0.0-rc.36",
     "vuepress-plugin-search-pro": "^2.0.0-rc.36",
     "vuepress-theme-hope": "2.0.0-rc.36"
+  },
+  "dependencies": {
+    "n": "^9.2.3",
+    "vuepress-vite": "^2.0.0-rc.0",
+    "yarn": "^1.22.22"
   }
 }
