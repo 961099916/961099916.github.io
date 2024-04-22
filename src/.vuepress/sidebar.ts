@@ -37,10 +37,19 @@ export default sidebar({
     },
   ],
   "/理财/": [
+    "总结",
+    "看盘",
+    "弱转强",
     {
-      text: "理财",
+      text: "游资",
       icon: "laptop-code",
-      prefix: "",
+      prefix: "游资",
+      children: "structure",
+    },
+    {
+      text: "个股信息",
+      icon: "laptop-code",
+      prefix: "个股信息",
       children: "structure",
     },
   ],
