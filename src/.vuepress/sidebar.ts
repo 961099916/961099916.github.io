@@ -52,6 +52,12 @@ export default sidebar({
       prefix: "个股信息",
       children: "structure",
     },
+    {
+      text: "题材",
+      icon: "laptop-code",
+      prefix: "题材",
+      children: "structure",
+    },
   ],
   "/读书/": [
     {
