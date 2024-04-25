@@ -6,7 +6,7 @@ import { MR_HOPE_AVATAR } from "./logo.js";
 export default hopeTheme({
   head: [
     ['meta', { name: 'keywords', content: 'antdocs,antdeisgn,vuepress,vuepress-theme,theme,ant,docs,antd,antdocs of vuepress,主题,vuepress主题,antd设计,blog,vuepress-blog' }],
-    ['meta', { name: 'baidu-site-verification', content:'codeva-fi0B6bPNUy'}]
+    ['meta', { name: 'baidu-site-verification', content: 'codeva-fi0B6bPNUy' }]
   ],
   hostname: "https://961099916.github.io",
   darkmode: "switch",
@@ -22,7 +22,7 @@ export default hopeTheme({
   navbar,
   // 侧边栏
   sidebar,
-  sidebarSorter: ["order","date-desc"],
+  sidebarSorter: ["order", "date-desc"],
   // 页脚
   footer: "九夏博客",
   displayFooter: false,
@@ -69,7 +69,7 @@ export default hopeTheme({
 
       ],
     },
-    sitemap:true,
+    sitemap: true,
     search: true,
     blog: true,
     // 启用之前需安装 @waline/client
@@ -83,7 +83,6 @@ export default hopeTheme({
     components: {
       components: ["Badge", "VPCard"],
     },
-
     // 此处开启了很多功能用于演示，你应仅保留用到的功能。
     mdEnhance: {
       align: true,
@@ -150,7 +149,9 @@ export default hopeTheme({
       // install sandpack-vue3 before enabling it
       sandpack: true,
     },
-
+    photoSwipe: {
+      scrollToClose: false
+    },
     // 如果你需要 PWA。安装 @vuepress/plugin-pwa 并取消下方注释
     // pwa: {
     //   favicon: "/favicon.ico",
