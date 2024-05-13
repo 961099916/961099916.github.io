@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <!-- <script src="./echarts.min.js"></script> -->
+  </head>
+
+  <body>
+    <div>
+      选择时间<input type="date" id="date" /><button
+        type="button"
+        onclick="search()"
+      >
+        查询</button
+      ><button type="button" onclick="before()">前一天</button
+      ><button type="button" onclick="next()">后一天</button>
+    </div>
+    <div
+      id="echarts"
+      style="display: flex; flex-wrap: wrap; justify-content: left"
+    ></div>
+
+    <script type="text/javascript">
+      function addDaysToDate(date, days) {
+        var res = new Date(date);
+        res.setDate(res.getDate() + days);
+        return res;
+      }
+      function formatDateTime(date, format) {
+        const o = {
+          "M+": date.getMonth() + 1, // 月份
+          "d+": date.getDate(), // 日
+          "h+": date.getHours() % 12 === 0 ? 12 : date.getHours() % 12, // 小时
+          "H+": date.getHours(), // 小时
+          "m+": date.getMinutes(), // 分
+          "s+": date.getSeconds(), // 秒
+          "q+": Math.floor((date.getMonth() + 3) / 3), // 季度
+          S: date.getMilliseconds(), // 毫秒
+          a: date.getHours() < 12 ? "上午" : "下午", // 上午/下午
+          A: date.getHours() < 12 ? "AM" : "PM", // AM/PM
+        };
+        if (/(y+)/.test(format)) {
+          format = format.replace(
+            RegExp.$1,
+            (date.getFullYear() + "").substr(4 - RegExp.$1.length)
+          );
+        }
+        for (let k in o) {
+          if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(
+              RegExp.$1,
+              RegExp.$1.length === 1
+                ? o[k]
+                : ("00" + o[k]).substr(("" + o[k]).length)
+            );
+          }
+        }
+        return format;
+      }
+      document.getElementById("date").value = formatDateTime(
+        new Date(),
+        "yyyy-MM-dd"
+      );
+      function before() {
+        let date = document.getElementById("date").value;
+        console.log(date);
+        let current = Date.parse(date);
+        console.log(current, new Date());
+        current = addDaysToDate(current, -1);
+        document.getElementById("date").value = formatDateTime(
+          current,
+          "yyyy-MM-dd"
+        );
+        search();
+      }
+      function next() {
+        var date = document.getElementById("date").value;
+        current = Date.parse(date);
+        current = addDaysToDate(current, 1);
+        document.getElementById("date").value = formatDateTime(
+          current,
+          "yyyy-MM-dd"
+        );
+        search();
+      }
+      function search() {
+        var date = document.getElementById("date").value;
+        fetch(
+          "https://flash-api.xuangubao.cn/api/pool/detail?pool_name=limit_up&date=" +
+            date
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            let datas = res.data;
+
+            datas = datas.sort((a, b) => {
+              return a.surge_reason.related_plates[0].plate_name.localeCompare(
+                b.surge_reason.related_plates[0].plate_name
+              );
+            });
+            console.log(datas);
+            let allEcharts = {};
+            var c = document.getElementById("echarts");
+            var childs = c.childNodes;
+
+            for (var i = 0, len = childs.length; i < len; i++) {
+              c.removeChild(childs[0]);
+            }
+
+            for (let i = 0; i < datas.length; i++) {
+              if (
+                i > 0 &&
+                datas[i].surge_reason.related_plates[0].plate_name !=
+                  datas[i - 1].surge_reason.related_plates[0].plate_name
+              ) {
+                c.innerHTML +=
+                  '<div style="width:100vw;height:1px;backgroud-color:black"/>';
+              }
+              c.innerHTML +=
+                '<div id="echarts-' +
+                i +
+                '" style="min-width:350px;width: 9.5vw;height:400px; margin-bottom: 20px"></div>';
+            }
+            for (let i = 0; i < datas.length; i++) {
+              let data = datas[i];
+              let codes = data.symbol.split(".");
+              fetch(
+                "https://zhangjiahao-blog.oss-cn-beijing.aliyuncs.com/d/" +
+                  date +
+                  "/" +
+                  codes[0] +
+                  ".json"
+              )
+                .then((res) => res.json())
+                .then((all) => {
+                  maxPrice = Math.max(
+                    ...all.map((o) => {
+                      return Number(o.precent);
+                    })
+                  );
+                  maxPrice = maxPrice > 10 ? maxPrice : maxPrice;
+                  let maxVol = Math.max(
+                    ...all.map((o) => {
+                      return o.vol;
+                    })
+                  );
+                  let vols = all.map((o) => {
+                    if (o.sob === 0) {
+                      price = o.price;
+                      return 0 - o.vol;
+                    } else {
+                      price = o.price;
+                      return o.vol;
+                    }
+                  });
+                  var myChart = echarts.init(
+                    document.getElementById("echarts-" + i)
+                  );
+                  key = data.surge_reason.related_plates[0].plate_name
+                    ? data.surge_reason.related_plates[0].plate_name
+                    : "其他";
+                  console.log(key);
+                  let charts = allEcharts[key];
+                  if (charts) {
+                    console.log("charts", charts);
+                    allEcharts[key].push(myChart);
+                  } else {
+                    allEcharts[key] = [myChart];
+                  }
+                  option = {
+                    title: {
+                      //1.标题居中
+                      //left的值为'left', 'center', 'right'
+                      left: "center",
+                      //默认为10
+                      //2.主副标题之间的间距
+                      itemGap: 10,
+                      text:
+                        data.stock_chi_name + "-" + data.limit_up_days + "板",
+                      textStyle: {
+                        //文字颜色
+                        color: "#000000",
+                        //字体风格,'normal','italic','oblique'
+                        fontStyle: "normal",
+                        //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+                        fontWeight: "bold",
+                        //字体系列
+                        fontFamily: "sans-serif",
+                        //字体大小
+                        fontSize: 18,
+                      },
+                      //4.副标题
+                      subtext:
+                        "涨停题材:" +
+                        data.surge_reason.related_plates[0].plate_name +
+                        "\n涨停原因:" +
+                        (data.surge_reason.related_plates[0].plate_reason
+                          ? data.surge_reason.related_plates[0].plate_reason
+                          : "其他"), //副标题文本样式
+                      subtextStyle: {
+                        fontSize: 10,
+                        align: "left",
+                      },
+                      //5.grid组件离容器左侧的距离。
+                      // left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比，也
+                      //如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+                      left: "left",
+                    },
+
+                    tooltip: {
+                      //提示框组件，用于配置鼠标滑过或点击图表时的显示框。
+                      show: true, // 是否显示
+                      trigger: "axis", // 触发类型  'item'图形触发：散点图，饼图等无类目轴的图表中使用； 'axis'坐标轴触发；'none'：什么都不触发。
+                      axisPointer: {
+                        // 坐标轴指示器配置项。
+                        type: "cross", // 'line' 直线指示器  'shadow' 阴影指示器  'none' 无指示器  'cross' 十字准星指示器。
+                      },
+                      // showContent: true, //是否显示提示框浮层，默认显示。
+                      // triggerOn: 'mouseover', // 触发时机'click'鼠标点击时触发。
+                      backgroundColor: "rgba(50,50,50,0.7)", // 提示框浮层的背景颜色。
+                      borderColor: "#333", // 提示框浮层的边框颜色。
+                      borderWidth: 0, // 提示框浮层的边框宽。
+                      padding: 5, // 提示框浮层内边距，
+                      textStyle: {
+                        // 提示框浮层的文本样式。
+                        color: "#fff",
+                        fontStyle: "normal",
+                        fontWeight: "normal",
+                        fontFamily: "sans-serif",
+                        fontSize: 14,
+                      },
+                      // 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
+                      // 模板变量有 {a}, {b}，{c}，分别表示系列名，数据名，数据值等
+                      // formatter: '{a}--{b} 的成绩是 {c}'
+                      formatter: function (arg) {
+                        let datas = all.filter((o) => o.time == arg[0].name);
+                        return (
+                          datas[0].time +
+                          "</br>涨幅：" +
+                          datas[0].precent +
+                          "</br>成交量：" +
+                          datas[0].vol +
+                          "</br>价格:" +
+                          datas[0].price +
+                          "</br>均价" +
+                          datas[0].avg
+                        );
+                      },
+                    },
+                    xAxis: [
+                      {
+                        type: "category",
+                        boundaryGap: false,
+                        data: all.map((o) => {
+                          return o.time;
+                        }),
+                        splitArea: {
+                          //网格区域
+                          show: true, //是否显示
+                        },
+                      },
+                    ],
+                    yAxis: [
+                      {
+                        type: "value",
+                        min: 0 - maxPrice,
+                        max: maxPrice,
+                        show: true,
+                        maxInterval: 2,
+                        splitArea: {
+                          //网格区域
+                          show: true, //是否显示
+                        },
+                        axisLine: {
+                          show: true, // 是否显示坐标轴轴线
+                          symbol: ["none", "arrow"], // 轴线两端箭头，两个值，none表示没有箭头，arrow表示有箭头
+                          symbolSize: [1, 1], // 轴线两端箭头大小，数值一表示宽度，数值二表示高度
+                          lineStyle: {
+                            color: "#333", // 坐标轴线线的颜色
+                            width: "1", // 坐标轴线线宽
+                            type: "dashed", // 坐标轴线线的类型（'solid'，实线类型；'dashed'，虚线类型；'dotted',点状类型）
+                          },
+                        },
+                      },
+                    ],
+                    series: [
+                      {
+                        name: "vol",
+                        type: "bar",
+                        data: vols.map((o) => {
+                          return (o * maxPrice) / maxVol;
+                        }),
+                        itemStyle: {
+                          color: function (params) {
+                            var index_color = params.value;
+                            if (index_color <= 0) {
+                              return "#20B2AA";
+                            } else {
+                              return "#FF6347";
+                            }
+                          },
+                        },
+                      },
+                      {
+                        name: "price",
+                        type: "line",
+                        symbol: "none",
+                        smooth: true,
+                        color: "#00BFFF", //设定实线点的颜色
+                        lineStyle: {
+                          normal: {
+                            width: 2,
+                            color: "#00BFFF", //设置实线的颜色
+                          },
+                        },
+                        data: all.map((o) => {
+                          return o.precent;
+                        }),
+                      },
+                      {
+                        name: "avg",
+                        type: "line",
+                        symbol: "none",
+                        smooth: true,
+                        color: "#DAA520", //设定实线点的颜色
+                        lineStyle: {
+                          normal: {
+                            width: 1,
+                            color: "#DAA520", //设置实线的颜色
+                          },
+                        },
+                        data: all.map((o) => {
+                          return o.avg_precent;
+                        }),
+                      },
+                    ],
+                  };
+                  myChart.setOption(option, { notMerge: true });
+                  for (let key of Object.keys(allEcharts)) {
+                    echarts.connect(allEcharts[key]);
+                  }
+                  console.log(allEcharts);
+                });
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
