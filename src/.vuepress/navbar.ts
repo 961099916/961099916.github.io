@@ -2,7 +2,6 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
-  { text: "每日复盘", icon: "mdi--calendar-day", link: "/每日复盘/" },
   {
     text: "Java",
     icon: "devicon-plain--java-wordmark",
@@ -14,14 +13,39 @@ export default navbar([
     link: "/框架/",
   },
   {
+    text: "数据库",
+    icon: "bxs--component",
+    link: "/数据库/",
+  },
+  {
     text: "中间件",
     icon: "bxs--component",
     link: "/中间件/",
   },
   {
+    text: "算法",
+    icon: "bxs--component",
+    link: "/算法/",
+  },
+  {
     text: "运维",
     icon: "carbon--operations-record",
     link: "/运维/",
+  },
+  {
+    text: "通用",
+    icon: "carbon--operations-record",
+    link: "/通用/",
+  },
+  {
+    text: "架构",
+    icon: "carbon--operations-record",
+    link: "/架构/",
+  },
+  {
+    text: "实践",
+    icon: "carbon--operations-record",
+    link: "/实践/",
   },
   {
     text: "理财",
@@ -34,4 +58,5 @@ export default navbar([
     link: "/读书/",
 
   },
+  { text: "每日复盘", icon: "mdi--calendar-day", link: "/每日复盘/" },
 ]);

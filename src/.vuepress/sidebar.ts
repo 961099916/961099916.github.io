@@ -4,14 +4,7 @@ export default sidebar({
 
   "/": [
   ],
-  "/每日复盘/": [
-    {
-      text: "每日复盘",
-      icon: "laptop-code",
-      prefix: "",
-      children: "structure",
-    },
-  ],
+
   "/java/": [
     {
       text: "JAVA",
@@ -28,9 +21,65 @@ export default sidebar({
       children: "structure",
     },
   ],
+  "/框架/": [
+    {
+      text: "框架",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
   "/运维/": [
     {
       text: "运维",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/架构/": [
+    {
+      text: "架构",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/数据库/": [
+    {
+      text: "数据库",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/算法/": [
+    {
+      text: "算法",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/通用/": [
+    {
+      text: "通用",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/实践/": [
+    {
+      text: "实践",
+      icon: "laptop-code",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/每日复盘/": [
+    {
+      text: "每日复盘",
       icon: "laptop-code",
       prefix: "",
       children: "structure",
@@ -67,12 +116,5 @@ export default sidebar({
       children: "structure",
     },
   ],
-  "/框架/": [
-    {
-      text: "框架",
-      icon: "laptop-code",
-      prefix: "",
-      children: "structure",
-    },
-  ],
+
 });
