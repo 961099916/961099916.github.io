@@ -8,7 +8,7 @@ export default sidebar({
   "/java/": [
     {
       text: "JAVA",
-      icon: "laptop-code",
+      icon: "devicon-plain--java-wordmark",
       prefix: "",
       children: "structure",
     },
@@ -16,7 +16,7 @@ export default sidebar({
   "/中间件/": [
     {
       text: "中间件",
-      icon: "laptop-code",
+      icon: "bxs--component",
       prefix: "",
       children: "structure",
     },
@@ -32,7 +32,7 @@ export default sidebar({
   "/运维/": [
     {
       text: "运维",
-      icon: "laptop-code",
+      icon: "carbon--operations-record",
       prefix: "",
       children: "structure",
     },
@@ -40,7 +40,7 @@ export default sidebar({
   "/架构/": [
     {
       text: "架构",
-      icon: "laptop-code",
+      icon: "reference-architecture",
       prefix: "",
       children: "structure",
     },
@@ -48,7 +48,7 @@ export default sidebar({
   "/数据库/": [
     {
       text: "数据库",
-      icon: "laptop-code",
+      icon: "database",
       prefix: "",
       children: "structure",
     },
@@ -56,7 +56,7 @@ export default sidebar({
   "/算法/": [
     {
       text: "算法",
-      icon: "laptop-code",
+      icon: "algorithms",
       prefix: "",
       children: "structure",
     },
@@ -64,7 +64,7 @@ export default sidebar({
   "/通用/": [
     {
       text: "通用",
-      icon: "laptop-code",
+      icon: "cics-program",
       prefix: "",
       children: "structure",
     },
@@ -72,7 +72,7 @@ export default sidebar({
   "/实践/": [
     {
       text: "实践",
-      icon: "laptop-code",
+      icon: "mask-happly-bold",
       prefix: "",
       children: "structure",
     },

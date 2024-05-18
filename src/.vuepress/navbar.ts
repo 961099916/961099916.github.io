@@ -9,12 +9,12 @@ export default navbar([
   },
   {
     text: "框架",
-    icon: "iconoir--frame",
+    icon: "laptop-code",
     link: "/框架/",
   },
   {
     text: "数据库",
-    icon: "bxs--component",
+    icon: "database",
     link: "/数据库/",
   },
   {
@@ -24,7 +24,7 @@ export default navbar([
   },
   {
     text: "算法",
-    icon: "bxs--component",
+    icon: "algorithms",
     link: "/算法/",
   },
   {
@@ -34,17 +34,17 @@ export default navbar([
   },
   {
     text: "通用",
-    icon: "carbon--operations-record",
+    icon: "cics-program",
     link: "/通用/",
   },
   {
     text: "架构",
-    icon: "carbon--operations-record",
+    icon: "reference-architecture",
     link: "/架构/",
   },
   {
     text: "实践",
-    icon: "carbon--operations-record",
+    icon: "mask-happly-bold",
     link: "/实践/",
   },
   {
