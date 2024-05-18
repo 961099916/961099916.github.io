@@ -1,6 +1,11 @@
 ---
 title: Java基础
 order: 2
+watermark:
+  width: 200
+  height: 200
+  content: Your content
+  opacity: 0.5
 ---
 
 ```markmap
