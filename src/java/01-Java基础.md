@@ -21,7 +21,6 @@ order: 2
 
 ```
 
-
 ## 面向对象
 
 ### 封装
@@ -220,70 +219,170 @@ public class GenericsDemo24{
 
 #### 泛型的上下限
 
+上限：
+
+```java
+class Info<T extends Number>{    // 此处泛型只能是数字类型
+    private T var ;        // 定义泛型变量
+    public void setVar(T var){
+        this.var = var ;
+    }
+    public T getVar(){
+        return this.var ;
+    }
+    public String toString(){    // 直接打印
+        return this.var.toString() ;
+    }
+}
+public class demo1{
+    public static void main(String args[]){
+        Info<Integer> i1 = new Info<Integer>() ;        // 声明Integer的泛型对象
+    }
+}
+
+```
+
+下限:
+
+```java
+class Info<T>{
+    private T var ;        // 定义泛型变量
+    public void setVar(T var){
+        this.var = var ;
+    }
+    public T getVar(){
+        return this.var ;
+    }
+    public String toString(){    // 直接打印
+        return this.var.toString() ;
+    }
+}
+public class GenericsDemo21{
+    public static void main(String args[]){
+        Info<String> i1 = new Info<String>() ;        // 声明String的泛型对象
+        Info<Object> i2 = new Info<Object>() ;        // 声明Object的泛型对象
+        i1.setVar("hello") ;
+        i2.setVar(new Object()) ;
+        fun(i1) ;
+        fun(i2) ;
+    }
+    public static void fun(Info<? super String> temp){    // 只能接收String或Object类型的泛型，String类的父类只有Object类
+        System.out.print(temp + ", ") ;
+    }
+}
+```
+
+```java
+<?> 无限制通配符
+<? extends E> extends 关键字声明了类型的上界，表示参数化的类型可能是所指定的类型，或者是此类型的子类
+<? super E> super 关键字声明了类型的下界，表示参数化的类型可能是指定的类型，或者是此类型的父类
+
+// 使用原则《Effictive Java》
+// 为了获得最大限度的灵活性，要在表示 生产者或者消费者 的输入参数上使用通配符，使用的规则就是：生产者有上限、消费者有下限
+1. 如果参数化类型表示一个 T 的生产者，使用 < ? extends T>;
+2. 如果它表示一个 T 的消费者，就使用 < ? super T>；
+3. 如果既是生产又是消费，那使用通配符就没什么意义了，因为你需要的是精确的参数类型。
+```
+
 #### 泛型数组
 
+```java
+List<String>[] list11 = new ArrayList<String>[10]; //编译错误，非法创建
+List<String>[] list12 = new ArrayList<?>[10]; //编译错误，需要强转类型
+List<String>[] list13 = (List<String>[]) new ArrayList<?>[10]; //OK，但是会有警告
+List<?>[] list14 = new ArrayList<String>[10]; //编译错误，非法创建
+List<?>[] list15 = new ArrayList<?>[10]; //OK
+List<String>[] list6 = new ArrayList[10]; //OK，但是会有警告
+```
+
 ### 深入理解泛型
+
+::: tip 什么是泛型擦除
 Java泛型这个特性是从JDK 1.5才开始加入的，因此为了兼容之前的版本，Java泛型的实现采取了“伪泛型”的策略，即Java在语法上支持泛型，但是在编译阶段会进行所谓的“类型擦除”（Type Erasure），将所有的泛型表示（尖括号中的内容）都替换为具体的类型（其对应的原生态类型），就像完全没有泛型一样。
+:::
 
 #### 泛型的擦除原则
-- 消除类型参数声明，即删除<>及其包围的部分。
-- 根据类型参数的上下界推断并替换所有的类型参数为原生态类型：如果类型参数是无限制通配符或没有上下界限定则替换为Object，如果存在上下界限定则根据子类替换原则取类型参数的最左边限定类型（即父类）。
-- 为了保证类型安全，必要时插入强制类型转换代码。
-- 自动产生“桥接方法”以保证擦除类型后的代码仍然具有泛型的“多态性”。
+
+* 消除类型参数声明，即删除<>及其包围的部分。
+* 根据类型参数的上下界推断并替换所有的类型参数为原生态类型：如果类型参数是无限制通配符或没有上下界限定则替换为Object，如果存在上下界限定则根据子类替换原则取类型参数的最左边限定类型（即父类）。
+* 为了保证类型安全，必要时插入强制类型转换代码。
+* 自动产生“桥接方法”以保证擦除类型后的代码仍然具有泛型的“多态性”。
 
 #### 如何进行擦除
 
-1. 擦除类定义中的类型参数 - 无限制类型擦除
-2. 擦除类定义中的类型参数 - 有限制类型擦除
-3. 擦除方法定义中的类型参数
+* 擦除类定义中的类型参数 - 无限制类型擦除
 
-#### 如何证明类型的擦除
+![无限制类型擦除](https://zhangjiahao-prd.oss-cn-beijing.aliyuncs.com/uPic/i5JSKe.png)
 
-#### 如何理解类型擦除后保留的原始类型
+* 擦除类定义中的类型参数 - 有限制类型擦除
 
-#### 如何理解泛型的编译期检查
+![有限制类型擦除](https://zhangjiahao-prd.oss-cn-beijing.aliyuncs.com/uPic/FODbxB.png)
 
+* 擦除方法定义中的类型参数
+
+![擦除方法定义中的类型参数](https://zhangjiahao-prd.oss-cn-beijing.aliyuncs.com/uPic/fwUrXk.png)
 
 #### 如何理解泛型的多态--泛型的桥接方法
 
-
 #### 如何理解基本类型不能作为泛型类型
 
-#### 泛型数组：能不能采用具体的泛型类型进行初始化
+因为当类型擦除后，原始类型变为Object，但是Object类型不能存储int值，只能引用Integer的值。
 
-#### 泛型数组：如何正确的初始化泛型数组实例
+#### 如何理解泛型类型不能实例化？
 
-#### 如何理解泛型类中的静态方法和静态变量
+因为在 Java 编译期没法确定泛型参数化类型，也就找不到对应的类字节码文件，所以自然就不行了，此外由于T 被擦除为 Object，如果可以 new T() 则就变成了 new Object()，失去了本意。    
+如果我们确实需要实例化一个泛型，应该如何做呢？可以通过反射实现：
 
-#### 如何理解异常中使用泛型
+```java
+static <T> T newTclass (Class < T > clazz) throws InstantiationException, IllegalAccessException {
+    T obj = clazz.newInstance();
+    return obj;
+}
+```
 
 #### 如何获取泛型的参数类型
 
+可以通过反射进行获取参数的实际类型，编译阶段无法判定类型。
+
 ## 注解机制
 
-
 ### 注解基础
+
 注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。
 它主要的作用有以下四方面：
-- 生成文档，通过代码里标识的元数据生成javadoc文档。
-- 编译检查，通过代码里标识的元数据让编译器在编译期间进行检查验证。
-- 编译时动态处理，编译时通过代码里标识的元数据动态处理，例如动态生成代码。
-- 运行时动态处理，运行时通过代码里标识的元数据动态处理，例如使用反射注入实例。
+
+* ==生成文档==，通过代码里标识的元数据生成javadoc文档。
+* ==编译检查==，通过代码里标识的元数据让编译器在编译期间进行检查验证。
+* ==编译时动态处理==，编译时通过代码里标识的元数据动态处理，例如动态生成代码。
+* ==运行时动态处理==，运行时通过代码里标识的元数据动态处理，例如使用反射注入实例。
 
 注解的常见分类：
-- Java自带的标准注解，包括@Override、@Deprecated和@SuppressWarnings，分别用于标明重写某个方法、标明某个类或方法过时、标明要忽略的警告，用这些注解标明后编译器就会进行检查。
-- 元注解，元注解是用于定义注解的注解，包括@Retention、@Target、@Inherited、@Documented，@Retention用于标明注解被保留的阶段，@Target用于标明注解使用的范围，@Inherited用于标明注解可继承，@Documented用于标明是否生成javadoc文档。
-- 自定义注解，可以根据自己的需求定义注解，并可用元注解对自定义注解进行注解。
+
+* Java自带的标准注解，包括@Override、@Deprecated和@SuppressWarnings，分别用于标明重写某个方法、标明某个类或方法过时、标明要忽略的警告，用这些注解标明后编译器就会进行检查。
+* 元注解，元注解是用于定义注解的注解，包括@Retention、@Target、@Inherited、@Documented，@Retention用于标明注解被保留的阶段，@Target用于标明注解使用的范围，@Inherited用于标明注解可继承，@Documented用于标明是否生成javadoc文档。
+* 自定义注解，可以根据自己的需求定义注解，并可用元注解对自定义注解进行注解。
 
 #### Java自带的标准注解
-Java 1.5开始自带的标准注解，包括@Override、@Deprecated和@SuppressWarnings：
-- @Override：表示当前的方法定义将覆盖父类中的方法
-- @Deprecated：表示代码被弃用，如果使用了被@Deprecated注解的代码则编译器将发出警告
-- @SuppressWarnings：表示关闭编译器警告信息
 
+Java 1.5开始自带的标准注解，包括@Override、@Deprecated和@SuppressWarnings：
+
+* @Override：表示当前的方法定义将覆盖父类中的方法
+* @Deprecated：表示代码被弃用，如果使用了被@Deprecated注解的代码则编译器将发出警告
+* @SuppressWarnings：表示关闭编译器警告信息
 
 #### 元注解
-在JDK 1.5中提供了4个标准的元注解：@Target，@Retention，@Documented，@Inherited, 在JDK 1.8中提供了两个元注解 @Repeatable和@Native
+
+在JDK 1.5中提供了4个标准的元注解：
+
+* @Target：描述注解的使用范围（即：被修饰的注解可以用在什么地方）。
+* @Retention：描述注解保留的时间范围（即：被描述的注解在它所修饰的类中可以被保留到何时）。
+* @Documented：描述在使用 javadoc 工具为类生成帮助文档时是否要保留其注解信息。
+* @Inherited：描述注解是否可以被子类继承。
+
+在JDK 1.8中提供了两个元注解：
+
+* @@Repeatable：加上@Repeatable, 指向存储注解Authorities，在使用时候，直接可以重复使用Authority注解。
+* @Native：使用 @Native 注解修饰成员变量，则表示这个变量可以被本地代码引用，常常被代码生成工具使用。
 
 #### 自定义注解
 
@@ -295,14 +394,10 @@ Java 1.5开始自带的标准注解，包括@Override、@Deprecated和@SuppressW
 
 #### 注解实现的原理
 
-### 注解的使用场景
-
-#### 配置化到注解化 - 框架的演进
-
-#### 继承实现到注解实现 - Junit3到Junit4
+* [java注解的本质以及注解的底层实现原理](https://blog.csdn.net/qq_20009015/article/details/106038023)
+* [annotation-processing](https://www.race604.com/annotation-processing/)
 
 #### 自定义注解和AOP - 通过切面实现解耦
-
 
 ## 异常机制
 
@@ -326,8 +421,17 @@ Java 1.5开始自带的标准注解，包括@Override、@Deprecated和@SuppressW
 
 ### SPI 机制介绍
 
+::: tip 什么是SPI
+SPI（Service Provider Interface），是JDK内置的一种 服务提供发现机制，可以用来启用框架扩展和替换组件，主要是被框架的开发人员使用，比如java.sql. Driver接口，其他不同厂商可以针对同一接口做出不同的实现，MySQL和PostgreSQL都有不同的实现提供给用户，而Java的SPI机制可以为某个接口寻找服务实现。Java中SPI机制主要思想是将装配的控制权移到程序之外，在模块化设计中这个机制尤其重要，其核心思想就是==解耦==。
+:::
+SPI整体机制图如下：
+
+![SPI整体机制图](https://zhangjiahao-prd.oss-cn-beijing.aliyuncs.com/uPic/romWbY.png)
+
+当服务的提供者提供了一种接口的实现之后，需要在classpath下的META-INF/services/目录里创建一个以服务接口命名的文件，这个文件里的内容就是这个接口的具体的实现类。当其他的程序需要这个服务的时候，就可以通过查找这个jar包（一般都是以jar包做依赖）的META-INF/services/中的配置文件，配置文件中有接口的具体实现类名，可以根据这个类名进行加载实例化，就可以使用该服务了。JDK中查找服务的实现的工具类是：java.util. ServiceLoader。
+
 ### SPI 机制的使用
 
 ### SPI 机制的实现原理
 
-[^lishitihuan]: 里式替换原则
+[^lishitihuan]: 子类型（subtype）必须能够替换掉他们的基类型（base type）。
