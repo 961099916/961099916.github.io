@@ -1,6 +1,6 @@
 ---
 title: JDK 动态代理和 CGLIB 代理
-date: 2024-02-18
+order: 101
 ---
 
 ## 什么是代理
