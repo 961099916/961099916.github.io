@@ -4,7 +4,7 @@ layout: BlogHome
 icon: home
 title: 主页
 heroImage: /logo.png
-bgImage: '/bg.svg'
+bgImage: '/bg.jpg'
 heroText: 九夏的博客
 heroFullScreen: true
 tagline: 个人成长记录

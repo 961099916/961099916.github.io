@@ -39,7 +39,7 @@ export default hopeTheme({
 
     },
   },
-
+  headerDepth: 4,
   // 加密配置
   encrypt: {
     config: {
