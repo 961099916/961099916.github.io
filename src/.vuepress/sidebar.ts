@@ -7,33 +7,81 @@ export default sidebar({
 
   "/java/": [
     {
-      text: "JAVA",
+      text: "教程",
       icon: "devicon-plain--java-wordmark",
-      prefix: "",
+      prefix: "教程",
+      children: "structure",
+    },
+    {
+      text: "面试",
+      icon: "devicon-plain--java-wordmark",
+      prefix: "面试",
       children: "structure",
     },
   ],
   "/中间件/": [
     {
-      text: "中间件",
+      text: "tomcat",
       icon: "bxs--component",
-      prefix: "",
+      prefix: "tomcat",
+      children: "structure",
+    },
+    {
+      text: "xxl-job",
+      icon: "bxs--component",
+      prefix: "xxl-job",
+      children: "structure",
+    },
+    {
+      text: "nacos",
+      icon: "bxs--component",
+      prefix: "nacos",
+      children: "structure",
+    },
+    {
+      text: "rocketmq",
+      icon: "bxs--component",
+      prefix: "rocketmq",
       children: "structure",
     },
   ],
   "/框架/": [
     {
-      text: "框架",
+      text: "mybatis",
       icon: "laptop-code",
-      prefix: "",
+      prefix: "mybatis",
+      children: "structure",
+    },
+    {
+      text: "spring",
+      icon: "laptop-code",
+      prefix: "spring",
       children: "structure",
     },
   ],
   "/运维/": [
     {
-      text: "运维",
+      text: "Docker",
       icon: "carbon--operations-record",
-      prefix: "",
+      prefix: "docker",
+      children: "structure",
+    },
+    {
+      text: "Kubernetes",
+      icon: "carbon--operations-record",
+      prefix: "kubernetes",
+      children: "structure",
+    },
+    {
+      text: "istio",
+      icon: "carbon--operations-record",
+      prefix: "istio",
+      children: "structure",
+    },
+    {
+      text: "linux",
+      icon: "carbon--operations-record",
+      prefix: "linux",
       children: "structure",
     },
   ],
@@ -47,33 +95,82 @@ export default sidebar({
   ],
   "/数据库/": [
     {
-      text: "数据库",
+      text: "mysql",
       icon: "database",
-      prefix: "",
+      prefix: "mysql",
       children: "structure",
     },
+    {
+      text: "redis",
+      icon: "database",
+      prefix: "redis",
+      children: "structure",
+    },
+    {
+      text: "elasticsearch",
+      icon: "database",
+      prefix: "elasticsearch",
+      children: "structure",
+    },
+    {
+      text: "mongodb",
+      icon: "database",
+      prefix: "mongodb",
+      children: "structure",
+    },
+
   ],
   "/算法/": [
     {
-      text: "算法",
+      text: "数据结构",
       icon: "algorithms",
-      prefix: "",
+      prefix: "数据结构",
+      children: "structure",
+    },
+    {
+      text: "排序",
+      icon: "algorithms",
+      prefix: "排序",
+      children: "structure",
+    },
+    {
+      text: "搜索",
+      icon: "algorithms",
+      prefix: "搜索",
+      children: "structure",
+    },
+    {
+      text: "领域算法",
+      icon: "algorithms",
+      prefix: "领域算法",
+      children: "structure",
+    },
+    {
+      text: "算法思想",
+      icon: "algorithms",
+      prefix: "算法思想",
       children: "structure",
     },
   ],
   "/通用/": [
     {
-      text: "通用",
+      text: "设计模式",
       icon: "cics-program",
-      prefix: "",
+      prefix: "设计模式",
+      children: "structure",
+    },
+    {
+      text: "操作系统",
+      icon: "cics-program",
+      prefix: "操作系统",
       children: "structure",
     },
   ],
   "/实践/": [
     {
-      text: "实践",
+      text: "工作",
       icon: "mask-happly-bold",
-      prefix: "",
+      prefix: "工作",
       children: "structure",
     },
   ],
