@@ -1,6 +1,6 @@
 ---
 title: Java 基础面试题
-order: 91
+order: 1
 ---
 
 ## 1. Java 语言有哪些特点
