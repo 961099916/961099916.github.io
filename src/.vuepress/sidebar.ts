@@ -168,9 +168,9 @@ export default sidebar({
   ],
   "/实践/": [
     {
-      text: "工作",
+      text: "实践",
       icon: "mask-happly-bold",
-      prefix: "工作",
+      prefix: "",
       children: "structure",
     },
   ],
