@@ -8,13 +8,13 @@ export default sidebar({
   "/java/": [
     {
       text: "教程",
-      icon: "devicon-plain--java-wordmark",
+      icon: "",
       prefix: "教程",
       children: "structure",
     },
     {
       text: "面试",
-      icon: "devicon-plain--java-wordmark",
+      icon: "",
       prefix: "面试",
       children: "structure",
     },
@@ -48,13 +48,13 @@ export default sidebar({
   "/框架/": [
     {
       text: "mybatis",
-      icon: "laptop-code",
+      icon: "",
       prefix: "mybatis",
       children: "structure",
     },
     {
       text: "spring",
-      icon: "laptop-code",
+      icon: "",
       prefix: "spring",
       children: "structure",
     },
