@@ -22,25 +22,25 @@ export default sidebar({
   "/中间件/": [
     {
       text: "tomcat",
-      icon: "bxs--component",
+      icon: "",
       prefix: "tomcat",
       children: "structure",
     },
     {
       text: "xxl-job",
-      icon: "bxs--component",
+      icon: "",
       prefix: "xxl-job",
       children: "structure",
     },
     {
       text: "nacos",
-      icon: "bxs--component",
+      icon: "",
       prefix: "nacos",
       children: "structure",
     },
     {
       text: "rocketmq",
-      icon: "bxs--component",
+      icon: "",
       prefix: "rocketmq",
       children: "structure",
     },
