@@ -59,4 +59,5 @@ export default navbar([
 
   },
   { text: "每日复盘", icon: "mdi--calendar-day", link: "/每日复盘/" },
+  { text: "我的简历", icon: "mdi--calendar-day", link: "/其他/简历" },
 ]);
