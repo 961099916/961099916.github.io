@@ -47,11 +47,11 @@ export default navbar([
     icon: "mask-happly-bold",
     link: "/实践/",
   },
-  {
-    text: "理财",
-    icon: "dashicons--money",
-    link: "/理财/",
-  },
+  // {
+  //   text: "理财",
+  //   icon: "dashicons--money",
+  //   link: "/理财/",
+  // },
   {
     text: "读书",
     icon: "iconoir--book",
