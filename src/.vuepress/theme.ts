@@ -159,6 +159,7 @@ export default hopeTheme({
       // 在启用之前安装 @vue/repl
       vuePlayground: true,
       spoiler: true,
+      plantuml: true,
 
       // install sandpack-vue3 before enabling it
       sandpack: true,
