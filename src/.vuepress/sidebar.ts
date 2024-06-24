@@ -7,83 +7,38 @@ export default sidebar({
 
   "/java/": [
     {
-      text: "教程",
+      text: "java",
       icon: "",
-      prefix: "教程",
+      prefix: "",
       children: "structure",
     },
-    {
-      text: "面试",
-      icon: "",
-      prefix: "面试",
-      children: "structure",
-    },
+
   ],
   "/中间件/": [
     {
-      text: "tomcat",
+      text: "中间件",
       icon: "",
-      prefix: "tomcat",
+      prefix: "",
       children: "structure",
     },
-    {
-      text: "xxl-job",
-      icon: "",
-      prefix: "xxl-job",
-      children: "structure",
-    },
-    {
-      text: "nacos",
-      icon: "",
-      prefix: "nacos",
-      children: "structure",
-    },
-    {
-      text: "rocketmq",
-      icon: "",
-      prefix: "rocketmq",
-      children: "structure",
-    },
+
   ],
   "/框架/": [
     {
-      text: "mybatis",
+      text: "框架",
       icon: "",
-      prefix: "mybatis",
+      prefix: "",
       children: "structure",
     },
-    {
-      text: "spring",
-      icon: "",
-      prefix: "spring",
-      children: "structure",
-    },
+
   ],
   "/运维/": [
     {
-      text: "Docker",
+      text: "运维",
       icon: "",
-      prefix: "docker",
+      prefix: "",
       children: "structure",
-    },
-    {
-      text: "Kubernetes",
-      icon: "",
-      prefix: "kubernetes",
-      children: "structure",
-    },
-    {
-      text: "istio",
-      icon: "",
-      prefix: "istio",
-      children: "structure",
-    },
-    {
-      text: "linux",
-      icon: "",
-      prefix: "linux",
-      children: "structure",
-    },
+    }
   ],
   "/架构/": [
     {
@@ -95,76 +50,29 @@ export default sidebar({
   ],
   "/数据库/": [
     {
-      text: "mysql",
+      text: "数据库",
       icon: "",
-      prefix: "mysql",
+      prefix: "",
       children: "structure",
-    },
-    {
-      text: "redis",
-      icon: "",
-      prefix: "redis",
-      children: "structure",
-    },
-    {
-      text: "elasticsearch",
-      icon: "",
-      prefix: "elasticsearch",
-      children: "structure",
-    },
-    {
-      text: "mongodb",
-      icon: "",
-      prefix: "mongodb",
-      children: "structure",
-    },
+    }
 
   ],
   "/算法/": [
     {
-      text: "数据结构",
+      text: "算法",
       icon: "",
-      prefix: "数据结构",
+      prefix: "",
       children: "structure",
-    },
-    {
-      text: "排序",
-      icon: "",
-      prefix: "排序",
-      children: "structure",
-    },
-    {
-      text: "搜索",
-      icon: "",
-      prefix: "搜索",
-      children: "structure",
-    },
-    {
-      text: "领域算法",
-      icon: "",
-      prefix: "领域算法",
-      children: "structure",
-    },
-    {
-      text: "算法思想",
-      icon: "",
-      prefix: "算法思想",
-      children: "structure",
-    },
+    }
   ],
   "/通用/": [
     {
-      text: "设计模式",
+      text: "通用",
       icon: "",
-      prefix: "设计模式",
+      prefix: "",
       children: "structure",
     },
-    {
-      text: "操作系统",
-      icon: "",
-      prefix: "操作系统",
-      children: "structure",
-    },
+
   ],
   "/实践/": [
     {
@@ -208,6 +116,14 @@ export default sidebar({
   "/读书/": [
     {
       text: "读书",
+      icon: "",
+      prefix: "",
+      children: "structure",
+    },
+  ],
+  "/面试/": [
+    {
+      text: "面试",
       icon: "",
       prefix: "",
       children: "structure",
