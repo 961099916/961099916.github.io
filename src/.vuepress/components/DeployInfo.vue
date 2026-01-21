@@ -10,31 +10,17 @@ const deployInfo = ref(null);
 const loading = ref(true);
 
 onMounted(async () => {
-  try {
-    const response = await fetch('/deploy-info.json');
-    if (response.ok) {
-      deployInfo.value = await response.json();
+    try {
+        const response = await fetch('/deploy-info.json');
+        if (response.ok) {
+            deployInfo.value = await response.json();
+        }
+    } catch (e) {
+        console.log('无法获取部署信息');
+    } finally {
+        loading.value = false;
     }
-  } catch (e) {
-    console.log('无法获取部署信息');
-  } finally {
-    loading.value = false;
-  }
 });
-
-const formatTime = (isoString) => {
-  if (!isoString) return '';
-  const date = new Date(isoString);
-  return date.toLocaleString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  });
-};
 </script>
 
 <template>
@@ -42,7 +28,7 @@ const formatTime = (isoString) => {
     <span class="deploy-badge">
       <span class="icon">🚀</span>
       <span class="label">部署时间：</span>
-      <span class="time">{{ formatTime(deployInfo.deployTime) }}</span>
+      <span class="time">{{ deployInfo.deployTime }}</span>
     </span>
   </div>
 </template>
