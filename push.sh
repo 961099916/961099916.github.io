@@ -11,7 +11,7 @@ SITEMAP_URL="${SITE_URL}/sitemap.xml"
 
 # 百度站长平台API推送Token (在百度站长平台 -> 资源提交 -> API提交 获取)
 # 格式: site=你的网站&token=你的token
-BAIDU_TOKEN=""
+BAIDU_TOKEN="WS4X0EpNPLfsjrGs"
 
 # Bing站长平台API密钥 (在 Bing Webmaster Tools -> Settings -> API access 获取)
 BING_API_KEY=""
