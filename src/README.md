@@ -10,3 +10,5 @@ heroFullScreen: true
 tagline: 个人成长记录
 footer:  京ICP备2023005466号
 ---
+
+<DeployInfo />

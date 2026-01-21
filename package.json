@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/generate-deploy-time.js",
     "build": "vuepress-vite build src",
     "docs:clean-dev": "vuepress-vite dev src --clean-cache",
     "dev": "vuepress-vite dev src",
