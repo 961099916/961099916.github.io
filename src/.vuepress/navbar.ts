@@ -47,22 +47,22 @@ export default navbar([
     icon: "reference-architecture",
     link: "/面试/",
   },
-  // {
-  //   text: "实践",
-  //   icon: "mask-happly-bold",
-  //   link: "/实践/",
-  // },
-  // {
-  //   text: "理财",
-  //   icon: "dashicons--money",
-  //   link: "/理财/",
-  // },
-  // {
-  //   text: "读书",
-  //   icon: "iconoir--book",
-  //   link: "/读书/",
+  {
+    text: "实践",
+    icon: "mask-happly-bold",
+    link: "/实践/",
+  },
+  {
+    text: "理财",
+    icon: "dashicons--money",
+    link: "/理财/",
+  },
+  {
+    text: "读书",
+    icon: "iconoir--book",
+    link: "/读书/",
 
-  // },
-  // { text: "每日复盘", icon: "mdi--calendar-day", link: "/每日复盘/" },
-  // { text: "我的简历", icon: "mdi--calendar-day", link: "/其他/简历" },
+  },
+  { text: "每日复盘", icon: "mdi--calendar-day", link: "/每日复盘/" },
+  { text: "我的简历", icon: "mdi--calendar-day", link: "/其他/简历" },
 ]);

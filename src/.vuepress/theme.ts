@@ -1,5 +1,4 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 import { MR_HOPE_AVATAR } from "./logo.js";
@@ -45,7 +44,7 @@ export default hopeTheme({
     config: {
       "/读书": ["410439"],
       "/理财": ["410439"],
-      // "/每日复盘": ["410439"],
+      "/每日复盘": ["410439"],
     },
   },
   // 多语言配置
@@ -57,12 +56,6 @@ export default hopeTheme({
   // hotReload: true,
   // 在这里配置主题提供的插件
   plugins: {
-    watermarkPlugin: {
-      enabled: true,
-      watermarkOptions: {
-        content: '九夏',
-      }
-    },
     searchPro: {
       customFields: [
         {
