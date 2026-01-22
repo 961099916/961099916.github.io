@@ -5,14 +5,11 @@ import { MR_HOPE_AVATAR } from "./logo.js";
 
 export default hopeTheme({
   head: [
-    ['meta', { name: 'keywords', content: 'antdocs,antdeisgn,vuepress,vuepress-theme,theme,ant,docs,antd,antdocs of vuepress,主题,vuepress主题,antd设计,blog,vuepress-blog' }],
+    ['meta', { name: 'keywords', content: 'Java,后端开发,技术博客,九夏,编程学习,Spring,微服务,架构设计,面试,算法,数据库,中间件,运维' }],
     ['meta', { name: 'baidu-site-verification', content: 'codeva-fi0B6bPNUy' }],
-    [
-      'script', { type: 'text/javascript', src: 'https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js' }
-    ]
-
+    ['script', { type: 'text/javascript', src: 'https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js' }]
   ],
-  hostname: "https://961099916.github.io",
+  hostname: "https://blog.jiuxialb.top",
   darkmode: "switch",
   author: {
     name: "九夏",
@@ -28,14 +25,14 @@ export default hopeTheme({
   sidebar,
   sidebarSorter: ["order", "date-desc"],
   // 页脚
-  footer: "九夏博客",
-  displayFooter: false,
+  footer: "九夏博客 | 京ICP备2023005466号",
+  displayFooter: true,
   // 博客相关
   blog: {
-    description: "学习",
-    // intro: "/intro.html",
+    description: "专注Java后端、架构设计与个人成长的技术博客",
+    intro: "/intro.html",
     medias: {
-
+      GitHub: "https://github.com/961099916",
     },
   },
   headerDepth: 4,
@@ -90,6 +87,7 @@ export default hopeTheme({
       components: ["Badge", "VPCard"],
     },
     // 此处开启了很多功能用于演示，你应仅保留用到的功能。
+    // Markdown 增强 - 作者: jiuxialb, 优化于: 2026-01-22
     mdEnhance: {
       align: true,
       attrs: true,
@@ -97,11 +95,11 @@ export default hopeTheme({
       component: true,
       demo: true,
       figure: true,
-      imgLazyload: true,
+      imgLazyload: true,    // 图片懒加载
       imgSize: true,
       include: true,
       mark: true,
-      markmap: true,
+      markmap: true,        // 思维导图
       stylize: [
         {
           matcher: "Recommended",
@@ -120,42 +118,18 @@ export default hopeTheme({
       tabs: true,
       tasklist: true,
       vPre: true,
-      // 在启用之前安装 chart.js
-      // chart: true,
-      // insert component easily
-      // 在启用之前安装 echarts
-      echarts: true,
-      // 在启用之前安装 flowchart.ts
-      flowchart: true,
-
-      // gfm requires mathjax-full to provide tex support
-      gfm: true,
-
-      // 在启用之前安装 katex
-      katex: true,
-
-      // 在启用之前安装 mathjax-full
-      mathjax: true,
-
-      // 在启用之前安装 mermaid
-      mermaid: true,
-
-      playground: {
-        presets: ["ts", "vue"],
-      },
-
-      // 在启用之前安装 reveal.js
-      revealJs: {
-        plugins: ["highlight", "math", "search", "notes", "zoom"],
-      },
-
-      // 在启用之前安装 @vue/repl
-      vuePlayground: true,
-      spoiler: true,
-      plantuml: true,
-
-      // install sandpack-vue3 before enabling it
-      sandpack: true,
+      echarts: true,        // 图表
+      flowchart: true,      // 流程图
+      gfm: true,            // GitHub 风格
+      katex: true,          // 数学公式 (只保留katex，移除mathjax避免冲突)
+      mermaid: true,        // 图表
+      plantuml: true,       // UML图
+      spoiler: true,        // 剧透文字
+      // 以下为不常用功能，已禁用以减少构建体积
+      // playground: { presets: ["ts", "vue"] },
+      // revealJs: { plugins: ["highlight", "math", "search", "notes", "zoom"] },
+      // vuePlayground: true,
+      // sandpack: true,
     },
     photoSwipe: {
       scrollToClose: false
