@@ -53,6 +53,19 @@ export default hopeTheme({
   // hotReload: true,
   // 在这里配置主题提供的插件
   plugins: {
+    watermark: {
+      enabled: true,
+      watermarkOptions: {
+        content: '九夏',
+        width: 200,
+        height: 200,
+        globalAlpha: 0.1,
+        rotate: -22,
+        fontSize: '14px',
+        fontColor: '#999999',
+        fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif',
+      },
+    },
     searchPro: {
       customFields: [
         {
