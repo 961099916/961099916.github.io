@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://961099916.github.io/sitemap.xml
+Sitemap: https://blog.jiuxialb.top/sitemap.xml
